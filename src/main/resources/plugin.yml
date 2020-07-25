@@ -1,4 +1,9 @@
-name: Conquest Recipes
-version: ${project.version}
-main: dansplugins.conquestrecipes.ConquestRecipes
-api-version: 1.16.1
+name: Conquest-Recipes
+version: "0.5"
+author: DanTheTechMan
+main: recipesystem.Main
+api-version: "1.13"
+
+commands:
+  conquestrecipes:
+  cr:
