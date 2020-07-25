@@ -1,7 +1,7 @@
 name: Conquest-Recipes
 version: "0.5"
 author: DanTheTechMan
-main: recipesystem.Main
+main: conquestrecipesystem.Main
 api-version: "1.13"
 
 commands:
