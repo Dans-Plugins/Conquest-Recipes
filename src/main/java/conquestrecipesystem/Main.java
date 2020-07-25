@@ -1,9 +1,9 @@
-package recipesystem;
+package conquestrecipesystem;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import recipesystem.Subsystems.CommandSubsystem;
-import recipesystem.Subsystems.ItemStackSubsystem;
-import recipesystem.Subsystems.RecipeSubsystem;
+import conquestrecipesystem.Subsystems.CommandSubsystem;
+import conquestrecipesystem.Subsystems.ItemStackSubsystem;
+import conquestrecipesystem.Subsystems.RecipeSubsystem;
 
 public final class Main extends JavaPlugin {
 

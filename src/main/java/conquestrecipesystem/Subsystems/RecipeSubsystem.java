@@ -1,7 +1,7 @@
-package recipesystem.Subsystems;
+package conquestrecipesystem.Subsystems;
 
-import recipesystem.Main;
-import recipesystem.Objects.SteelIngot;
+import conquestrecipesystem.Main;
+import conquestrecipesystem.Objects.SteelIngot;
 
 public class RecipeSubsystem {
 

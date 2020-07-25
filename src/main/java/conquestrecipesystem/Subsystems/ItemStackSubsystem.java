@@ -1,11 +1,11 @@
-package recipesystem.Subsystems;
+package conquestrecipesystem.Subsystems;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import recipesystem.Main;
-import recipesystem.Objects.SteelIngot;
+import conquestrecipesystem.Main;
+import conquestrecipesystem.Objects.SteelIngot;
 
 import java.util.ArrayList;
 import java.util.List;

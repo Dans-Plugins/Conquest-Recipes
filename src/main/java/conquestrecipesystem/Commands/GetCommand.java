@@ -1,10 +1,10 @@
-package recipesystem.Commands;
+package conquestrecipesystem.Commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import recipesystem.Main;
+import conquestrecipesystem.Main;
 
 public class GetCommand {
 

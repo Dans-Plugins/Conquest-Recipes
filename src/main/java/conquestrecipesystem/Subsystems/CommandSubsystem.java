@@ -1,10 +1,10 @@
-package recipesystem.Subsystems;
+package conquestrecipesystem.Subsystems;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import recipesystem.Commands.GetCommand;
-import recipesystem.Commands.ListItemsCommand;
-import recipesystem.Main;
+import conquestrecipesystem.Commands.GetCommand;
+import conquestrecipesystem.Commands.ListItemsCommand;
+import conquestrecipesystem.Main;
 
 public class CommandSubsystem {
 
