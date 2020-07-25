@@ -12,35 +12,25 @@ import recipesystem.Main;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.bukkit.Material.IRON_INGOT;
+
 public class SteelIngot {
 
     Main main = null;
 
-    public SteelIngot(Main main) {
-
-
+    public SteelIngot(Main plugin) {
+        main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        ItemStack item = new ItemStack(Material.IRON_INGOT, amount);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.WHITE + "Steel Ingot");
-        List<String> lore = new ArrayList<String>();
-        lore.add("");
-        lore.add(ChatColor.WHITE + "" + ChatColor.ITALIC + "A durable refined alloy");
-
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-
-        return item;
+        return main.itemstacks.createItemStack(amount, IRON_INGOT, "Steel Ingot", "A durable refined alloy");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "more_recipes_steel_ingot");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_ingot");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(2));
         recipe.shape("CCC", "III", "CCC");
-        recipe.setIngredient('I', Material.IRON_INGOT);
+        recipe.setIngredient('I', IRON_INGOT);
         recipe.setIngredient('C', Material.COAL);
         Bukkit.addRecipe(recipe);
     }
