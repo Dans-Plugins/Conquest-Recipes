@@ -7,6 +7,8 @@ import recipesystem.Subsystems.RecipeSubsystem;
 
 public final class Main extends JavaPlugin {
 
+    public static String version = "v0.5";
+
     // subsystems
     public CommandSubsystem commands = new CommandSubsystem(this);
     public ItemStackSubsystem itemstacks = new ItemStackSubsystem(this);

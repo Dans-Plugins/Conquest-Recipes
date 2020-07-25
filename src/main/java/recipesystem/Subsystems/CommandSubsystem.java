@@ -15,10 +15,10 @@ public class CommandSubsystem {
     }
 
     public boolean interpretCommand(CommandSender sender, String label, String[] args) {
-        if (label.equalsIgnoreCase("morerecipes") || label.equalsIgnoreCase("mr")) {
+        if (label.equalsIgnoreCase("conquestrecipes") || label.equalsIgnoreCase("cr")) {
 
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.AQUA + " == More Recipes " + main.version + " == ");
+                sender.sendMessage(ChatColor.AQUA + " == Conquest Recipes " + main.version + " == ");
                 sender.sendMessage(ChatColor.AQUA + "Author: DanTheTechMan");
                 return true;
             }
