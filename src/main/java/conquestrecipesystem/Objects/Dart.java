@@ -26,7 +26,7 @@ public class Dart {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_dart");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(3));
         recipe.shape("000", "0I0", "0F0");
-        recipe.setIngredient('I', (Material) SharpenedBamboo);
+        recipe.setIngredient('I', BAMBOO);
         recipe.setIngredient('F', FEATHER);
         Bukkit.addRecipe(recipe);
     }
