@@ -28,6 +28,9 @@ public class RecipeSubsystem {
         LargeWoodenClub largeWoodenClub = new LargeWoodenClub(main);
         largeWoodenClub.registerRecipe();
 
+        PrimitiveFishingSpear primitiveFishingSpear = new PrimitiveFishingSpear(main);
+        primitiveFishingSpear.registerRecipe();
+
     }
 
 }

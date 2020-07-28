@@ -28,6 +28,7 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + "Salt");
                 player.sendMessage(ChatColor.AQUA + "Dart");
                 player.sendMessage(ChatColor.AQUA + "LargeWoodenClub");
+                player.sendMessage(ChatColor.AQUA + "PrimitiveFishingSpear");
                 player.sendMessage(ChatColor.AQUA + "SharpenedBamboo");
                 player.sendMessage(ChatColor.AQUA + "SimpleBlowgun");
                 player.sendMessage(ChatColor.AQUA + "SteelIngot");

@@ -60,6 +60,11 @@ public class ItemStackSubsystem {
             return largeWoodenClub.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("PrimitiveFishingSpear")) {
+            PrimitiveFishingSpear primitiveFishingSpear = new PrimitiveFishingSpear(main);
+            return primitiveFishingSpear.getItemStack(amount);
+        }
+
         return null;
     }
 
