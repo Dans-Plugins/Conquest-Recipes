@@ -22,13 +22,13 @@ public class LargeWoodenClub {
     }
 
     public void registerRecipe() {
-        NamespacedKey key1 = new NamespacedKey(main, "conquest_recipes_large_wooden_club");
+        NamespacedKey key1 = new NamespacedKey(main, "conquest_recipes_large_wooden_club_1");
         ShapedRecipe recipe1 = new ShapedRecipe(key1, getItemStack(1));
         recipe1.shape("0I0", "0I0", "0S0");
         recipe1.setIngredient('I', STRIPPED_OAK_LOG);
         recipe1.setIngredient('S', STICK);
         Bukkit.addRecipe(recipe1);
-        NamespacedKey key2 = new NamespacedKey(main, "conquest_recipes_large_wooden_club");
+        NamespacedKey key2 = new NamespacedKey(main, "conquest_recipes_large_wooden_club_2");
         ShapedRecipe recipe2 = new ShapedRecipe(key2, getItemStack(1));
         recipe2.shape("0I0", "0I0", "0S0");
         recipe2.setIngredient('I', STRIPPED_BIRCH_LOG);
