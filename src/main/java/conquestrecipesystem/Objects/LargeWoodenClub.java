@@ -21,16 +21,13 @@ public class LargeWoodenClub {
         return main.itemstacks.createItemStack(amount, BOW, "Large Wooden Club", "A large wooden club fashioned out of stripped logs.");
     }
 
-    public void registerRecipe1() {
+    public void registerRecipe() {
         NamespacedKey key1 = new NamespacedKey(main, "conquest_recipes_large_wooden_club");
         ShapedRecipe recipe1 = new ShapedRecipe(key1, getItemStack(1));
         recipe1.shape("0I0", "0I0", "0S0");
         recipe1.setIngredient('I', STRIPPED_OAK_LOG);
         recipe1.setIngredient('S', STICK);
         Bukkit.addRecipe(recipe1);
-    }
-
-    public void registerRecipe2() {
         NamespacedKey key2 = new NamespacedKey(main, "conquest_recipes_large_wooden_club");
         ShapedRecipe recipe2 = new ShapedRecipe(key2, getItemStack(1));
         recipe2.shape("0I0", "0I0", "0S0");
@@ -38,4 +35,5 @@ public class LargeWoodenClub {
         recipe2.setIngredient('S', STICK);
         Bukkit.addRecipe(recipe2);
     }
+
 }

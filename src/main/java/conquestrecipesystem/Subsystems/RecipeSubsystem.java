@@ -26,7 +26,7 @@ public class RecipeSubsystem {
         sharpenedBamboo.registerRecipe();
 
         LargeWoodenClub largeWoodenClub = new LargeWoodenClub(main);
-        largeWoodenClub.registerRecipe1();
+        largeWoodenClub.registerRecipe();
 
     }
 
