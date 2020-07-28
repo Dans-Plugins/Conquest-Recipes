@@ -1,14 +1,11 @@
 package conquestrecipesystem.Subsystems;
 
-import conquestrecipesystem.Objects.Dart;
-import conquestrecipesystem.Objects.SharpenedBamboo;
-import conquestrecipesystem.Objects.SimpleBlowgun;
+import conquestrecipesystem.Objects.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import conquestrecipesystem.Main;
-import conquestrecipesystem.Objects.SteelIngot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +53,11 @@ public class ItemStackSubsystem {
         if (itemName.equalsIgnoreCase("SharpenedBamboo")) {
             SharpenedBamboo sharpenedBamboo = new SharpenedBamboo(main);
             return sharpenedBamboo.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("LargeWoodenClub")) {
+            LargeWoodenClub largeWoodenClub = new LargeWoodenClub(main);
+            return largeWoodenClub.getItemStack(amount);
         }
 
         return null;

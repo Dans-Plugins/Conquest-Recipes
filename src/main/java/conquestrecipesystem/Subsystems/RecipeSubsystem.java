@@ -1,10 +1,7 @@
 package conquestrecipesystem.Subsystems;
 
 import conquestrecipesystem.Main;
-import conquestrecipesystem.Objects.Dart;
-import conquestrecipesystem.Objects.SharpenedBamboo;
-import conquestrecipesystem.Objects.SimpleBlowgun;
-import conquestrecipesystem.Objects.SteelIngot;
+import conquestrecipesystem.Objects.*;
 
 public class RecipeSubsystem {
 
@@ -27,6 +24,9 @@ public class RecipeSubsystem {
 
         SharpenedBamboo sharpenedBamboo = new SharpenedBamboo(main);
         sharpenedBamboo.registerRecipe();
+
+        LargeWoodenClub largeWoodenClub = new LargeWoodenClub(main);
+        largeWoodenClub.registerRecipe1();
 
     }
 

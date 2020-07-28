@@ -11,6 +11,7 @@ import static org.bukkit.Material.*;
 public class SimpleBlowgun {
 
     Main main = null;
+    private Object SimpleBlowgun;
 
     public SimpleBlowgun(Main plugin) {
         main = plugin;
