@@ -95,6 +95,21 @@ public class ItemStackSubsystem {
             return spikedHalberd.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("FancyWoodenWarclub")) {
+            FancyWoodenWarclub fancyWoodenWarclub = new FancyWoodenWarclub(main);
+            return fancyWoodenWarclub.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("PrimitiveWarhammer")) {
+            PrimitiveWarhammer primitiveWarhammer = new PrimitiveWarhammer(main);
+            return primitiveWarhammer.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SpikedClub")) {
+            SpikedClub spikedClub = new SpikedClub(main);
+            return spikedClub.getItemStack(amount);
+        }
+
         return null;
     }
 

@@ -49,6 +49,15 @@ public class RecipeSubsystem {
         SpikedHalberd spikedHalberd = new SpikedHalberd(main);
         spikedHalberd.registerRecipe();
 
+        FancyWoodenWarclub fancyWoodenWarclub = new FancyWoodenWarclub(main);
+        fancyWoodenWarclub.registerRecipe();
+
+        PrimitiveWarhammer primitiveWarhammer = new PrimitiveWarhammer(main);
+        primitiveWarhammer.registerRecipe();
+
+        SpikedClub spikedClub = new SpikedClub(main);
+        spikedClub.registerRecipe();
+
     }
 
 }

@@ -18,7 +18,7 @@ public class SmallWoodenClub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, WOODEN_SWORD, "Small_Wooden_Club", "A small club fashioned out of a log.");
+        return main.itemstacks.createItemStack(amount, WOODEN_SWORD, "Small Wooden Club", "A small club fashioned out of a log.");
     }
 
     public void registerRecipe() {
