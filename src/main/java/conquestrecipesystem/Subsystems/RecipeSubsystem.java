@@ -37,6 +37,18 @@ public class RecipeSubsystem {
         Stonespear stonespear = new Stonespear(main);
         stonespear.registerRecipe();
 
+        Boneclub boneclub = new Boneclub(main);
+        boneclub.registerRecipe();
+
+        SharpenedPole sharpenedPole = new SharpenedPole(main);
+        sharpenedPole.registerRecipe();
+
+        SmallWoodenClub smallWoodenClub = new SmallWoodenClub(main);
+        smallWoodenClub.registerRecipe();
+
+        SpikedHalberd spikedHalberd = new SpikedHalberd(main);
+        spikedHalberd.registerRecipe();
+
     }
 
 }

@@ -75,6 +75,26 @@ public class ItemStackSubsystem {
             return stonespear.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("Boneclub")) {
+            Boneclub boneclub = new Boneclub(main);
+            return boneclub.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SharpenedPole")) {
+            SharpenedPole sharpenedPole = new SharpenedPole(main);
+            return sharpenedPole.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SmallWoodenClub")) {
+            SmallWoodenClub smallWoodenClub = new SmallWoodenClub(main);
+            return smallWoodenClub.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SpikedHalberd")) {
+            SpikedHalberd spikedHalberd = new SpikedHalberd(main);
+            return spikedHalberd.getItemStack(amount);
+        }
+
         return null;
     }
 
