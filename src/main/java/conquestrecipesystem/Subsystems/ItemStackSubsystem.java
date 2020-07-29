@@ -65,6 +65,16 @@ public class ItemStackSubsystem {
             return primitiveFishingSpear.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("PrimitiveHuntingSpear")) {
+            PrimitiveHuntingSpear primitiveHuntingSpear = new PrimitiveHuntingSpear(main);
+            return primitiveHuntingSpear.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("Stonespear")) {
+            Stonespear stonespear = new Stonespear(main);
+            return stonespear.getItemStack(amount);
+        }
+
         return null;
     }
 

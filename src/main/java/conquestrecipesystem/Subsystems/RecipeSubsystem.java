@@ -31,6 +31,12 @@ public class RecipeSubsystem {
         PrimitiveFishingSpear primitiveFishingSpear = new PrimitiveFishingSpear(main);
         primitiveFishingSpear.registerRecipe();
 
+        PrimitiveHuntingSpear primitiveHuntingSpear = new PrimitiveHuntingSpear(main);
+        primitiveHuntingSpear.registerRecipe();
+
+        Stonespear stonespear = new Stonespear(main);
+        stonespear.registerRecipe();
+
     }
 
 }
