@@ -26,9 +26,7 @@ public class SuperSteelIngot {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_super_steel_ingot");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(2));
         recipe.shape("CCC", "III", "CCC");
-        SteelIngot steelIngot = new SteelIngot(main);
-        RecipeChoice.ExactChoice choice = new RecipeChoice.ExactChoice(steelIngot.getItemStack(1));
-        recipe.setIngredient('I', choice);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("SteelIngot", 1)));
         recipe.setIngredient('C', COAL);
         Bukkit.addRecipe(recipe);
     }
