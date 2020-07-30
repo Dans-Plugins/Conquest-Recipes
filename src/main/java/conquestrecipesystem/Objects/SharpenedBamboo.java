@@ -4,6 +4,7 @@ import conquestrecipesystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
@@ -24,8 +25,8 @@ public class SharpenedBamboo {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_sharpened_bamboo");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(8));
         recipe.shape("FII", "III", "III");
-        recipe.setIngredient('I', BAMBOO);
-        recipe.setIngredient('F', FLINT);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BAMBOO)));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(FLINT)));
         Bukkit.addRecipe(recipe);
     }
 }
