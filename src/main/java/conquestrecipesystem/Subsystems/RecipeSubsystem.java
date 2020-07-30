@@ -58,6 +58,12 @@ public class RecipeSubsystem {
         SpikedClub spikedClub = new SpikedClub(main);
         spikedClub.registerRecipe();
 
+        SteelLongsword steelLongsword = new SteelLongsword(main);
+        steelLongsword.registerRecipe();
+
+        SteelBastardsword steelBastardsword = new SteelBastardsword(main);
+        steelBastardsword.registerRecipe();
+
     }
 
 }

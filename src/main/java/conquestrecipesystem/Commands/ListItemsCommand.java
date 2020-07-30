@@ -19,7 +19,7 @@ public class ListItemsCommand {
 
             Player player = (Player) sender;
 
-            if (player.hasPermission("morerecipes.listitems") || player.hasPermission("morerecipes.default")) {
+            if (player.hasPermission("conquestrecipes.listitems") || player.hasPermission("conquestrecipes.default")) {
 
                 // title
                 player.sendMessage(ChatColor.AQUA + " == More Recipes - Items == ");
@@ -39,7 +39,9 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + "SmallWoodenClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedHalberd");
+                player.sendMessage(ChatColor.AQUA + "SteelBastardsword");
                 player.sendMessage(ChatColor.AQUA + "SteelIngot");
+                player.sendMessage(ChatColor.AQUA + "SteelLongsword");
                 player.sendMessage(ChatColor.AQUA + "Stonespear");
 
                 // uncraftable
@@ -60,7 +62,7 @@ public class ListItemsCommand {
 
             }
             else {
-                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'morerecipes.listitems'");
+                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.listitems'");
             }
 
         }

@@ -110,6 +110,16 @@ public class ItemStackSubsystem {
             return spikedClub.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("SteelLongsword")) {
+            SteelLongsword steelLongsword = new SteelLongsword(main);
+            return steelLongsword.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SteelBastardsword")) {
+            SteelBastardsword steelBastardsword = new SteelBastardsword(main);
+            return steelBastardsword.getItemStack(amount);
+        }
+
         return null;
     }
 
