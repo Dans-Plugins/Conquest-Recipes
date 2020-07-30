@@ -25,24 +25,8 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + " == More Recipes - Items == ");
 
                 // custom
-                player.sendMessage(ChatColor.AQUA + "Salt");
                 player.sendMessage(ChatColor.AQUA + "SteelIngot");
-
-                // uncraftable
-                player.sendMessage(ChatColor.AQUA + "BlazeRod");
-                player.sendMessage(ChatColor.AQUA + "ChainmailBoots");
-                player.sendMessage(ChatColor.AQUA + "ChainmailChestplate");
-                player.sendMessage(ChatColor.AQUA + "ChainmailHelmet");
-                player.sendMessage(ChatColor.AQUA + "ChainmailLeggings");
-                player.sendMessage(ChatColor.AQUA + "DiamondHorseArmor");
-                player.sendMessage(ChatColor.AQUA + "GoldenHorseArmor");
-                player.sendMessage(ChatColor.AQUA + "GrassBlock");
-                player.sendMessage(ChatColor.AQUA + "IronHorseArmor");
-                player.sendMessage(ChatColor.AQUA + "Lead");
-                player.sendMessage(ChatColor.AQUA + "NameTag");
-                player.sendMessage(ChatColor.AQUA + "Saddle");
-                player.sendMessage(ChatColor.AQUA + "String");
-                player.sendMessage(ChatColor.AQUA + "TotemOfUndying");
+                player.sendMessage(ChatColor.AQUA + "SuperSteelIngot");
 
             }
             else {

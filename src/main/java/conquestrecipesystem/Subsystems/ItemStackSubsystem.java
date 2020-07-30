@@ -1,5 +1,6 @@
 package conquestrecipesystem.Subsystems;
 
+import conquestrecipesystem.Objects.SuperSteelIngot;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -38,6 +39,11 @@ public class ItemStackSubsystem {
         if (itemName.equalsIgnoreCase("SteelIngot")) {
             SteelIngot steelIngot = new SteelIngot(main);
             return steelIngot.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SuperSteelIngot")) {
+            SuperSteelIngot superSteelIngot = new SuperSteelIngot(main);
+            return superSteelIngot.getItemStack(amount);
         }
 
         return null;
