@@ -1,5 +1,7 @@
 package conquestrecipesystem;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import conquestrecipesystem.Subsystems.CommandSubsystem;
 import conquestrecipesystem.Subsystems.ItemStackSubsystem;
@@ -22,5 +24,10 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        CommandSubsystem commandInterpreter = new CommandSubsystem(this);
+        return commandInterpreter.interpretCommand(sender, label, args);
     }
 }
