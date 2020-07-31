@@ -1,5 +1,6 @@
 package conquestrecipesystem.Subsystems;
 
+import conquestrecipesystem.CustomItemFixes.SteelCancel;
 import conquestrecipesystem.Objects.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -118,6 +119,11 @@ public class ItemStackSubsystem {
         if (itemName.equalsIgnoreCase("SteelBastardsword")) {
             SteelBastardsword steelBastardsword = new SteelBastardsword(main);
             return steelBastardsword.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SteelCancel")) {
+            SteelCancel steelCancel = new SteelCancel(main);
+            return steelCancel.getItemStack(amount);
         }
 
         return null;

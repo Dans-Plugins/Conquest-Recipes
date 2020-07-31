@@ -4,6 +4,7 @@ import conquestrecipesystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
@@ -25,7 +26,7 @@ public class SpikedClub {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_spiked_club");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0II", "0II", "I00");
-        recipe.setIngredient('I', STICK);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         Bukkit.addRecipe(recipe);
     }
 }

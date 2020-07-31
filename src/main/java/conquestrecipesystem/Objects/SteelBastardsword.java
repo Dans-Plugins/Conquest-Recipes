@@ -26,7 +26,7 @@ public class SteelBastardsword {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_bastardsword");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0S0", "0S0", "0I0");
-        recipe.setIngredient('I', STICK);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("SteelIngot", 1)));
         Bukkit.addRecipe(recipe);
     }

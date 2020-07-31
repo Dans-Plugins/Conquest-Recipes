@@ -1,5 +1,6 @@
 package conquestrecipesystem.Subsystems;
 
+import conquestrecipesystem.CustomItemFixes.SteelCancel;
 import conquestrecipesystem.Main;
 import conquestrecipesystem.Objects.*;
 
@@ -63,6 +64,9 @@ public class RecipeSubsystem {
 
         SteelBastardsword steelBastardsword = new SteelBastardsword(main);
         steelBastardsword.registerRecipe();
+
+        SteelCancel steelCancel = new SteelCancel(main);
+        steelCancel.registerRecipe();
 
     }
 
