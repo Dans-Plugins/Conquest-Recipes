@@ -68,6 +68,12 @@ public class RecipeSubsystem {
         SteelCancel steelCancel = new SteelCancel(main);
         steelCancel.registerRecipe();
 
+        PrimitiveFlail primitiveFlail = new PrimitiveFlail(main);
+        primitiveFlail.registerRecipe();
+
+        SpikedHatchet spikedHatchet = new SpikedHatchet(main);
+        spikedHatchet.registerRecipe();
+
     }
 
 }

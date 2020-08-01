@@ -126,6 +126,16 @@ public class ItemStackSubsystem {
             return steelCancel.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("PrimitiveFlail")) {
+            PrimitiveFlail primitiveFlail = new PrimitiveFlail(main);
+            return primitiveFlail.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SpikedHatchet")) {
+            SpikedHatchet spikedHatchet = new SpikedHatchet(main);
+            return spikedHatchet.getItemStack(amount);
+        }
+
         return null;
     }
 

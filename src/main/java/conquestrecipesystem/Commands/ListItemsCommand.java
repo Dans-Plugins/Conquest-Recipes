@@ -31,6 +31,7 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + "FancyWoodenWarclub");
                 player.sendMessage(ChatColor.AQUA + "LargeWoodenClub");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveFishingSpear");
+                player.sendMessage(ChatColor.AQUA + "PrimitiveFlail");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveHuntingSpear");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveWarhammer");
                 player.sendMessage(ChatColor.AQUA + "SharpenedBamboo");
@@ -39,6 +40,7 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + "SmallWoodenClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedHalberd");
+                player.sendMessage(ChatColor.AQUA + "SpikedHatchet");
                 player.sendMessage(ChatColor.AQUA + "SteelBastardsword");
                 player.sendMessage(ChatColor.AQUA + "SteelIngot");
                 player.sendMessage(ChatColor.AQUA + "SteelLongsword");
