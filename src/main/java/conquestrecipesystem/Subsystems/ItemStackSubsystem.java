@@ -1,6 +1,5 @@
 package conquestrecipesystem.Subsystems;
 
-import conquestrecipesystem.CustomItemFixes.SteelCancel;
 import conquestrecipesystem.Objects.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -121,11 +120,6 @@ public class ItemStackSubsystem {
             return steelBastardsword.getItemStack(amount);
         }
 
-        if (itemName.equalsIgnoreCase("SteelCancel")) {
-            SteelCancel steelCancel = new SteelCancel(main);
-            return steelCancel.getItemStack(amount);
-        }
-
         if (itemName.equalsIgnoreCase("PrimitiveFlail")) {
             PrimitiveFlail primitiveFlail = new PrimitiveFlail(main);
             return primitiveFlail.getItemStack(amount);
@@ -134,6 +128,51 @@ public class ItemStackSubsystem {
         if (itemName.equalsIgnoreCase("SpikedHatchet")) {
             SpikedHatchet spikedHatchet = new SpikedHatchet(main);
             return spikedHatchet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("PrimitiveStoneblade")) {
+            PrimitiveStoneblade primitiveStoneblade = new PrimitiveStoneblade(main);
+            return primitiveStoneblade.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootCleaver")) {
+            RootCleaver rootCleaver = new RootCleaver(main);
+            return rootCleaver.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootDagger")) {
+            RootDagger rootDagger = new RootDagger(main);
+            return rootDagger.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("Roots")) {
+            Roots roots = new Roots(main);
+            return roots.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BigMacuahuitl")) {
+            BigMacuahuitl bigMacuahuitl = new BigMacuahuitl(main);
+            return bigMacuahuitl.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("Cuauhololli")) {
+            Cuauhololli cuauhololli = new Cuauhololli(main);
+            return cuauhololli.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("FeatheredMacuahuitl")) {
+            FeatheredMacuahuitl featheredMacuahuitl = new FeatheredMacuahuitl(main);
+            return featheredMacuahuitl.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SmallMacuahuitl")) {
+            SmallMacuahuitl smallMacuahuitl = new SmallMacuahuitl(main);
+            return smallMacuahuitl.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("Tepoztopilli")) {
+            Tepoztopilli tepoztopilli = new Tepoztopilli(main);
+            return tepoztopilli.getItemStack(amount);
         }
 
         return null;

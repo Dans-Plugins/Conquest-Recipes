@@ -1,6 +1,5 @@
 package conquestrecipesystem.Subsystems;
 
-import conquestrecipesystem.CustomItemFixes.SteelCancel;
 import conquestrecipesystem.Main;
 import conquestrecipesystem.Objects.*;
 
@@ -65,14 +64,38 @@ public class RecipeSubsystem {
         SteelBastardsword steelBastardsword = new SteelBastardsword(main);
         steelBastardsword.registerRecipe();
 
-        SteelCancel steelCancel = new SteelCancel(main);
-        steelCancel.registerRecipe();
-
         PrimitiveFlail primitiveFlail = new PrimitiveFlail(main);
         primitiveFlail.registerRecipe();
 
         SpikedHatchet spikedHatchet = new SpikedHatchet(main);
         spikedHatchet.registerRecipe();
+
+        PrimitiveStoneblade primitiveStoneblade = new PrimitiveStoneblade(main);
+        primitiveStoneblade.registerRecipe();
+
+        RootCleaver rootCleaver = new RootCleaver(main);
+        rootCleaver.registerRecipe();
+
+        RootDagger rootDagger = new RootDagger(main);
+        rootDagger.registerRecipe();
+
+        Roots roots = new Roots(main);
+        roots.registerRecipe();
+
+        BigMacuahuitl bigMacuahuitl = new BigMacuahuitl(main);
+        bigMacuahuitl.registerRecipe();
+
+        Cuauhololli cuauhololli = new Cuauhololli(main);
+        cuauhololli.registerRecipe();
+
+        FeatheredMacuahuitl featheredMacuahuitl = new FeatheredMacuahuitl(main);
+        featheredMacuahuitl.registerRecipe();
+
+        SmallMacuahuitl smallMacuahuitl = new SmallMacuahuitl(main);
+        smallMacuahuitl.registerRecipe();
+
+        Tepoztopilli tepoztopilli = new Tepoztopilli(main);
+        tepoztopilli.registerRecipe();
 
     }
 

@@ -9,24 +9,25 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
 
-public class SpikedHalberd {
+public class PrimitiveStoneblade {
 
     Main main = null;
 
-    public SpikedHalberd(Main plugin) {
+    public PrimitiveStoneblade(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Halbert", "A Halberd fashioned out of multiple pointy sticks");
+        return main.itemstacks.createItemStack(amount, STONE_SWORD, "Primitive Stoneblade", "A blade crafted out of stone.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_spiked_halberd");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_primitive_stoneblade");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("0IF", "0II", "I00");
+        recipe.shape("IS0", "IS0", "IT0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(COBBLESTONE)));
+        recipe.setIngredient('T', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
         Bukkit.addRecipe(recipe);
     }
 }
