@@ -51,6 +51,7 @@ public class ListItemsCommand {
                 player.sendMessage(ChatColor.AQUA + "SpikedHatchet");
                 player.sendMessage(ChatColor.AQUA + "SteelBastardsword");
                 player.sendMessage(ChatColor.AQUA + "SteelLongsword");
+                player.sendMessage(ChatColor.AQUA + "StoneHalberd");
                 player.sendMessage(ChatColor.AQUA + "Stonespear");
                 player.sendMessage(ChatColor.AQUA + "Tepoztopilli");
 

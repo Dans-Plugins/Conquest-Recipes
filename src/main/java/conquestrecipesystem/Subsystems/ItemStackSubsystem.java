@@ -175,6 +175,91 @@ public class ItemStackSubsystem {
             return tepoztopilli.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("StoneHalberd")) {
+            StoneHalberd stoneHalberd = new StoneHalberd(main);
+            return stoneHalberd.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BonePlateBoots")) {
+            BonePlateBoots bonePlateBoots = new BonePlateBoots(main);
+            return bonePlateBoots.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BonePlateChestplate")) {
+            BonePlateChestplate bonePlateChestplate = new BonePlateChestplate(main);
+            return bonePlateChestplate.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BonePlateHelm")) {
+            BonePlateHelm bonePlateHelm = new BonePlateHelm(main);
+            return bonePlateHelm.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BonePlateLeggings")) {
+            BonePlateLeggings bonePlateLeggings = new BonePlateLeggings(main);
+            return bonePlateLeggings.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BoneShield")) {
+            BoneShield boneShield = new BoneShield(main);
+            return boneShield.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("AfricanTallShield")) {
+            AfricanTallShield africanTallShield = new AfricanTallShield(main);
+            return africanTallShield.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("DecoratedChimalliShield")) {
+            DecoratedChimalliShield decoratedChimalliShield = new DecoratedChimalliShield(main);
+            return decoratedChimalliShield.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SpiralChimalliShield")) {
+            SpiralChimalliShield spiralChimalliShield = new SpiralChimalliShield(main);
+            return spiralChimalliShield.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SkeletalSkull")) {
+            SkeletalSkull skeletalSkull = new SkeletalSkull(main);
+            return skeletalSkull.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SkeletalChest")) {
+            SkeletalChest skeletalChest = new SkeletalChest(main);
+            return skeletalChest.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SkeletalLegs")) {
+            SkeletalLegs skeletalLegs = new SkeletalLegs(main);
+            return skeletalLegs.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("SkeletalFeet")) {
+            SkeletalFeet skeletalFeet = new SkeletalFeet(main);
+            return skeletalFeet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootmossClothHelmet")) {
+            RootmossClothHelmet rootmossClothHelmet = new RootmossClothHelmet(main);
+            return rootmossClothHelmet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootmossClothChestpiece")) {
+            RootmossClothChestpiece rootmossClothChestpiece = new RootmossClothChestpiece(main);
+            return rootmossClothChestpiece.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootmossClothLeggings")) {
+            RootmossClothLeggings rootmossClothLeggings = new RootmossClothLeggings(main);
+            return rootmossClothLeggings.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("RootmossClothShoes")) {
+            RootmossClothShoes rootmossClothShoes = new RootmossClothShoes(main);
+            return rootmossClothShoes.getItemStack(amount);
+        }
+
         return null;
     }
 

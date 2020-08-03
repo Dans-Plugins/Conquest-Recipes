@@ -94,8 +94,59 @@ public class RecipeSubsystem {
         Tepoztopilli tepoztopilli = new Tepoztopilli(main);
         tepoztopilli.registerRecipe();
 
+        StoneHalberd stoneHalberd = new StoneHalberd(main);
+        stoneHalberd.registerRecipe();
+
         Roots roots = new Roots(main);
         roots.registerRecipe();
+
+        BonePlateBoots bonePlateBoots = new BonePlateBoots(main);
+        bonePlateBoots.registerRecipe();
+
+        BonePlateChestplate bonePlateChestplate = new BonePlateChestplate(main);
+        bonePlateChestplate.registerRecipe();
+
+        BonePlateHelm bonePlateHelm = new BonePlateHelm(main);
+        bonePlateHelm.registerRecipe();
+
+        BonePlateLeggings bonePlateLeggings = new BonePlateLeggings(main);
+        bonePlateLeggings.registerRecipe();
+
+        BoneShield boneShield = new BoneShield(main);
+        boneShield.registerRecipe();
+
+        AfricanTallShield africanTallShield = new AfricanTallShield(main);
+        africanTallShield.registerRecipe();
+
+        DecoratedChimalliShield decoratedChimalliShield = new DecoratedChimalliShield(main);
+        decoratedChimalliShield.registerRecipe();
+
+        SpiralChimalliShield spiralChimalliShield = new SpiralChimalliShield(main);
+        spiralChimalliShield.registerRecipe();
+
+        SkeletalSkull skeletalSkull = new SkeletalSkull(main);
+        skeletalSkull.registerRecipe();
+
+        SkeletalChest skeletalChest = new SkeletalChest(main);
+        skeletalChest.registerRecipe();
+
+        SkeletalLegs skeletalLegs = new SkeletalLegs(main);
+        skeletalLegs.registerRecipe();
+
+        SkeletalFeet skeletalFeet = new SkeletalFeet(main);
+        skeletalFeet.registerRecipe();
+
+        RootmossClothHelmet rootmossClothHelmet = new RootmossClothHelmet(main);
+        rootmossClothHelmet.registerRecipe();
+
+        RootmossClothChestpiece rootmossClothChestpiece = new RootmossClothChestpiece(main);
+        rootmossClothChestpiece.registerRecipe();
+
+        RootmossClothLeggings rootmossClothLeggings = new RootmossClothLeggings(main);
+        rootmossClothLeggings.registerRecipe();
+
+        RootmossClothShoes rootmossClothShoes = new RootmossClothShoes(main);
+        rootmossClothShoes.registerRecipe();
 
     }
 
