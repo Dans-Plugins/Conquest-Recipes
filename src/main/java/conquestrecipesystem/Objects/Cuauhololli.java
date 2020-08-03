@@ -24,7 +24,7 @@ public class Cuauhololli {
     public void registerRecipe() {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_cuauhololli");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("0I0", "0IF", "SIS");
+        recipe.shape("SIS", "0IF", "0I0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(FLINT)));
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(STRING)));

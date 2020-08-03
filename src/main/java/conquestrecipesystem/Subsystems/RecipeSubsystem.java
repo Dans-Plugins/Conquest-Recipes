@@ -79,9 +79,6 @@ public class RecipeSubsystem {
         RootDagger rootDagger = new RootDagger(main);
         rootDagger.registerRecipe();
 
-        Roots roots = new Roots(main);
-        roots.registerRecipe();
-
         BigMacuahuitl bigMacuahuitl = new BigMacuahuitl(main);
         bigMacuahuitl.registerRecipe();
 
@@ -96,6 +93,9 @@ public class RecipeSubsystem {
 
         Tepoztopilli tepoztopilli = new Tepoztopilli(main);
         tepoztopilli.registerRecipe();
+
+        Roots roots = new Roots(main);
+        roots.registerRecipe();
 
     }
 
