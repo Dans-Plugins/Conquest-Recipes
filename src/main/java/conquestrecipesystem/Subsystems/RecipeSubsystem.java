@@ -148,6 +148,18 @@ public class RecipeSubsystem {
         RootmossClothShoes rootmossClothShoes = new RootmossClothShoes(main);
         rootmossClothShoes.registerRecipe();
 
+        Strawhat strawhat = new Strawhat(main);
+        strawhat.registerRecipe();
+
+        EagleHelmet eagleHelmet = new EagleHelmet(main);
+        eagleHelmet.registerRecipe();
+
+        FeatherHeaddress featherHeaddress = new FeatherHeaddress(main);
+        featherHeaddress.registerRecipe();
+
+        JaguarHelmet jaguarHelmet = new JaguarHelmet(main);
+        jaguarHelmet.registerRecipe();
+
     }
 
 }

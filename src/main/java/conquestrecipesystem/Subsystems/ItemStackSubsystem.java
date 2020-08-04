@@ -260,6 +260,26 @@ public class ItemStackSubsystem {
             return rootmossClothShoes.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("Strawhat")) {
+            Strawhat strawhat = new Strawhat(main);
+            return strawhat.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("EagleHelmet")) {
+            EagleHelmet eagleHelmet = new EagleHelmet(main);
+            return eagleHelmet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("FeatherHeaddress")) {
+            FeatherHeaddress featherHeaddress = new FeatherHeaddress(main);
+            return featherHeaddress.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("JaguarHelmet")) {
+            JaguarHelmet jaguarHelmet = new JaguarHelmet(main);
+            return jaguarHelmet.getItemStack(amount);
+        }
+
         return null;
     }
 
