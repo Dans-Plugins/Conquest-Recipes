@@ -7,26 +7,27 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
-import static org.bukkit.Material.BONE;
+import static org.bukkit.Material.IRON_SWORD;
+import static org.bukkit.Material.STICK;
 
-public class SpikedClub {
+public class SteelBastardsword {
 
     Main main = null;
 
-    public SpikedClub(Main plugin) {
+    public SteelBastardsword(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Club", "A club fashioned out of sharp sticks");
+        return main.itemstacks.createItemStack(amount, IRON_SWORD, "Steel Bastardsword", "A long blade of steel.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_spiked_club");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_bastardsword");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("0II", "0II", "I00");
+        recipe.shape("0S0", "0S0", "0I0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("SteelIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

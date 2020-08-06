@@ -8,26 +8,25 @@ import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
-import static org.bukkit.Material.BONE;
+import static org.bukkit.Material.COBBLESTONE;
 
-public class PrimitiveWarhammer {
+public class RootDagger {
 
     Main main = null;
 
-    public PrimitiveWarhammer(Main plugin) {
+    public RootDagger(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, STONE_AXE, "Primitive Warhammer", "A war hammer fashioned out of tied stone.");
+        return main.itemstacks.createItemStack(amount, STONE_SWORD, "Stone Root Dagger", "A dagger made out of stone with a root handle.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_primitive_warhammer");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_root_dagger");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("BFB", "0I0", "0I0");
-        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
+        recipe.shape("000", "0B0", "0I0");
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("Roots", 1)));
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(COBBLESTONE)));
         Bukkit.addRecipe(recipe);
     }

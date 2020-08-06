@@ -3,11 +3,11 @@ package conquestrecipesystem.Objects;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import conquestrecipesystem.Main;
 
-import static org.bukkit.Material.COAL;
-import static org.bukkit.Material.IRON_INGOT;
+import static org.bukkit.Material.*;
 
 public class SteelIngot {
 
@@ -25,8 +25,8 @@ public class SteelIngot {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_ingot");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(2));
         recipe.shape("CCC", "III", "CCC");
-        recipe.setIngredient('I', IRON_INGOT);
-        recipe.setIngredient('C', COAL);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(IRON_INGOT)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(COAL)));
         Bukkit.addRecipe(recipe);
     }
 

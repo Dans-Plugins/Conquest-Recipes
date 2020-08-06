@@ -4,6 +4,7 @@ import conquestrecipesystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
@@ -25,9 +26,9 @@ public class Stonespear {
         NamespacedKey key = new NamespacedKey(main, "conquest_recipes_stonespear");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0SF", "0IS", "I00");
-        recipe.setIngredient('I', STICK);
-        recipe.setIngredient('F', COBBLESTONE);
-        recipe.setIngredient('S', STRING);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(COBBLESTONE)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
         Bukkit.addRecipe(recipe);
     }
 }

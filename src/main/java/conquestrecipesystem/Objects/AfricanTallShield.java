@@ -2,35 +2,30 @@ package conquestrecipesystem.Objects;
 
 import conquestrecipesystem.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.material.MaterialData;
 
 import static org.bukkit.Material.*;
 
-public class Dart {
+public class AfricanTallShield {
 
     Main main = null;
-    private Object SharpenedBamboo;
 
-    public Dart(Main plugin) {
+    public AfricanTallShield(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, ARROW, "Dart", "A dart of bamboo and feathers");
+        return main.itemstacks.createItemStack(amount, SHIELD, "African Tall Bamboo Shield", "A primitive, elongated bamboo shield.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_dart");
-        ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(3));
-        recipe.shape("000", "0I0", "0F0");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_african_tall_shield");
+        ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
+        recipe.shape("0I0", "III", "0I0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BAMBOO)));
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(FEATHER)));
         Bukkit.addRecipe(recipe);
     }
-
 }

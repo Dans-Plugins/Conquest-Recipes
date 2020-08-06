@@ -20,7 +20,7 @@ public class GetCommand {
 
             Player player = (Player) sender;
 
-            if (player.hasPermission("morerecipes.get") || player.hasPermission("morerecipes.admin")) {
+            if (player.hasPermission("conquestrecipes.get") || player.hasPermission("conquestrecipes.admin")) {
 
                 if (args.length > 2) {
 
@@ -41,17 +41,17 @@ public class GetCommand {
                         }
                     }
                     else {
-                        player.sendMessage(ChatColor.RED + "That isn't an item in More Recipes!");
+                        player.sendMessage(ChatColor.RED + "That isn't an item in Conquest Recipes!");
                     }
 
                 }
                 else {
-                    player.sendMessage(ChatColor.RED + "Usage: /morerecipes get (itemName) (amount)");
+                    player.sendMessage(ChatColor.RED + "Usage: /conquestrecipes get (itemName) (amount)");
                 }
 
             }
             else {
-                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'morerecipes.get'");
+                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.get'");
             }
 
         }

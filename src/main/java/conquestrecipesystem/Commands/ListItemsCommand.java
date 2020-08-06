@@ -19,28 +19,41 @@ public class ListItemsCommand {
 
             Player player = (Player) sender;
 
-            if (player.hasPermission("morerecipes.listitems") || player.hasPermission("morerecipes.default")) {
+            if (player.hasPermission("conquestrecipes.listitems") || player.hasPermission("conquestrecipes.default")) {
 
                 // title
                 player.sendMessage(ChatColor.AQUA + " == More Recipes - Items == ");
 
                 // custom
                 player.sendMessage(ChatColor.AQUA + "Salt");
+                player.sendMessage(ChatColor.AQUA + "BigMacuahuitl");
                 player.sendMessage(ChatColor.AQUA + "Boneclub");
+                player.sendMessage(ChatColor.AQUA + "Cuauhololli");
                 player.sendMessage(ChatColor.AQUA + "Dart");
                 player.sendMessage(ChatColor.AQUA + "FancyWoodenWarclub");
+                player.sendMessage(ChatColor.AQUA + "FeatheredMacuahuitl");
                 player.sendMessage(ChatColor.AQUA + "LargeWoodenClub");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveFishingSpear");
+                player.sendMessage(ChatColor.AQUA + "PrimitiveFlail");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveHuntingSpear");
+                player.sendMessage(ChatColor.AQUA + "PrimitiveStoneblade");
                 player.sendMessage(ChatColor.AQUA + "PrimitiveWarhammer");
+                player.sendMessage(ChatColor.AQUA + "RootCleaver");
+                player.sendMessage(ChatColor.AQUA + "RootDagger");
+                player.sendMessage(ChatColor.AQUA + "Roots");
                 player.sendMessage(ChatColor.AQUA + "SharpenedBamboo");
                 player.sendMessage(ChatColor.AQUA + "SharpenedPole");
                 player.sendMessage(ChatColor.AQUA + "SimpleBlowgun");
+                player.sendMessage(ChatColor.AQUA + "SmallMacuahuitl");
                 player.sendMessage(ChatColor.AQUA + "SmallWoodenClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedClub");
                 player.sendMessage(ChatColor.AQUA + "SpikedHalberd");
-                player.sendMessage(ChatColor.AQUA + "SteelIngot");
+                player.sendMessage(ChatColor.AQUA + "SpikedHatchet");
+                player.sendMessage(ChatColor.AQUA + "SteelBastardsword");
+                player.sendMessage(ChatColor.AQUA + "SteelLongsword");
+                player.sendMessage(ChatColor.AQUA + "StoneHalberd");
                 player.sendMessage(ChatColor.AQUA + "Stonespear");
+                player.sendMessage(ChatColor.AQUA + "Tepoztopilli");
 
                 // uncraftable
                 player.sendMessage(ChatColor.AQUA + "BlazeRod");
@@ -60,7 +73,7 @@ public class ListItemsCommand {
 
             }
             else {
-                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'morerecipes.listitems'");
+                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.listitems'");
             }
 
         }

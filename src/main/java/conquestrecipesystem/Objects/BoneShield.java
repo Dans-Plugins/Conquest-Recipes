@@ -9,25 +9,24 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
 
-public class SimpleBlowgun {
+public class BoneShield {
 
     Main main = null;
-    private Object SimpleBlowgun;
 
-    public SimpleBlowgun(Main plugin) {
+    public BoneShield(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
+        return main.itemstacks.createItemStack(amount, SHIELD, "Bone Shield", "A shield made of bones");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_simple_blowgun");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_bone_plate_shield");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("0I0", "0I0", "0I0");
-        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BAMBOO)));
+        recipe.shape("III", "ILI", "III");
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BONE)));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
         Bukkit.addRecipe(recipe);
     }
-
 }

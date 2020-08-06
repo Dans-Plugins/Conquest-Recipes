@@ -9,25 +9,23 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
 
-public class SimpleBlowgun {
+public class SkeletalFeet {
 
     Main main = null;
-    private Object SimpleBlowgun;
 
-    public SimpleBlowgun(Main plugin) {
+    public SkeletalFeet(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
+        return main.itemstacks.createItemStack(amount, CHAINMAIL_BOOTS, "Skeletal Feet", "The feet of a skeleton.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_simple_blowgun");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_skeletal_feet");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("0I0", "0I0", "0I0");
-        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BAMBOO)));
+        recipe.shape("000", "I0I", "I0I");
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(BONE)));
         Bukkit.addRecipe(recipe);
     }
-
 }

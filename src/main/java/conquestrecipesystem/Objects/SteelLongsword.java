@@ -8,27 +8,25 @@ import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
-import static org.bukkit.Material.BONE;
 
-public class PrimitiveWarhammer {
+public class SteelLongsword {
 
     Main main = null;
 
-    public PrimitiveWarhammer(Main plugin) {
+    public SteelLongsword(Main plugin) {
         main = plugin;
     }
 
     public ItemStack getItemStack(int amount) {
-        return main.itemstacks.createItemStack(amount, STONE_AXE, "Primitive Warhammer", "A war hammer fashioned out of tied stone.");
+        return main.itemstacks.createItemStack(amount, IRON_SWORD, "Steel Longsword", "A long blade of steel.");
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_primitive_warhammer");
+        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_longsword");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
-        recipe.shape("BFB", "0I0", "0I0");
+        recipe.shape("00S", "0S0", "I00");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(STRING)));
-        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(COBBLESTONE)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("SteelIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }
