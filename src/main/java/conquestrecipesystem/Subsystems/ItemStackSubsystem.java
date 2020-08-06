@@ -280,6 +280,21 @@ public class ItemStackSubsystem {
             return jaguarHelmet.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("Copper")) {
+            Copper copper = new Copper(main);
+            return copper.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("Tin")) {
+            Tin tin = new Tin(main);
+            return tin.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeIngot")) {
+            BronzeIngot bronzeIngot = new BronzeIngot(main);
+            return bronzeIngot.getItemStack(amount);
+        }
+
         return null;
     }
 

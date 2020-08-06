@@ -160,6 +160,15 @@ public class RecipeSubsystem {
         JaguarHelmet jaguarHelmet = new JaguarHelmet(main);
         jaguarHelmet.registerRecipe();
 
+        Copper copper = new Copper(main);
+        copper.registerRecipe();
+
+        Tin tin = new Tin(main);
+        tin.registerRecipe();
+
+        BronzeIngot bronzeIngot = new BronzeIngot(main);
+        bronzeIngot.registerRecipe();
+
     }
 
 }
