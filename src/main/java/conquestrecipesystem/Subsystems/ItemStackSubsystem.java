@@ -295,6 +295,106 @@ public class ItemStackSubsystem {
             return bronzeIngot.getItemStack(amount);
         }
 
+        if (itemName.equalsIgnoreCase("BronzeAxesword")) {
+            BronzeAxesword bronzeAxesword = new BronzeAxesword(main);
+            return bronzeAxesword.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeBlade")) {
+            BronzeBlade bronzeBlade = new BronzeBlade(main);
+            return bronzeBlade.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeCorinthianHelmet")) {
+            BronzeCorinthianHelmet bronzeCorinthianHelmet = new BronzeCorinthianHelmet(main);
+            return bronzeCorinthianHelmet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeDagger")) {
+            BronzeDagger bronzeDagger = new BronzeDagger(main);
+            return bronzeDagger.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeFancyFlail")) {
+            BronzeFancyFlail bronzeFancyFlail = new BronzeFancyFlail(main);
+            return bronzeFancyFlail.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeGladiatorHelmet")) {
+            BronzeGladiatorHelmet bronzeGladiatorHelmet = new BronzeGladiatorHelmet(main);
+            return bronzeGladiatorHelmet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeGlaive")) {
+            BronzeGlaive bronzeGlaive = new BronzeGlaive(main);
+            return bronzeGlaive.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeGreatsword")) {
+            BronzeGreatsword bronzeGreatsword = new BronzeGreatsword(main);
+            return bronzeGreatsword.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeHatchet")) {
+            BronzeHatchet bronzeHatchet = new BronzeHatchet(main);
+            return bronzeHatchet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeHoe")) {
+            BronzeHoe bronzeHoe = new BronzeHoe(main);
+            return bronzeHoe.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeKatar")) {
+            BronzeKatar bronzeKatar = new BronzeKatar(main);
+            return bronzeKatar.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeKhopesh")) {
+            BronzeKhopesh bronzeKhopesh = new BronzeKhopesh(main);
+            return bronzeKhopesh.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzePickaxe")) {
+            BronzeSpade bronzeSpade = new BronzeSpade(main);
+            return bronzeSpade.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("CleanHopliteShield")) {
+            CleanHopliteShield cleanHopliteShield = new CleanHopliteShield(main);
+            return cleanHopliteShield.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("FancyBronzeHelmet")) {
+            FancyBronzeHelmet fancyBronzeHelmet = new FancyBronzeHelmet(main);
+            return fancyBronzeHelmet.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("GreatBronzeaxe")) {
+            GreatBronzeaxe greatBronzeaxe = new GreatBronzeaxe(main);
+            return greatBronzeaxe.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("GreekPlateChestpiece")) {
+            GreekPlateChestpiece greekPlateChestpiece = new GreekPlateChestpiece(main);
+            return greekPlateChestpiece.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("GreekPlateGreaves")) {
+            GreekPlateGreaves greekPlateGreaves = new GreekPlateGreaves(main);
+            return greekPlateGreaves.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("GreekPlateHelm")) {
+            GreekPlateHelm greekPlateHelm = new GreekPlateHelm(main);
+            return greekPlateHelm.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("GreekPlateSabatons")) {
+            GreekPlateSabatons greekPlateSabatons = new GreekPlateSabatons(main);
+            return greekPlateSabatons.getItemStack(amount);
+        }
+
         return null;
     }
 

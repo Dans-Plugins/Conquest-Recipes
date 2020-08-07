@@ -148,6 +148,72 @@ public class RecipeSubsystem {
         RootmossClothShoes rootmossClothShoes = new RootmossClothShoes(main);
         rootmossClothShoes.registerRecipe();
 
+        Copper copper = new Copper(main);
+        copper.registerRecipe();
+
+        Tin tin = new Tin(main);
+        tin.registerRecipe();
+
+        BronzeIngot bronzeIngot = new BronzeIngot(main);
+        bronzeIngot.registerRecipe();
+
+        BronzeAxesword bronzeAxesword = new BronzeAxesword(main);
+        bronzeAxesword.registerRecipe();
+
+        BronzeBlade bronzeBlade = new BronzeBlade(main);
+        bronzeBlade.registerRecipe();
+
+        BronzeCorinthianHelmet bronzeCorinthianHelmet = new BronzeCorinthianHelmet(main);
+        bronzeCorinthianHelmet.registerRecipe();
+
+        BronzeDagger bronzeDagger = new BronzeDagger(main);
+        bronzeDagger.registerRecipe();
+
+        BronzeFancyFlail bronzeFancyFlail = new BronzeFancyFlail(main);
+        bronzeFancyFlail.registerRecipe();
+
+        BronzeGladiatorHelmet bronzeGladiatorHelmet = new BronzeGladiatorHelmet(main);
+        bronzeGladiatorHelmet.registerRecipe();
+
+        BronzeGlaive bronzeGlaive = new BronzeGlaive(main);
+        bronzeGlaive.registerRecipe();
+
+        BronzeGreatsword bronzeGreatsword = new BronzeGreatsword(main);
+        bronzeGreatsword.registerRecipe();
+
+        BronzeHatchet bronzeHatchet = new BronzeHatchet(main);
+        bronzeHatchet.registerRecipe();
+
+        BronzeKhopesh bronzeKhopesh = new BronzeKhopesh(main);
+        bronzeKhopesh.registerRecipe();
+
+        BronzePickaxe bronzePickaxe = new BronzePickaxe(main);
+        bronzePickaxe.registerRecipe();
+
+        BronzeSpade bronzeSpade = new BronzeSpade(main);
+        bronzeSpade.registerRecipe();
+
+        CleanHopliteShield cleanHopliteShield = new CleanHopliteShield(main);
+        cleanHopliteShield.registerRecipe();
+
+        FancyBronzeHelmet fancyBronzeHelmet = new FancyBronzeHelmet(main);
+        fancyBronzeHelmet.registerRecipe();
+
+        GreatBronzeaxe greatBronzeaxe = new GreatBronzeaxe(main);
+        greatBronzeaxe.registerRecipe();
+
+        GreekPlateChestpiece greekPlateChestpiece = new GreekPlateChestpiece(main);
+        greekPlateChestpiece.registerRecipe();
+
+        GreekPlateGreaves greekPlateGreaves = new GreekPlateGreaves(main);
+        greekPlateGreaves.registerRecipe();
+
+        GreekPlateHelm greekPlateHelm = new GreekPlateHelm(main);
+        greekPlateHelm.registerRecipe();
+
+        GreekPlateSabatons greekPlateSabatons = new GreekPlateSabatons(main);
+        greekPlateSabatons.registerRecipe();
+
         Strawhat strawhat = new Strawhat(main);
         strawhat.registerRecipe();
 
@@ -157,17 +223,16 @@ public class RecipeSubsystem {
         FeatherHeaddress featherHeaddress = new FeatherHeaddress(main);
         featherHeaddress.registerRecipe();
 
+        BronzeHoe bronzeHoe = new BronzeHoe(main);
+        bronzeHoe.registerRecipe();
+
+        BronzeKatar bronzeKatar = new BronzeKatar(main);
+        bronzeKatar.registerRecipe();
+
         JaguarHelmet jaguarHelmet = new JaguarHelmet(main);
         jaguarHelmet.registerRecipe();
 
-        Copper copper = new Copper(main);
-        copper.registerRecipe();
 
-        Tin tin = new Tin(main);
-        tin.registerRecipe();
-
-        BronzeIngot bronzeIngot = new BronzeIngot(main);
-        bronzeIngot.registerRecipe();
 
     }
 
