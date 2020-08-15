@@ -1,12 +1,11 @@
 package conquestrecipesystem;
 
-import conquestrecipesystem.EventHandlers.PrepareItemCraftEventHandler;
+import conquestrecipesystem.EventHandlers.CraftItemEventHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import conquestrecipesystem.Subsystems.CommandSubsystem;
 import conquestrecipesystem.Subsystems.ItemStackSubsystem;
@@ -14,10 +13,9 @@ import conquestrecipesystem.Subsystems.RecipeSubsystem;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    public static String version = "v0.5";
+    public static String version = "v1.0";
 
     // subsystems
-    public CommandSubsystem commands = new CommandSubsystem(this);
     public ItemStackSubsystem itemstacks = new ItemStackSubsystem(this);
     public RecipeSubsystem recipes = new RecipeSubsystem(this);
 
@@ -37,8 +35,8 @@ public final class Main extends JavaPlugin implements Listener {
     }
 
     @EventHandler()
-    public void onCraft(PrepareItemCraftEvent event) {
-        PrepareItemCraftEventHandler handler = new PrepareItemCraftEventHandler();
+    public void onCraft(CraftItemEvent event) {
+        CraftItemEventHandler handler = new CraftItemEventHandler();
         handler.handle(event);
     }
 }
