@@ -21,8 +21,8 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        recipes.registerRecipes();
         this.getServer().getPluginManager().registerEvents(this, this);
+        recipes.registerRecipes();
     }
 
     @Override
@@ -37,6 +37,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     @EventHandler()
     public void onCraft(CraftItemEvent event) {
+        System.out.println("Someone has crafted!");
         CraftItemEventHandler handler = new CraftItemEventHandler();
         handler.handle(event);
     }
