@@ -30,7 +30,7 @@ public class BronzeHoe {
         Bukkit.addRecipe(recipe1);
         NamespacedKey key2 = new NamespacedKey(main, "conquest_recipes_bronze_hoe_2");
         ShapedRecipe recipe2 = new ShapedRecipe(key2, getItemStack(1));
-        recipe2.shape("0II", "0C", "0C0");
+        recipe2.shape("0II", "0C0", "0C0");
         recipe2.setIngredient('I', new RecipeChoice.ExactChoice(main.itemstacks.getItemStack("BronzeIngot", 1)));
         recipe2.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         Bukkit.addRecipe(recipe2);
