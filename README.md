@@ -11,4 +11,4 @@ A plugin to add recipes matching textures in the Conquest Resource pack.
 - 0.3 'Command Subsystem' update
 - 0.4 'Get Command' update
 - 0.5 'Recipe Subsystem' update
-
+- 1.0 'Release' update
