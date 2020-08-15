@@ -22,12 +22,18 @@ public class SteelIngot {
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(main, "conquest_recipes_steel_ingot");
-        ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(2));
-        recipe.shape("CCC", "III", "CCC");
-        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(IRON_INGOT)));
-        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(COAL)));
-        Bukkit.addRecipe(recipe);
+        NamespacedKey key1 = new NamespacedKey(main, "conquest_recipes_steel_ingot_1");
+        ShapedRecipe recipe1 = new ShapedRecipe(key1, getItemStack(2));
+        recipe1.shape("CCC", "III", "CCC");
+        recipe1.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(IRON_INGOT)));
+        recipe1.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(COAL)));
+        Bukkit.addRecipe(recipe1);
+        NamespacedKey key2 = new NamespacedKey(main, "conquest_recipes_steel_ingot_2");
+        ShapedRecipe recipe2 = new ShapedRecipe(key2, getItemStack(2));
+        recipe2.shape("CCC", "III", "CCC");
+        recipe2.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(IRON_INGOT)));
+        recipe2.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(CHARCOAL)));
+        Bukkit.addRecipe(recipe2);
     }
 
 }
