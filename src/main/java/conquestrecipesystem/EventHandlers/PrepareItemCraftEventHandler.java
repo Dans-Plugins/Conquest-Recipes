@@ -26,8 +26,10 @@ public class PrepareItemCraftEventHandler {
     public boolean hasLore(ItemStack item) {
         if (item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
-            if (meta.hasLore()) {
-                return true;
+            if (meta != null) {
+                if (meta.hasLore()) {
+                    return true;
+                }
             }
         }
         return false;
