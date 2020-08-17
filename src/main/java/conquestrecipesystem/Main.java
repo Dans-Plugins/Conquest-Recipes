@@ -1,11 +1,8 @@
 package conquestrecipesystem;
 
-import conquestrecipesystem.EventHandlers.CraftItemEventHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import conquestrecipesystem.Subsystems.CommandSubsystem;
 import conquestrecipesystem.Subsystems.ItemStackSubsystem;
@@ -34,10 +31,11 @@ public final class Main extends JavaPlugin implements Listener {
         CommandSubsystem commandInterpreter = new CommandSubsystem(this);
         return commandInterpreter.interpretCommand(sender, label, args);
     }
-
+/*
     @EventHandler()
     public void onCraft(CraftItemEvent event) {
         CraftItemEventHandler handler = new CraftItemEventHandler();
         handler.handle(event);
     }
+ */
 }

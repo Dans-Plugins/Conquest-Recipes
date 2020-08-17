@@ -1,3 +1,4 @@
+/*
 package conquestrecipesystem.EventHandlers;
 
 import org.bukkit.ChatColor;
@@ -68,3 +69,4 @@ public class CraftItemEventHandler {
     }
 
 }
+*/
