@@ -18,7 +18,7 @@ public class BoneShield {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, SHIELD, "Bone Shield", "A shield made of bones");
+        return conquestRecipes.getItemStackService().createItemStack(amount, SHIELD, "Bone Shield", "A shield made of bones");
     }
 
     public void registerRecipe() {

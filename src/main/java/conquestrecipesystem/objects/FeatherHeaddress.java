@@ -18,7 +18,7 @@ public class FeatherHeaddress {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CARVED_PUMPKIN, "Feather Headdress", "A Headdress made primarily of feathers.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CARVED_PUMPKIN, "Feather Headdress", "A Headdress made primarily of feathers.");
     }
 
     public void registerRecipe() {

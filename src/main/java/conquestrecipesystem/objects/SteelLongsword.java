@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.IRON_SWORD;
+import static org.bukkit.Material.STICK;
 
 public class SteelLongsword {
 
@@ -18,7 +19,7 @@ public class SteelLongsword {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_SWORD, "Steel Longsword", "A long blade of steel.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_SWORD, "Steel Longsword", "A long blade of steel.");
     }
 
     public void registerRecipe() {
@@ -26,7 +27,7 @@ public class SteelLongsword {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("00S", "0S0", "I00");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("SteelIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("SteelIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

@@ -18,7 +18,7 @@ public class PrimitiveHuntingSpear {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Primitive Hunting Spear", "A spear crafted from common flint and a long stick");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Primitive Hunting Spear", "A spear crafted from common flint and a long stick");
     }
 
     public void registerRecipe() {

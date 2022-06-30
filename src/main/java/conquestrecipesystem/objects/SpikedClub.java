@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.STICK;
+import static org.bukkit.Material.WOODEN_AXE;
 
 public class SpikedClub {
 
@@ -18,7 +19,7 @@ public class SpikedClub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Club", "A club fashioned out of sharp sticks");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_AXE, "Spiked Club", "A club fashioned out of sharp sticks");
     }
 
     public void registerRecipe() {

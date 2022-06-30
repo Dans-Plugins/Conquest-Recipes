@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.STICK;
+import static org.bukkit.Material.WOODEN_SWORD;
 
 public class SharpenedPole {
 
@@ -18,7 +19,7 @@ public class SharpenedPole {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Sharpened Pole", "A long stick fashioned to a sharp point.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Sharpened Pole", "A long stick fashioned to a sharp point.");
     }
 
     public void registerRecipe() {

@@ -1,9 +1,9 @@
 package conquestrecipesystem.commands;
 
+import conquestrecipesystem.ConquestRecipes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import conquestrecipesystem.ConquestRecipes;
 
 public class ListItemsCommand {
 

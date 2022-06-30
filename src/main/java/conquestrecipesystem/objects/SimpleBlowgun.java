@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.BAMBOO;
+import static org.bukkit.Material.BOW;
 
 public class SimpleBlowgun {
 
@@ -19,7 +20,7 @@ public class SimpleBlowgun {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
     }
 
     public void registerRecipe() {

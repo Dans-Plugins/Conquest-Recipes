@@ -18,7 +18,7 @@ public class StoneHalberd {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_AXE, "Stone Halbert", "A Halberd fashioned out of stone.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_AXE, "Stone Halbert", "A Halberd fashioned out of stone.");
     }
 
     public void registerRecipe() {

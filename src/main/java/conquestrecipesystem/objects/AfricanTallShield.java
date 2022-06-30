@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.BAMBOO;
+import static org.bukkit.Material.SHIELD;
 
 public class AfricanTallShield {
 
@@ -18,7 +19,7 @@ public class AfricanTallShield {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, SHIELD, "African Tall Bamboo Shield", "A primitive, elongated bamboo shield.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, SHIELD, "African Tall Bamboo Shield", "A primitive, elongated bamboo shield.");
     }
 
     public void registerRecipe() {

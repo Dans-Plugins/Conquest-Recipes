@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.FIREWORK_STAR;
+import static org.bukkit.Material.GRAVEL;
 
 public class Tin {
 
@@ -18,7 +19,7 @@ public class Tin {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, FIREWORK_STAR, "Tin Chunk", "A chunk of tin, found while sifting through gravel.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, FIREWORK_STAR, "Tin Chunk", "A chunk of tin, found while sifting through gravel.");
     }
 
     public void registerRecipe() {

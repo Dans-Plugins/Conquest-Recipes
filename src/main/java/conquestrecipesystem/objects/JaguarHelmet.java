@@ -18,7 +18,7 @@ public class JaguarHelmet {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CARVED_PUMPKIN, "Jaguar Helmet", "Helmet made to represent a Jaguar.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CARVED_PUMPKIN, "Jaguar Helmet", "Helmet made to represent a Jaguar.");
     }
 
     public void registerRecipe() {

@@ -18,7 +18,7 @@ public class PrimitiveWarhammer {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_AXE, "Primitive Warhammer", "A war hammer fashioned out of tied stone.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_AXE, "Primitive Warhammer", "A war hammer fashioned out of tied stone.");
     }
 
     public void registerRecipe() {

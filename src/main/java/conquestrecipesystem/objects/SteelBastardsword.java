@@ -19,7 +19,7 @@ public class SteelBastardsword {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_SWORD, "Steel Bastardsword", "A long blade of steel.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_SWORD, "Steel Bastardsword", "A long blade of steel.");
     }
 
     public void registerRecipe() {
@@ -27,7 +27,7 @@ public class SteelBastardsword {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0S0", "0S0", "0I0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("SteelIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("SteelIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

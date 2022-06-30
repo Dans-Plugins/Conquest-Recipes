@@ -8,7 +8,6 @@ import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
-import static org.bukkit.Material.STRIPPED_WARPED_STEM;
 
 public class SmallWoodenClub {
 
@@ -19,7 +18,7 @@ public class SmallWoodenClub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Small Wooden Club", "A small club fashioned out of a log.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Small Wooden Club", "A small club fashioned out of a log.");
     }
 
     public void registerRecipe() {

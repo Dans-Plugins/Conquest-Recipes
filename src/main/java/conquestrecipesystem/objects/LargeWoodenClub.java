@@ -19,7 +19,7 @@ public class LargeWoodenClub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Large Wooden Club", "A large wooden club fashioned out of stripped logs.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Large Wooden Club", "A large wooden club fashioned out of stripped logs.");
     }
 
     public void registerRecipe() {

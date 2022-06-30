@@ -1,16 +1,16 @@
 package conquestrecipesystem.services;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
+import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.commands.GetCommand;
 import conquestrecipesystem.commands.ListItemsCommand;
-import conquestrecipesystem.ConquestRecipes;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 
-public class LocalCommandService {
+public class CommandService {
 
     ConquestRecipes conquestRecipes = null;
 
-    public LocalCommandService(ConquestRecipes plugin) {
+    public CommandService(ConquestRecipes plugin) {
         conquestRecipes = plugin;
     }
 
@@ -18,7 +18,7 @@ public class LocalCommandService {
         if (label.equalsIgnoreCase("conquestrecipes") || label.equalsIgnoreCase("cr")) {
 
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.AQUA + " == Conquest Recipes " + conquestRecipes.version + " == ");
+                sender.sendMessage(ChatColor.AQUA + " == Conquest Recipes " + conquestRecipes.getVersion() + " == ");
                 sender.sendMessage(ChatColor.AQUA + "Author: DanTheTechMan");
                 return true;
             }

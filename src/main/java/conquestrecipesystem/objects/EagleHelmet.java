@@ -18,7 +18,7 @@ public class EagleHelmet {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CARVED_PUMPKIN, "Eagle Helmet", "Helmet made to represent an eagle.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CARVED_PUMPKIN, "Eagle Helmet", "Helmet made to represent an eagle.");
     }
 
     public void registerRecipe() {

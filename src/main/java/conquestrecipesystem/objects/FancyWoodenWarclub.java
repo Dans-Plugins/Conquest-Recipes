@@ -18,7 +18,7 @@ public class FancyWoodenWarclub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Fancy Wooden Warclub", "A club made of the finest primitive materials");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Fancy Wooden Warclub", "A club made of the finest primitive materials");
     }
 
     public void registerRecipe() {

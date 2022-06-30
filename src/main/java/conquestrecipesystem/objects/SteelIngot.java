@@ -1,11 +1,11 @@
 package conquestrecipesystem.objects;
 
+import conquestrecipesystem.ConquestRecipes;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
-import conquestrecipesystem.ConquestRecipes;
 
 import static org.bukkit.Material.*;
 
@@ -18,7 +18,7 @@ public class SteelIngot {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_INGOT, "Steel Ingot", "A durable refined alloy");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_INGOT, "Steel Ingot", "A durable refined alloy");
     }
 
     public void registerRecipe() {

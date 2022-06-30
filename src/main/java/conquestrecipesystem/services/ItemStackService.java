@@ -1,21 +1,20 @@
 package conquestrecipesystem.services;
 
+import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.objects.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import conquestrecipesystem.ConquestRecipes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalItemStackService {
+public class ItemStackService {
+    private final ConquestRecipes conquestRecipes;
 
-    ConquestRecipes conquestRecipes = null;
-
-    public LocalItemStackService(ConquestRecipes plugin) {
-        conquestRecipes = plugin;
+    public ItemStackService(ConquestRecipes conquestRecipes) {
+        this.conquestRecipes = conquestRecipes;
     }
 
     public ItemStack createItemStack(int amount, Material type, String name, String description) {

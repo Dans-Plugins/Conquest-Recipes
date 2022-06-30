@@ -18,7 +18,7 @@ public class FeatheredMacuahuitl {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Feathered Macuahuitl", "A stick layered with flint blades and decorated with feathers.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Feathered Macuahuitl", "A stick layered with flint blades and decorated with feathers.");
     }
 
     public void registerRecipe() {

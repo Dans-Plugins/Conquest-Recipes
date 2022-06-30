@@ -18,7 +18,7 @@ public class PrimitiveFlail {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_AXE, "Primitive Flail", "A flail crafted out of a rock tied to a stick.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_AXE, "Primitive Flail", "A flail crafted out of a rock tied to a stick.");
     }
 
     public void registerRecipe() {

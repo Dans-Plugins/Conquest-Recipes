@@ -19,7 +19,7 @@ public class PrimitiveFishingSpear {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_SWORD, "Primitive Fishingspear", "A long, crudely made spear, made primarily for fishing.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_SWORD, "Primitive Fishingspear", "A long, crudely made spear, made primarily for fishing.");
     }
 
     public void registerRecipe() {

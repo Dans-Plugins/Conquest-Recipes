@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.BONE;
+import static org.bukkit.Material.CHAINMAIL_BOOTS;
 
 public class SkeletalFeet {
 
@@ -18,7 +19,7 @@ public class SkeletalFeet {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CHAINMAIL_BOOTS, "Skeletal Feet", "The feet of a skeleton.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CHAINMAIL_BOOTS, "Skeletal Feet", "The feet of a skeleton.");
     }
 
     public void registerRecipe() {

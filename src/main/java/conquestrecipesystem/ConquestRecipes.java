@@ -1,25 +1,23 @@
 package conquestrecipesystem;
 
+import conquestrecipesystem.services.CommandService;
+import conquestrecipesystem.services.ItemStackService;
+import conquestrecipesystem.services.RecipeService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import conquestrecipesystem.services.LocalCommandService;
-import conquestrecipesystem.services.LocalItemStackService;
-import conquestrecipesystem.services.LocalRecipeService;
 
 public final class ConquestRecipes extends JavaPlugin implements Listener {
+    private final String pluginVersion = "v" + getDescription().getVersion();
 
-    public static String version = "v1.0";
-
-    // subsystems
-    public LocalItemStackService itemstacks = new LocalItemStackService(this);
-    public LocalRecipeService recipes = new LocalRecipeService(this);
+    private final ItemStackService itemStackService = new ItemStackService(this);
+    private final RecipeService recipeService = new RecipeService(this);
 
     @Override
     public void onEnable() {
         this.getServer().getPluginManager().registerEvents(this, this);
-        recipes.registerRecipes();
+        recipeService.registerRecipes();
     }
 
     @Override
@@ -28,14 +26,19 @@ public final class ConquestRecipes extends JavaPlugin implements Listener {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        LocalCommandService commandInterpreter = new LocalCommandService(this);
+        CommandService commandInterpreter = new CommandService(this);
         return commandInterpreter.interpretCommand(sender, label, args);
     }
-/*
-    @EventHandler()
-    public void onCraft(CraftItemEvent event) {
-        CraftItemEventHandler handler = new CraftItemEventHandler();
-        handler.handle(event);
+
+    public ItemStackService getItemStackService() {
+        return itemStackService;
     }
- */
+
+    public RecipeService getRecipeService() {
+        return recipeService;
+    }
+
+    public String getVersion() {
+        return pluginVersion;
+    }
 }

@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.COBBLESTONE;
+import static org.bukkit.Material.NETHER_BRICK;
 
 public class Copper {
 
@@ -18,7 +19,7 @@ public class Copper {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, NETHER_BRICK, "Copper Chunk", "A chunk of copper found from smashing apart stone.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, NETHER_BRICK, "Copper Chunk", "A chunk of copper found from smashing apart stone.");
     }
 
     public void registerRecipe() {

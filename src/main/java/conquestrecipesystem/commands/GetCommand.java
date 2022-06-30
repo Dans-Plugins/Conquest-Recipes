@@ -1,10 +1,10 @@
 package conquestrecipesystem.commands;
 
+import conquestrecipesystem.ConquestRecipes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import conquestrecipesystem.ConquestRecipes;
 
 public class GetCommand {
 
@@ -27,7 +27,7 @@ public class GetCommand {
                     String itemToGet = args[1];
                     int amount = Integer.parseInt(args[2]);
 
-                    ItemStack item = conquestRecipes.itemstacks.getItemStack(itemToGet, amount);
+                    ItemStack item = conquestRecipes.getItemStackService().getItemStack(itemToGet, amount);
 
                     if (item != null) {
                         // add to player's inventory
