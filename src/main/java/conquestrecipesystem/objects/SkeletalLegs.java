@@ -19,7 +19,7 @@ public class SkeletalLegs {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CHAINMAIL_LEGGINGS, "Skeletal Legs", "The legs of a skeleton.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CHAINMAIL_LEGGINGS, "Skeletal Legs", "The legs of a skeleton.");
     }
 
     public void registerRecipe() {

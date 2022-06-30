@@ -18,7 +18,7 @@ public class SpiralChimalliShield {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, SHIELD, "Spiral Chimalli Shield", "A primitive, but decorated shield.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, SHIELD, "Spiral Chimalli Shield", "A primitive, but decorated shield.");
     }
 
     public void registerRecipe() {

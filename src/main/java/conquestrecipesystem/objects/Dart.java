@@ -19,7 +19,7 @@ public class Dart {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, ARROW, "Dart", "A dart of bamboo and feathers");
+        return conquestRecipes.getItemStackService().createItemStack(amount, ARROW, "Dart", "A dart of bamboo and feathers");
     }
 
     public void registerRecipe() {

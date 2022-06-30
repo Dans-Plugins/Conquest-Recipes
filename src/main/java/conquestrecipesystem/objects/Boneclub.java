@@ -18,7 +18,7 @@ public class Boneclub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_AXE, "Boneclub", "A club fashioned out of sharp bones");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_AXE, "Boneclub", "A club fashioned out of sharp bones");
     }
 
     public void registerRecipe() {

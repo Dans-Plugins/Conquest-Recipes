@@ -18,7 +18,7 @@ public class PrimitiveStoneblade {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Primitive Stoneblade", "A blade crafted out of stone.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Primitive Stoneblade", "A blade crafted out of stone.");
     }
 
     public void registerRecipe() {

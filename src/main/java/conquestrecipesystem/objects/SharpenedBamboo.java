@@ -18,7 +18,7 @@ public class SharpenedBamboo {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, BAMBOO, "Sharpened Bamboo", "A piece of sharpened bamboo.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, BAMBOO, "Sharpened Bamboo", "A piece of sharpened bamboo.");
     }
 
     public void registerRecipe() {

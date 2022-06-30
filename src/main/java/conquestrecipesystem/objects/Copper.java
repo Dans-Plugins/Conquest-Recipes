@@ -18,7 +18,7 @@ public class Copper {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, NETHER_BRICK, "Copper Chunk", "A chunk of copper found from smashing apart stone.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, NETHER_BRICK, "Copper Chunk", "A chunk of copper found from smashing apart stone.");
     }
 
     public void registerRecipe() {

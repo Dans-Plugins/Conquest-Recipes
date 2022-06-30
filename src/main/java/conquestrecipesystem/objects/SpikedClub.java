@@ -18,7 +18,7 @@ public class SpikedClub {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Club", "A club fashioned out of sharp sticks");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_AXE, "Spiked Club", "A club fashioned out of sharp sticks");
     }
 
     public void registerRecipe() {

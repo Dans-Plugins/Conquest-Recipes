@@ -19,7 +19,7 @@ public class Stonespear {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Stonespear", "A spear crafted from a sharp rock");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Stonespear", "A spear crafted from a sharp rock");
     }
 
     public void registerRecipe() {

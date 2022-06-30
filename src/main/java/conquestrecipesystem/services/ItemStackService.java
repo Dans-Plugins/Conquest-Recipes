@@ -10,12 +10,11 @@ import conquestrecipesystem.ConquestRecipes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalItemStackService {
+public class ItemStackService {
+    private final ConquestRecipes conquestRecipes;
 
-    ConquestRecipes conquestRecipes = null;
-
-    public LocalItemStackService(ConquestRecipes plugin) {
-        conquestRecipes = plugin;
+    public ItemStackService(ConquestRecipes conquestRecipes) {
+        this.conquestRecipes = conquestRecipes;
     }
 
     public ItemStack createItemStack(int amount, Material type, String name, String description) {

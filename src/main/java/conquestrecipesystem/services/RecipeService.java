@@ -3,11 +3,11 @@ package conquestrecipesystem.services;
 import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.objects.*;
 
-public class LocalRecipeService {
+public class RecipeService {
 
     ConquestRecipes conquestRecipes = null;
 
-    public LocalRecipeService(ConquestRecipes plugin) {
+    public RecipeService(ConquestRecipes plugin) {
         conquestRecipes = plugin;
     }
 

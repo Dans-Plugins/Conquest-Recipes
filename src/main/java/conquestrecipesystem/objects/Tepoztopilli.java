@@ -18,7 +18,7 @@ public class Tepoztopilli {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Tepoztopilli", "A long spear with a flint tip.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Tepoztopilli", "A long spear with a flint tip.");
     }
 
     public void registerRecipe() {

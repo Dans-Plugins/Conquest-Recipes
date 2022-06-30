@@ -27,7 +27,7 @@ public class GetCommand {
                     String itemToGet = args[1];
                     int amount = Integer.parseInt(args[2]);
 
-                    ItemStack item = conquestRecipes.itemstacks.getItemStack(itemToGet, amount);
+                    ItemStack item = conquestRecipes.getItemStackService().getItemStack(itemToGet, amount);
 
                     if (item != null) {
                         // add to player's inventory

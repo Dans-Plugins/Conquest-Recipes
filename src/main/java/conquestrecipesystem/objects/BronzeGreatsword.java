@@ -19,7 +19,7 @@ public class BronzeGreatsword {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_SWORD, "Bronze Greatsword", "A massive sword made of solid bronze.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_SWORD, "Bronze Greatsword", "A massive sword made of solid bronze.");
     }
 
     public void registerRecipe() {
@@ -27,7 +27,7 @@ public class BronzeGreatsword {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0SS", "SSS", "IS0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

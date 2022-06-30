@@ -18,7 +18,7 @@ public class BonePlateLeggings {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CHAINMAIL_LEGGINGS, "Bone Plate", "Leggings made of reinforced bones");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CHAINMAIL_LEGGINGS, "Bone Plate", "Leggings made of reinforced bones");
     }
 
     public void registerRecipe() {

@@ -19,7 +19,7 @@ public class SimpleBlowgun {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, BOW, "Simple Blowgun", "A tube of bamboo made to shoot darts.");
     }
 
     public void registerRecipe() {

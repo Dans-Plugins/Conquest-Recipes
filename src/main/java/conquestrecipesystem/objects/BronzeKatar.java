@@ -18,7 +18,7 @@ public class BronzeKatar {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_SWORD, "Bronze Katar", "A Katar made of bronze. Favorable for assassins");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_SWORD, "Bronze Katar", "A Katar made of bronze. Favorable for assassins");
     }
 
     public void registerRecipe() {
@@ -26,7 +26,7 @@ public class BronzeKatar {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("000", "0S0", "I00");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

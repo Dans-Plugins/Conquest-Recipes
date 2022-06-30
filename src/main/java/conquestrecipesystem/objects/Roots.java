@@ -18,7 +18,7 @@ public class Roots {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, DEAD_BUSH, "Roots", "The roots from a small plant.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, DEAD_BUSH, "Roots", "The roots from a small plant.");
     }
 
     public void registerRecipe() {

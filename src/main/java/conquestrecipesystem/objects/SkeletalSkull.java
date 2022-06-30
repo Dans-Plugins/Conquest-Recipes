@@ -18,7 +18,7 @@ public class SkeletalSkull {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CHAINMAIL_HELMET, "Skeletal Skull", "The skull of a skeleton.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CHAINMAIL_HELMET, "Skeletal Skull", "The skull of a skeleton.");
     }
 
     public void registerRecipe() {

@@ -18,7 +18,7 @@ public class BronzeFancyFlail {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_AXE, "Bronze Fancy Flail", "A flail of bronze, made for those wishing to show off on the battlefield.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_AXE, "Bronze Fancy Flail", "A flail of bronze, made for those wishing to show off on the battlefield.");
     }
 
     public void registerRecipe() {
@@ -27,7 +27,7 @@ public class BronzeFancyFlail {
         recipe.shape("00I", "0IC", "I0S");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(CHAIN)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

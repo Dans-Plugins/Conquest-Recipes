@@ -18,14 +18,14 @@ public class GreekPlateGreaves {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, GOLDEN_LEGGINGS, "Bronze Greek Plate Greaves", "A pair of greaves made of bronze.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, GOLDEN_LEGGINGS, "Bronze Greek Plate Greaves", "A pair of greaves made of bronze.");
     }
 
     public void registerRecipe() {
         NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_greek_plate_greaves");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("SSS", "S0S", "S0S");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

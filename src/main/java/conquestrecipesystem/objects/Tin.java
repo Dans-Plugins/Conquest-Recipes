@@ -18,7 +18,7 @@ public class Tin {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, FIREWORK_STAR, "Tin Chunk", "A chunk of tin, found while sifting through gravel.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, FIREWORK_STAR, "Tin Chunk", "A chunk of tin, found while sifting through gravel.");
     }
 
     public void registerRecipe() {

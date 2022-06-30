@@ -18,20 +18,20 @@ public class BronzeHoe {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_HOE, "Bronze Hoe", "A hoe made of bronze. Made to till the earth.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_HOE, "Bronze Hoe", "A hoe made of bronze. Made to till the earth.");
     }
 
     public void registerRecipe() {
         NamespacedKey key1 = new NamespacedKey(conquestRecipes, "conquest_recipes_bronze_hoe_1");
         ShapedRecipe recipe1 = new ShapedRecipe(key1, getItemStack(1));
         recipe1.shape("II0", "0C0", "0C0");
-        recipe1.setIngredient('I', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe1.setIngredient('I', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         recipe1.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         Bukkit.addRecipe(recipe1);
         NamespacedKey key2 = new NamespacedKey(conquestRecipes, "conquest_recipes_bronze_hoe_2");
         ShapedRecipe recipe2 = new ShapedRecipe(key2, getItemStack(1));
         recipe2.shape("0II", "0C0", "0C0");
-        recipe2.setIngredient('I', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe2.setIngredient('I', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         recipe2.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
         Bukkit.addRecipe(recipe2);
     }

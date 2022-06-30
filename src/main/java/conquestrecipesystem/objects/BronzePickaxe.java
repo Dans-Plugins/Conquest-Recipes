@@ -18,7 +18,7 @@ public class BronzePickaxe {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_PICKAXE, "Bronze Pickaxe", "A pickaxe made of bronze. Great for mining.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_PICKAXE, "Bronze Pickaxe", "A pickaxe made of bronze. Great for mining.");
     }
 
     public void registerRecipe() {
@@ -26,7 +26,7 @@ public class BronzePickaxe {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("SSS", "0I0", "0I0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
 }

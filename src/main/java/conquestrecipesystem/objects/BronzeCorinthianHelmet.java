@@ -18,14 +18,14 @@ public class BronzeCorinthianHelmet {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CARVED_PUMPKIN, "Bronze Corinthian Helmet", "A bronze helmet, meant to be worn by those who fight at the front.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CARVED_PUMPKIN, "Bronze Corinthian Helmet", "A bronze helmet, meant to be worn by those who fight at the front.");
     }
 
     public void registerRecipe() {
         NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_bronze_corinthian_helmet");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0ID", "SSS", "S0S");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.itemstacks.getItemStack("BronzeIngot", 1)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(FEATHER)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(RED_DYE)));
         Bukkit.addRecipe(recipe);

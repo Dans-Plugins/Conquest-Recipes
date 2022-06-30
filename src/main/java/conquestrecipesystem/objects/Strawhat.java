@@ -18,7 +18,7 @@ public class Strawhat {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CARVED_PUMPKIN, "Strawhat", "A hat made of straw from wheat. Ideal for farmers.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CARVED_PUMPKIN, "Strawhat", "A hat made of straw from wheat. Ideal for farmers.");
     }
 
     public void registerRecipe() {

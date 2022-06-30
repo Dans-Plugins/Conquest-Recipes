@@ -18,7 +18,7 @@ public class SpikedHalberd {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Halbert", "A Halberd fashioned out of multiple pointy sticks");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_AXE, "Spiked Halbert", "A Halberd fashioned out of multiple pointy sticks");
     }
 
     public void registerRecipe() {

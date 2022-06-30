@@ -18,7 +18,7 @@ public class Cuauhololli {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Cuauhololli", "A long stick layered with flint blades at the tips.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Cuauhololli", "A long stick layered with flint blades at the tips.");
     }
 
     public void registerRecipe() {

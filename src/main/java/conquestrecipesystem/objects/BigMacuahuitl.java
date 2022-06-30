@@ -18,7 +18,7 @@ public class BigMacuahuitl {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, STONE_SWORD, "Big Macuahuitl", "A stick layered with flint blades.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, STONE_SWORD, "Big Macuahuitl", "A stick layered with flint blades.");
     }
 
     public void registerRecipe() {

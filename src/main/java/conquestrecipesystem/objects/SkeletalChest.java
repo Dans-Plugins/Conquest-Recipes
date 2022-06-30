@@ -18,7 +18,7 @@ public class SkeletalChest {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, CHAINMAIL_CHESTPLATE, "Skeletal Chest", "The chest of a skeleton.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, CHAINMAIL_CHESTPLATE, "Skeletal Chest", "The chest of a skeleton.");
     }
 
     public void registerRecipe() {

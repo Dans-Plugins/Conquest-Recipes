@@ -1,5 +1,5 @@
 name: Conquest-Recipes
-version: "1.0"
+version: '${project.version}'
 author: DanTheTechMan
 main: conquestrecipesystem.Main
 api-version: "1.13"

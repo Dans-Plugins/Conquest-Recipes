@@ -18,7 +18,7 @@ public class SteelIngot {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, IRON_INGOT, "Steel Ingot", "A durable refined alloy");
+        return conquestRecipes.getItemStackService().createItemStack(amount, IRON_INGOT, "Steel Ingot", "A durable refined alloy");
     }
 
     public void registerRecipe() {

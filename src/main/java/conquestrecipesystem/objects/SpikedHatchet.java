@@ -18,7 +18,7 @@ public class SpikedHatchet {
     }
 
     public ItemStack getItemStack(int amount) {
-        return conquestRecipes.itemstacks.createItemStack(amount, WOODEN_AXE, "Spiked Hatchet", "A hatchet crafted out of pointy sticks.");
+        return conquestRecipes.getItemStackService().createItemStack(amount, WOODEN_AXE, "Spiked Hatchet", "A hatchet crafted out of pointy sticks.");
     }
 
     public void registerRecipe() {
