@@ -8,7 +8,6 @@ import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 import static org.bukkit.Material.*;
-import static org.bukkit.Material.STRIPPED_WARPED_STEM;
 
 public class SmallWoodenClub {
 

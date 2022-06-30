@@ -1,10 +1,10 @@
 package conquestrecipesystem.services;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
+import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.commands.GetCommand;
 import conquestrecipesystem.commands.ListItemsCommand;
-import conquestrecipesystem.ConquestRecipes;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 
 public class CommandService {
 

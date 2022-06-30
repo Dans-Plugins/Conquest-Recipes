@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.CARVED_PUMPKIN;
+import static org.bukkit.Material.IRON_BARS;
 
 public class BronzeGladiatorHelmet {
 

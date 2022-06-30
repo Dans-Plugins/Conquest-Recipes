@@ -1,12 +1,12 @@
 package conquestrecipesystem;
 
+import conquestrecipesystem.services.CommandService;
+import conquestrecipesystem.services.ItemStackService;
+import conquestrecipesystem.services.RecipeService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import conquestrecipesystem.services.CommandService;
-import conquestrecipesystem.services.ItemStackService;
-import conquestrecipesystem.services.RecipeService;
 
 public final class ConquestRecipes extends JavaPlugin implements Listener {
     private final String pluginVersion = "v" + getDescription().getVersion();

@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.CHAINMAIL_LEGGINGS;
+import static org.bukkit.Material.VINE;
 
 public class RootmossClothLeggings {
 
