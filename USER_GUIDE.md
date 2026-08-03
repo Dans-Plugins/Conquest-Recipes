@@ -31,6 +31,8 @@ Use `/cr list` in-game to see the full list of available items.
 |------------|---------|-------------|
 | `conquestrecipes.listitems` | `true` | List craftable items. |
 | `conquestrecipes.get` | `op` | Use `/cr get` to receive items directly. |
+| `conquestrecipes.default` | `true` | Grants access to default Conquest Recipes commands, including `/cr list`. |
+| `conquestrecipes.admin` | `op` | Grants access to all Conquest Recipes commands, including `/cr get`. |
 
 ## Support
 

@@ -1,9 +1,23 @@
 name: Conquest-Recipes
 version: '${project.version}'
 author: DanTheTechMan
-main: conquestrecipesystem.Main
+main: conquestrecipesystem.ConquestRecipes
 api-version: "1.13"
 
 commands:
   conquestrecipes:
   cr:
+
+permissions:
+  conquestrecipes.listitems:
+    description: Allows listing craftable items with /cr list.
+    default: true
+  conquestrecipes.get:
+    description: Allows giving yourself Conquest Recipes items with /cr get.
+    default: op
+  conquestrecipes.default:
+    description: Grants access to default Conquest Recipes commands.
+    default: true
+  conquestrecipes.admin:
+    description: Grants access to all Conquest Recipes commands.
+    default: op
