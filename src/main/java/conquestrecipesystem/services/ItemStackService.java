@@ -355,6 +355,11 @@ public class ItemStackService {
         }
 
         if (itemName.equalsIgnoreCase("BronzePickaxe")) {
+            BronzePickaxe bronzePickaxe = new BronzePickaxe(conquestRecipes);
+            return bronzePickaxe.getItemStack(amount);
+        }
+
+        if (itemName.equalsIgnoreCase("BronzeSpade")) {
             BronzeSpade bronzeSpade = new BronzeSpade(conquestRecipes);
             return bronzeSpade.getItemStack(amount);
         }
