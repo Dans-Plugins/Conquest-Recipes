@@ -29,7 +29,7 @@ public class CommandService {
                 return true;
             }
 
-            if (args[0].equalsIgnoreCase("listitems")) {
+            if (args[0].equalsIgnoreCase("list") || args[0].equalsIgnoreCase("listitems")) {
                 ListItemsCommand command = new ListItemsCommand(conquestRecipes);
                 command.showListToPlayer(sender);
                 return true;

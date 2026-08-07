@@ -21,7 +21,7 @@ Conquest Recipes adds recipes for dozens of items, including:
 - **Shields** — African Tall Shield, Bone Shield, Chimallis (decorated and spiral)
 - **Primitive weapons** — Boneclub, Stonespear, Dart, Blowgun, Primitive Flail, etc.
 - **Greek armour** — Greek Plate Helm, Chestpiece, Greaves, Sabatons
-- **Other items** — Roots, Rootmoss cloth, Strawhat, Copper, Tin, Salt
+- **Other items** — Roots, Rootmoss cloth, Strawhat, Copper, Tin, Bronze Ingot, Steel Ingot
 
 Use `/cr list` in-game to see the full list of available items.
 
