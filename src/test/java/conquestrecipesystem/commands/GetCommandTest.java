@@ -8,10 +8,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.atLeastOnce;
@@ -101,7 +103,7 @@ public class GetCommandTest {
 
         assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("isn't an item in Conquest Recipes")),
                 "an unrecognised item name should be reported to the player");
-        verify(inventory, never()).addItem(org.mockito.ArgumentMatchers.<ItemStack>any());
+        verify(inventory, never()).addItem(any(ItemStack.class));
     }
 
     @Test
@@ -124,7 +126,7 @@ public class GetCommandTest {
     }
 
     private List<String> messagesSentTo(CommandSender sender) {
-        org.mockito.ArgumentCaptor<String> captor = org.mockito.ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(sender, atLeastOnce()).sendMessage(captor.capture());
         return captor.getAllValues();
     }

@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class ListItemsCommandTest {
     }
 
     private List<String> messagesSentTo(CommandSender sender) {
-        org.mockito.ArgumentCaptor<String> captor = org.mockito.ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(sender, atLeastOnce()).sendMessage(captor.capture());
         return captor.getAllValues();
     }
