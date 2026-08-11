@@ -8,7 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- An automated unit test suite (JUnit 5 and Mockito), covering the `/cr get` and `/cr list` command classes. The tests run as part of `mvn clean package`, so the existing build workflow now exercises them on every push and pull request. The new dependencies are test-scoped and are not shaded into the released JAR.
 - A `Dev Release` workflow, which republishes a rolling `dev` prerelease of `main` on every non-documentation push. This is what Dan's Plugin Manager's experimental channel installs from: `/dpm get conquestrecipes --experimental` reads `releases/tags/dev`, so without it there is nothing for that command to download. The prerelease is unreleased, unreviewed code and is marked as such.
+
+### Fixed
+
+- `/cr get <item> <amount>` parsed the amount with an unguarded `Integer.parseInt`, so a non-numeric amount such as `/cr get BronzeBlade abc` raised a `NumberFormatException` and was reported to the player as an internal error. A non-numeric amount is now answered with a usage message, and an amount below 1 is rejected with its own message instead of being passed through to `ItemStack`.
+- `/cr list` and `/cr get` produced no output at all when run from the server console. `/cr list` is now written to the sender rather than to a player, so it works from the console, and `/cr get` — which needs an inventory to deliver the item into — now explains that it must be run by a player.
 
 ## [2.0.0-SNAPSHOT-8-8-2026] – 2026-08-08
 

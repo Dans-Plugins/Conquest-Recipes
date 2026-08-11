@@ -67,6 +67,8 @@ Windows:
 
     mvn clean package
 
+The unit tests live in `src/test/java/` and run as part of that build; they can also be run on their own with `mvn test`. JUnit 5 and Mockito are used, and Bukkit types such as `Player` and `CommandSender` are mocked rather than started, so no server is needed. Tests are expected alongside any change to behaviour.
+
 For manual testing, place the built JAR from `target/` into a local Spigot server's `plugins` folder and restart the server.
 
 ## Questions

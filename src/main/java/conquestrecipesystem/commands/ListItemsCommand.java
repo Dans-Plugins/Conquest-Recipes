@@ -3,7 +3,6 @@ package conquestrecipesystem.commands;
 import conquestrecipesystem.ConquestRecipes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class ListItemsCommand {
 
@@ -94,26 +93,20 @@ public class ListItemsCommand {
         conquestRecipes = plugin;
     }
 
-    public void showListToPlayer(CommandSender sender) {
+    public void showList(CommandSender sender) {
 
-        if (sender instanceof Player) {
+        if (sender.hasPermission("conquestrecipes.listitems") || sender.hasPermission("conquestrecipes.default")) {
 
-            Player player = (Player) sender;
+            // title
+            sender.sendMessage(ChatColor.AQUA + " == Conquest Recipes - Items == ");
 
-            if (player.hasPermission("conquestrecipes.listitems") || player.hasPermission("conquestrecipes.default")) {
-
-                // title
-                player.sendMessage(ChatColor.AQUA + " == Conquest Recipes - Items == ");
-
-                for (String itemName : CRAFTABLE_ITEMS) {
-                    player.sendMessage(ChatColor.AQUA + itemName);
-                }
-
-            }
-            else {
-                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.listitems'");
+            for (String itemName : CRAFTABLE_ITEMS) {
+                sender.sendMessage(ChatColor.AQUA + itemName);
             }
 
+        }
+        else {
+            sender.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.listitems'");
         }
 
     }

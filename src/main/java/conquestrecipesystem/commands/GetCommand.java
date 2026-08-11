@@ -25,7 +25,20 @@ public class GetCommand {
                 if (args.length > 2) {
 
                     String itemToGet = args[1];
-                    int amount = Integer.parseInt(args[2]);
+
+                    int amount;
+                    try {
+                        amount = Integer.parseInt(args[2]);
+                    }
+                    catch (NumberFormatException exception) {
+                        player.sendMessage(ChatColor.RED + "'" + args[2] + "' isn't a number. Usage: /conquestrecipes get (itemName) (amount)");
+                        return;
+                    }
+
+                    if (amount < 1) {
+                        player.sendMessage(ChatColor.RED + "The amount must be at least 1.");
+                        return;
+                    }
 
                     ItemStack item = conquestRecipes.getItemStackService().getItemStack(itemToGet, amount);
 
@@ -54,6 +67,9 @@ public class GetCommand {
                 player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.get'");
             }
 
+        }
+        else { // an inventory is needed to receive the item, so only a player can run this
+            sender.sendMessage(ChatColor.RED + "This command must be run by a player.");
         }
 
     }
