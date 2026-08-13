@@ -31,7 +31,7 @@ public class CommandService {
 
             if (args[0].equalsIgnoreCase("list") || args[0].equalsIgnoreCase("listitems")) {
                 ListItemsCommand command = new ListItemsCommand(conquestRecipes);
-                command.showListToPlayer(sender);
+                command.showList(sender);
                 return true;
             }
 
