@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- The `Dev Release` workflow now retries publishing the `dev` prerelease before giving up. The release and its tag have to be deleted and recreated for the tag to move to the new commit, and a transient API failure inside that window previously left the repository with no `dev` release at all until the workflow was re-run by hand. Each attempt now starts from a clean slate, and an exhausted retry fails loudly.
+
 ### Added
 
 - An automated unit test suite (JUnit 5 and Mockito), covering the `/cr get` and `/cr list` command classes. The tests run as part of `mvn clean package`, so the existing build workflow now exercises them on every push and pull request. The new dependencies are test-scoped and are not shaded into the released JAR.
