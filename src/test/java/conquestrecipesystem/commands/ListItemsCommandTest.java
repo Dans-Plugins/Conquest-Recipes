@@ -7,8 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
@@ -26,16 +30,15 @@ public class ListItemsCommandTest {
 
     @Test
     public void consoleSenderReceivesTheItemList() {
-        CommandSender console = mock(CommandSender.class);
-        when(console.hasPermission("conquestrecipes.listitems")).thenReturn(true);
+        CommandSender console = permittedSender();
 
-        listItemsCommand.showList(console);
+        listItemsCommand.showList(console, new String[]{"list"});
 
         List<String> messages = messagesSentTo(console);
         assertTrue(messages.stream().anyMatch(message -> message.contains("Conquest Recipes - Items")),
                 "the console should receive the list header");
-        assertTrue(messages.stream().anyMatch(message -> message.endsWith("BronzeBlade")),
-                "the console should receive the item names");
+        assertTrue(messages.stream().anyMatch(message -> message.endsWith("AfricanTallShield")),
+                "the console should receive the item names on the first page");
     }
 
     @Test
@@ -43,7 +46,7 @@ public class ListItemsCommandTest {
         CommandSender console = mock(CommandSender.class);
         when(console.hasPermission("conquestrecipes.default")).thenReturn(true);
 
-        listItemsCommand.showList(console);
+        listItemsCommand.showList(console, new String[]{"list"});
 
         assertTrue(messagesSentTo(console).stream().anyMatch(message -> message.contains("Conquest Recipes - Items")),
                 "conquestrecipes.default should be enough to list items");
@@ -53,7 +56,7 @@ public class ListItemsCommandTest {
     public void senderWithoutPermissionIsRefused() {
         CommandSender console = mock(CommandSender.class);
 
-        listItemsCommand.showList(console);
+        listItemsCommand.showList(console, new String[]{"list"});
 
         List<String> messages = messagesSentTo(console);
         assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.listitems")),
@@ -63,17 +66,107 @@ public class ListItemsCommandTest {
     }
 
     @Test
-    public void everyListedNameIsPrintedOnItsOwnLine() {
-        CommandSender console = mock(CommandSender.class);
-        when(console.hasPermission("conquestrecipes.listitems")).thenReturn(true);
+    public void aSinglePageFitsWithinTheChatWindow() {
+        CommandSender console = permittedSender();
 
-        listItemsCommand.showList(console);
+        listItemsCommand.showList(console, new String[]{"list"});
 
         List<String> messages = messagesSentTo(console);
-        long itemLines = messages.stream().filter(message -> !message.contains("==")).count();
-        assertTrue(itemLines > 70, "the full item list should be printed, one name per line, but " + itemLines + " lines were sent");
-        assertTrue(messages.stream().allMatch(message -> message.startsWith(ChatColor.AQUA.toString())),
-                "every line of the list should be coloured aqua");
+        assertTrue(messages.size() <= 10,
+                "a page should fit the ten lines the chat window shows by default, but " + messages.size() + " lines were sent");
+        assertTrue(itemLinesIn(messages).stream().allMatch(message -> message.startsWith(ChatColor.AQUA.toString())),
+                "every item line should be coloured aqua");
+    }
+
+    @Test
+    public void everyItemIsReachableByPagingThroughTheList() {
+        List<String> namesSeen = new ArrayList<>();
+
+        int lastPage = lastPageNumber();
+        for (int page = 1; page <= lastPage; page++) {
+            CommandSender console = permittedSender();
+            listItemsCommand.showList(console, new String[]{"list", String.valueOf(page)});
+            namesSeen.addAll(itemLinesIn(messagesSentTo(console)));
+        }
+
+        assertEquals(73, namesSeen.size(), "paging through every page should print all 73 craftable items exactly once");
+        assertEquals(namesSeen.size(), new HashSet<>(namesSeen).size(), "no item should be printed on more than one page");
+        assertTrue(namesSeen.contains(ChatColor.AQUA + "AfricanTallShield"), "the first item should appear on some page");
+        assertTrue(namesSeen.contains(ChatColor.AQUA + "Tin"), "the last item should appear on some page");
+    }
+
+    @Test
+    public void theHeaderAndFooterReportThePosition() {
+        CommandSender console = permittedSender();
+
+        listItemsCommand.showList(console, new String[]{"list", "2"});
+
+        List<String> messages = messagesSentTo(console);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Page 2 of " + lastPageNumber())),
+                "the header should name the current page and the total, but received: " + messages);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Showing 9-16 of 73 items")),
+                "the footer should report which items are on screen, but received: " + messages);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Use '/cr list 3' for the next page")),
+                "a page with more after it should point at the next one, but received: " + messages);
+    }
+
+    @Test
+    public void aNonNumericPageIsAnsweredWithUsage() {
+        CommandSender console = permittedSender();
+
+        listItemsCommand.showList(console, new String[]{"list", "abc"});
+
+        List<String> messages = messagesSentTo(console);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("isn't a number") && message.contains("/conquestrecipes list (page)")),
+                "a non-numeric page should be answered with a usage message, but received: " + messages);
+        assertTrue(messages.stream().noneMatch(message -> message.contains("Conquest Recipes - Items")),
+                "no page should be printed for a non-numeric page");
+    }
+
+    @Test
+    public void aPageOutsideTheRangeIsRefused() {
+        CommandSender console = permittedSender();
+
+        listItemsCommand.showList(console, new String[]{"list", "0"});
+
+        List<String> messages = messagesSentTo(console);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("There is no page 0")),
+                "a page below the range should be refused, but received: " + messages);
+
+        CommandSender other = permittedSender();
+        listItemsCommand.showList(other, new String[]{"list", String.valueOf(lastPageNumber() + 1)});
+        assertTrue(messagesSentTo(other).stream().anyMatch(message -> message.contains("There is no page ")),
+                "a page above the range should be refused");
+    }
+
+    @Test
+    public void theFinalPageHoldsOnlyTheRemainingItems() {
+        CommandSender console = permittedSender();
+
+        listItemsCommand.showList(console, new String[]{"list", String.valueOf(lastPageNumber())});
+
+        List<String> messages = messagesSentTo(console);
+        assertEquals(1, itemLinesIn(messages).size(), "73 items over pages of 8 should leave one item on the final page");
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Showing 73-73 of 73 items")),
+                "the footer should report the final item's position, but received: " + messages);
+        assertTrue(messages.stream().noneMatch(message -> message.contains("for the next page")),
+                "the final page should not point at a page that does not exist, but received: " + messages);
+    }
+
+    private int lastPageNumber() {
+        return (73 + 7) / 8;
+    }
+
+    private CommandSender permittedSender() {
+        CommandSender sender = mock(CommandSender.class);
+        when(sender.hasPermission("conquestrecipes.listitems")).thenReturn(true);
+        return sender;
+    }
+
+    private List<String> itemLinesIn(List<String> messages) {
+        return messages.stream()
+                .filter(message -> !message.contains("==") && !message.contains("Showing "))
+                .collect(Collectors.toList());
     }
 
     private List<String> messagesSentTo(CommandSender sender) {

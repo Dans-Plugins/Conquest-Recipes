@@ -2,13 +2,9 @@
 A plugin to add recipes matching textures in the Conquest Resource pack.
 
 # Notes
-- Project building must be done with Java 8 unless your test server is expecting another version.
-- Testing can be done by running a local spigot server with the compiled JAR in the plugins folder and checking the console.
+- A JDK of 11 or later is needed to build the project. The compiler targets Java 8 bytecode, so the JAR still runs on a Java 8 server, but the test suite uses Mockito 5 and will not run on a Java 8 toolchain. CI builds with JDK 17.
+- Unit tests run as part of `mvn clean package`, and can be run on their own with `mvn test`.
+- Manual testing can be done by running a local spigot server with the compiled JAR in the plugins folder and checking the console.
 
 # Versions
-- 0.1 Initial Build
-- 0.2 'ItemStack Subsystem' update
-- 0.3 'Command Subsystem' update
-- 0.4 'Get Command' update
-- 0.5 'Recipe Subsystem' update
-- 1.0 'Release' update
+Release history is recorded in [CHANGELOG.md](CHANGELOG.md).
