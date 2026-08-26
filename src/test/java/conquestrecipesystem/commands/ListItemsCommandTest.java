@@ -106,6 +106,8 @@ public class ListItemsCommandTest {
                 "the header should name the current page and the total, but received: " + messages);
         assertTrue(messages.stream().anyMatch(message -> message.contains("Showing 9-16 of 73 items")),
                 "the footer should report which items are on screen, but received: " + messages);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Use '/cr list 3' for the next page")),
+                "a page with more after it should point at the next one, but received: " + messages);
     }
 
     @Test
@@ -147,6 +149,8 @@ public class ListItemsCommandTest {
         assertEquals(1, itemLinesIn(messages).size(), "73 items over pages of 8 should leave one item on the final page");
         assertTrue(messages.stream().anyMatch(message -> message.contains("Showing 73-73 of 73 items")),
                 "the footer should report the final item's position, but received: " + messages);
+        assertTrue(messages.stream().noneMatch(message -> message.contains("for the next page")),
+                "the final page should not point at a page that does not exist, but received: " + messages);
     }
 
     private int lastPageNumber() {

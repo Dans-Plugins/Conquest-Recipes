@@ -134,9 +134,12 @@ public class ListItemsCommand {
             sender.sendMessage(ChatColor.AQUA + CRAFTABLE_ITEMS[index]);
         }
 
-        // footer
-        sender.sendMessage(ChatColor.GRAY + "Showing " + (firstIndex + 1) + "-" + lastIndex + " of " + CRAFTABLE_ITEMS.length
-                + " items. Use '/cr list (page)' to see the rest.");
+        // footer, which only points at the next page when there is one
+        String footer = "Showing " + (firstIndex + 1) + "-" + lastIndex + " of " + CRAFTABLE_ITEMS.length + " items.";
+        if (page < lastPage) {
+            footer += " Use '/cr list " + (page + 1) + "' for the next page.";
+        }
+        sender.sendMessage(ChatColor.GRAY + footer);
 
     }
 

@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- `/cr list` is now paged. All 73 item names were previously printed at once, which came to 74 chat lines and pushed almost the whole list out of a chat window that shows about ten lines. Eight names are now shown per page, the header reports the current page and the total, and the footer reports which items are on screen. An optional page number is accepted — `/cr list 2`, `/cr listitems 2` — with a non-numeric page answered by a usage message and a page outside the range answered by the available range.
+- `/cr list` is now paged. All 73 item names were previously printed at once, which came to 74 chat lines and pushed almost the whole list out of a chat window that shows about ten lines. Eight names are now shown per page, the header reports the current page and the total, and the footer reports which items are on screen and names the next page when there is one. An optional page number is accepted — `/cr list 2`, `/cr listitems 2` — with a non-numeric page answered by a usage message and a page outside the range answered by the available range.
 - `README.md`'s **Notes** section said the project had to be built with Java 8. The compiler targets Java 8 bytecode, but the build itself needs a JDK of 11 or later, since the test suite uses Mockito 5; CI builds with JDK 17. The note now says that, and mentions the unit suite alongside the manual server check.
 - `README.md`'s **Versions** list stopped at `1.0` and had fallen two releases behind `CHANGELOG.md`. It has been replaced with a link to `CHANGELOG.md`, which is the maintained record, so that the history is kept in one place.
 
