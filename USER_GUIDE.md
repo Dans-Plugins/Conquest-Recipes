@@ -23,7 +23,7 @@ Conquest Recipes adds recipes for dozens of items, including:
 - **Greek armour** — Greek Plate Helm, Chestpiece, Greaves, Sabatons
 - **Other items** — Roots, Rootmoss cloth, Strawhat, Copper, Tin, Bronze Ingot, Steel Ingot
 
-Use `/cr list` in-game to see the full list of available items.
+Use `/cr list` in-game to see the available items. The list is paged eight items at a time so that a page fits the chat window; `/cr list 2` shows the second page, and the footer reports how many pages there are.
 
 ## Permissions
 
