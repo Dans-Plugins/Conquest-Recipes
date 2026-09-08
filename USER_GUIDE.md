@@ -10,7 +10,7 @@ What the plugin provides on its own is recipes, item names and lore. Textures ar
 
 Each item is an ordinary Minecraft item carrying a display name and lore, so it behaves exactly as its base material does. Without a resource pack, that is also how it looks: a Steel Longsword is an iron sword named "Steel Longsword". **If the swords look like iron swords, this is why — the plugin is working, the textures are simply not installed.**
 
-Distinct textures require the Conquest resource pack. Items are matched by their display name, so the pack must be one that retextures by item name; OptiFine's Custom Item Textures is the usual way that is done, and being a client-side mod it has to be installed by each player alongside the pack. A pack pushed from the server through `resource-pack` in `server.properties` will not retexture these items, because a vanilla client selects custom models by `CustomModelData` and the plugin does not set it.
+Distinct textures require the Conquest Reforged resource pack. Items are matched by their display name, so the pack must be one that retextures by item name; OptiFine's Custom Item Textures is the usual way that is done, and being a client-side mod it has to be installed by each player alongside the pack. A pack pushed from the server through `resource-pack` in `server.properties` will not retexture these items, because a vanilla client selects custom models by `CustomModelData` and the plugin does not set it.
 
 ## Installation
 

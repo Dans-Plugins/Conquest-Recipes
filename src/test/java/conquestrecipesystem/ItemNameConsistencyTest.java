@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -73,7 +74,7 @@ public class ItemNameConsistencyTest {
                     .filter(fileName -> fileName.endsWith(".java"))
                     .map(fileName -> fileName.substring(0, fileName.length() - ".java".length()))
                     .collect(Collectors.toCollection(TreeSet::new));
-            assertTrue(!names.isEmpty(), "no item classes were found in " + objects.toAbsolutePath());
+            assertFalse(names.isEmpty(), "no item classes were found in " + objects.toAbsolutePath());
             return names;
         }
         catch (IOException exception) {
@@ -107,7 +108,7 @@ public class ItemNameConsistencyTest {
         while (matcher.find()) {
             names.add(matcher.group(1));
         }
-        assertTrue(!names.isEmpty(),
+        assertFalse(names.isEmpty(),
                 "no " + description + " were recognised; this test reads the source with " + pattern.pattern()
                         + " and needs updating if that shape has changed");
         return names;

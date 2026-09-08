@@ -52,10 +52,11 @@ Issues are grouped into [milestones](https://github.com/Dans-Plugins/Conquest-Re
 Each craftable item has its own class in `src/main/java/conquestrecipesystem/objects/`. To add a new recipe:
 
 1. Create a new class in that package modelled after an existing item class.
-2. Register the new recipe in the main plugin class.
-3. Add the item to the list returned by `ListItemsCommand`.
+2. Register its recipe in `RecipeService.registerRecipes()`, which `ConquestRecipes.onEnable()` calls. This is what makes the item craftable.
+3. Add a lookup branch for it to `ItemStackService.getItemStack(String, int)`. This is what makes `/cr get <name>` accept the name.
+4. Add the name to `ListItemsCommand`'s `CRAFTABLE_ITEMS`. This is what makes `/cr list` print it.
 
-All three steps are required. `ItemNameConsistencyTest` asserts that the recipe registrations, the `/cr get` lookup branches and `ListItemsCommand`'s `CRAFTABLE_ITEMS` name exactly the classes in the `objects` package, so missing a step fails the build.
+All four steps are required, and the same name has to be written into steps 2, 3 and 4 identically. `ItemNameConsistencyTest` asserts that all three name exactly the classes in the `objects` package, so missing a step fails the build.
 
 ## Testing
 
