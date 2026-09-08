@@ -55,6 +55,8 @@ Each craftable item has its own class in `src/main/java/conquestrecipesystem/obj
 2. Register the new recipe in the main plugin class.
 3. Add the item to the list returned by `ListItemsCommand`.
 
+All three steps are required. `ItemNameConsistencyTest` asserts that the recipe registrations, the `/cr get` lookup branches and `ListItemsCommand`'s `CRAFTABLE_ITEMS` name exactly the classes in the `objects` package, so missing a step fails the build.
+
 ## Testing
 
 Run the build with:
