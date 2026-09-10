@@ -19,7 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - An unrecognised subcommand is no longer answered with silence. `CommandService` recognised only `get`, `list` and `listitems`, and returned control to Bukkit for anything else; Bukkit answers that by printing the command's usage message, and `plugin.yml` declares none, so `/cr craft`, `/cr help`, and a mistyped `/cr lst` produced no output whatsoever and were indistinguishable from a plugin that had failed to load. The offending subcommand is now named back to the sender and followed by the list of subcommands that are accepted.
-
 - The `Dev Release` workflow now retries publishing the `dev` prerelease before giving up. The release and its tag have to be deleted and recreated for the tag to move to the new commit, and a transient API failure inside that window previously left the repository with no `dev` release at all until the workflow was re-run by hand. Each attempt now starts from a clean slate, and an exhausted retry fails loudly.
 
 ### Added

@@ -121,7 +121,9 @@ public class CommandServiceTest {
 
     /**
      * The point of the list is that a sender who does not already know the command surface is shown all of
-     * it, so every accepted subcommand is asserted rather than just the one that happens to be printed first.
+     * it, so all three are asserted rather than just the one that happens to be printed first. {@code listitems}
+     * is accepted too, but as an alias of {@code list} it is deliberately left out of the list rather than
+     * printed as a fourth entry; {@code COMMANDS.md} is where the alias is recorded.
      */
     private void assertNamesEverySubcommand(List<String> messages) {
         for (String subcommand : new String[]{"list", "get", "help"}) {
