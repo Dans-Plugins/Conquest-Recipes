@@ -33,6 +33,8 @@ Conquest Recipes adds recipes for dozens of items, including:
 
 Use `/cr list` in-game to see the available items. The list is paged eight items at a time so that a page fits the chat window; `/cr list 2` shows the second page. The header names the page you are on and how many there are, and the footer points at the next one.
 
+`/cr help`, or `/cr` on its own, lists the plugin's commands. Every command is described in [COMMANDS.md](COMMANDS.md).
+
 ## Permissions
 
 | Permission | Default | Description |
