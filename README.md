@@ -13,5 +13,17 @@ Distinct textures require the Conquest resource pack. Items are identified by di
 - Unit tests run as part of `mvn clean package`, and can be run on their own with `mvn test`.
 - Manual testing can be done by running a local spigot server with the compiled JAR in the plugins folder and checking the console.
 
+# Usage reporting
+
+Usage reporting is on by default: when the plugin is enabled, and each time one of its commands is used, it sends its name, its version and the command's name to the author's trace server at `https://trace.danielstephenson.dev`, so it is known which plugins are actually in use. Nothing about players, worlds, IP addresses or the server is sent, and nothing typed after a command. The plugin prints one line on every startup saying whether reporting is on and, if not, why.
+
+To turn it off:
+
+- for this plugin only: `usage-reporting.enabled: false` in `plugins/Conquest-Recipes/config.yml`
+- for every plugin on the server that reports to trace: `enabled: false` in `plugins/trace/config.yml` (created on first start; plugins never turn it back on)
+- for the whole server process: the environment variable `TRACE_USAGE_REPORTING=off` or `DO_NOT_TRACK=1`
+
+Details: https://github.com/Stephenson-Software/trace#usage-reporting
+
 # Versions
 Release history is recorded in [CHANGELOG.md](CHANGELOG.md).
