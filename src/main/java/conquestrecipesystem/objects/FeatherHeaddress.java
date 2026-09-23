@@ -22,7 +22,7 @@ public class FeatherHeaddress {
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_jaguar_helmet");
+        NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_feather_headdress");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("FFF", "III", "000");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(LEATHER)));
