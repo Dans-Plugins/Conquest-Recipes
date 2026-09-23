@@ -23,7 +23,7 @@ public class BronzeGreatsword {
     }
 
     public void registerRecipe() {
-        NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_bronze_katar");
+        NamespacedKey key = new NamespacedKey(conquestRecipes, "conquest_recipes_bronze_greatsword");
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0SS", "SSS", "IS0");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));

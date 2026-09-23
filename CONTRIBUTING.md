@@ -51,7 +51,7 @@ Issues are grouped into [milestones](https://github.com/Dans-Plugins/Conquest-Re
 
 Each craftable item has its own class in `src/main/java/conquestrecipesystem/objects/`. To add a new recipe:
 
-1. Create a new class in that package modelled after an existing item class.
+1. Create a new class in that package modelled after an existing item class. Give each of its recipes a new `NamespacedKey` rather than keeping the copied one: Spigot refuses a key that is already registered, and the plugin then fails to enable. `RecipeKeyUniquenessTest` fails the build on a repeated key.
 2. Register its recipe in `RecipeService.registerRecipes()`, which `ConquestRecipes.onEnable()` calls. This is what makes the item craftable.
 3. Add a lookup branch for it to `ItemStackService.getItemStack(String, int)`. This is what makes `/cr get <name>` accept the name.
 4. Add the name to `ListItemsCommand`'s `CRAFTABLE_ITEMS`. This is what makes `/cr list` print it.
