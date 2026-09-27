@@ -61,6 +61,8 @@ public class ListItemsCommandTest {
         List<String> messages = messagesSentTo(console);
         assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.listitems")),
                 "a sender without permission should be told which permission is needed");
+        assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.default")),
+                "the refusal should also name conquestrecipes.default, which grants the command too");
         assertTrue(messages.stream().noneMatch(message -> message.contains("Conquest Recipes - Items")),
                 "a sender without permission should not receive the list");
     }
