@@ -64,7 +64,7 @@ public class GetCommand {
 
             }
             else {
-                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need the following permission: 'conquestrecipes.get'");
+                player.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need one of the following permissions: 'conquestrecipes.get' or 'conquestrecipes.admin'");
             }
 
         }

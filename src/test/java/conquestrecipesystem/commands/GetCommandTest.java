@@ -120,8 +120,11 @@ public class GetCommandTest {
 
         getCommand.getItem(unprivileged, new String[]{"get", "BronzeBlade", "1"});
 
-        assertTrue(messagesSentTo(unprivileged).stream().anyMatch(message -> message.contains("conquestrecipes.get")),
+        List<String> messages = messagesSentTo(unprivileged);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.get")),
                 "a player without permission should be told which permission is needed");
+        assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.admin")),
+                "the refusal should also name conquestrecipes.admin, which grants the command too");
         verify(itemStackService, never()).getItemStack(anyString(), anyInt());
     }
 
