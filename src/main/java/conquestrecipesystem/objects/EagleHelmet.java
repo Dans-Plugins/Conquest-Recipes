@@ -1,6 +1,7 @@
 package conquestrecipesystem.objects;
 
 import conquestrecipesystem.ConquestRecipes;
+import conquestrecipesystem.utils.RenamedConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +27,7 @@ public class EagleHelmet {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("0L0", "III", "I0I");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(LEATHER)));
-        recipe.setIngredient('L', new RecipeChoice.ExactChoice(new ItemStack(GRASS)));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(new ItemStack(RenamedConstants.shortGrass())));
         Bukkit.addRecipe(recipe);
     }
 }
