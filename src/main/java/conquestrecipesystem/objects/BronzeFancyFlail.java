@@ -1,6 +1,7 @@
 package conquestrecipesystem.objects;
 
 import conquestrecipesystem.ConquestRecipes;
+import conquestrecipesystem.utils.RenamedConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +27,7 @@ public class BronzeFancyFlail {
         ShapedRecipe recipe = new ShapedRecipe(key, getItemStack(1));
         recipe.shape("00I", "0IC", "I0S");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(STICK)));
-        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(CHAIN)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(RenamedConstants.chain())));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(conquestRecipes.getItemStackService().getItemStack("BronzeIngot", 1)));
         Bukkit.addRecipe(recipe);
     }
