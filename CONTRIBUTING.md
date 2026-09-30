@@ -52,11 +52,9 @@ Issues are grouped into [milestones](https://github.com/Dans-Plugins/Conquest-Re
 Each craftable item has its own class in `src/main/java/conquestrecipesystem/objects/`. To add a new recipe:
 
 1. Create a new class in that package modelled after an existing item class. Give each of its recipes a new `NamespacedKey` rather than keeping the copied one: Spigot refuses a key that is already registered, and the plugin then fails to enable. `RecipeKeyUniquenessTest` fails the build on a repeated key.
-2. Register its recipe in `RecipeService.registerRecipes()`, which `ConquestRecipes.onEnable()` calls. This is what makes the item craftable.
-3. Add a lookup branch for it to `ItemStackService.getItemStack(String, int)`. This is what makes `/cr get <name>` accept the name.
-4. Add the name to `ListItemsCommand`'s `CRAFTABLE_ITEMS`. This is what makes `/cr list` print it.
+2. Add a line for it to the list in `services/ItemRegistry.java`, in the same form as its neighbours, e.g. `item(SteelLongsword.class, SteelLongsword::new, SteelLongsword::registerRecipe, SteelLongsword::getItemStack)`.
 
-All four steps are required, and the same name has to be written into steps 2, 3 and 4 identically. `ItemNameConsistencyTest` asserts that all three name exactly the classes in the `objects` package, so missing a step fails the build.
+That one line makes the item craftable (`RecipeService.registerRecipes()` registers a recipe for every entry), makes `/cr get <name>` accept it, and makes `/cr list` print it. The name is the class's simple name, so it is never written out by hand; `/cr list` sorts the names itself, so a new line can go at the end of the list. `ItemNameConsistencyTest` asserts that the registry names exactly the classes in the `objects` package, so a class that is never added to the registry fails the build.
 
 ## Testing
 
