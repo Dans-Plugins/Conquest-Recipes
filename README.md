@@ -8,6 +8,18 @@ Every item is an ordinary Minecraft item with a display name and lore applied â€
 
 Distinct textures require the Conquest resource pack. Items are identified by display name only, so the pack has to match on item name â€” that is what OptiFine's Custom Item Textures does, and it is a client-side mod, so each player installs the pack and the mod themselves. A pack pushed from the server with `resource-pack` in `server.properties` cannot retexture these items, because a vanilla client keys custom models off `CustomModelData`, which this plugin does not yet set.
 
+# Works Well With
+Conquest Recipes is part of the **medieval roleplay** set of Dan's Plugins. These are companion plugins that suit the same kind of server and run side by side; Conquest Recipes does not depend on or call into any of them.
+
+- [Medieval Roleplay Engine](https://github.com/Dans-Plugins/Medieval-Roleplay-Engine) ([SpigotMC](https://www.spigotmc.org/resources/medieval-roleplay-engine.79993/), `/dpm get medievalroleplayengine`): character cards, local, global, whisper and yell chat, emotes, dice and messenger birds.
+- [Medieval Factions](https://github.com/Dans-Plugins/Medieval-Factions) ([SpigotMC](https://www.spigotmc.org/resources/medieval-factions.79941/), `/dpm get medievalfactions`): nation-like factions with land claims, diplomacy and laws. Its add-ons are listed in its [Expansions](https://github.com/Dans-Plugins/Medieval-Factions#expansions) section.
+- [Mailboxes](https://github.com/Dans-Plugins/Mailboxes) ([SpigotMC](https://www.spigotmc.org/resources/mailboxes.96611/), `/dpm get mailboxes`): persistent mail between players, with item attachments.
+- [Medieval Economy](https://github.com/Dans-Plugins/Medieval-Economy) ([SpigotMC](https://www.spigotmc.org/resources/medieval-economy.81836/), `/dpm get medievaleconomy`): a coinpurse and a physical currency item.
+- [PlayerLore](https://github.com/Dans-Plugins/PlayerLore) ([SpigotMC](https://www.spigotmc.org/resources/playerlore.98602/), `/dpm get playerlore`): players write their own lore onto their items.
+- [Medieval Cookery](https://github.com/Dans-Plugins/Medieval-Cookery) (no SpigotMC page, no stable release yet): cooking recipes for custom foods, defined by the server owner.
+
+Every plugin above is listed on [dansplugins.com](https://dansplugins.com). Conquest Recipes is listed at [dansplugins.com/resources/conquest-recipes](https://dansplugins.com/resources/conquest-recipes) and can be installed in game with [Dan's Plugin Manager](https://github.com/Dans-Plugins/Dans-Plugin-Manager): `/dpm get conquestrecipes`.
+
 # Notes
 - A JDK of 11 or later is needed to build the project. The compiler targets Java 8 bytecode, so the JAR still runs on a Java 8 server, but the test suite uses Mockito 5 and will not run on a Java 8 toolchain. CI builds with JDK 17.
 - Unit tests run as part of `mvn clean package`, and can be run on their own with `mvn test`.
