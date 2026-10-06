@@ -39,7 +39,7 @@ To turn it off:
 - for every plugin on the server that reports to trace: `enabled: false` in `plugins/trace/config.yml` (created on first start; plugins never turn it back on)
 - for the whole server process: the environment variable `TRACE_USAGE_REPORTING=off` or `DO_NOT_TRACK=1`
 
-Details: https://github.com/Stephenson-Software/trace#usage-reporting
+Details: https://danielstephenson.dev/usage-reporting
 
 # Supported Minecraft Versions
 This plugin is supported on the Minecraft versions listed in [`minecraft-versions.json`](minecraft-versions.json): currently **1.19.4**, **1.21.11**, **26.2** and **26.3** (Spigot and its forks). Every stable release is booted on a real server of each of these versions before it is published, and every build checks that the plugin only uses Bukkit API that exists on all of them. Other versions from 1.19.4 onwards are expected to work but are not tested. To support another version, add it to the file: both checks pick it up.
