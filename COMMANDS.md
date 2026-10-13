@@ -14,7 +14,9 @@ Either of the two nodes listed against a command grants it; holding both is not 
 
 `<itemName>` is an item's name exactly as `/cr list` prints it — a single word with no spaces, such as `BronzeBlade` or `SteelLongsword` — and is matched without regard to case, so `bronzeblade` is accepted too. The in-game display name, `Bronze Blade`, is not: the space splits it into two arguments, and `Blade` is then read as the amount. A name that matches no item is answered with `That isn't an item in Conquest Recipes!`.
 
-`<amount>` must be a whole number of 1 or more; anything else is answered with a usage message.
+`<amount>` must be a whole number of 1 or more. An amount that is not a number is answered with a usage message, and one below 1 with `The amount must be at least 1.`
+
+`/cr get` needs at least one empty inventory slot. When every slot holds something, even a stack with room left in it, the command is answered with `Inventory full.` and nothing is given.
 
 `[page]` is optional and defaults to 1. Eight item names are shown per page. The header reports the current page and the total number of pages, and the footer reports which items are on screen and names the next page when there is one. A page that is not a number is answered with a usage message, and a page outside the available range is answered with the range.
 

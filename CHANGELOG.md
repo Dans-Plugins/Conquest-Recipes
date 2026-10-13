@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- `COMMANDS.md` said every invalid `/cr get` amount is answered with a usage message. That only applies to an amount that is not a number. An amount below 1 is answered with `The amount must be at least 1.`, and the page now says so. It also now states that `/cr get` needs an empty inventory slot and is otherwise answered with `Inventory full.`, which the page did not mention.
+
 ## [2.1.0] – 2026-10-07
 
 ### Added
