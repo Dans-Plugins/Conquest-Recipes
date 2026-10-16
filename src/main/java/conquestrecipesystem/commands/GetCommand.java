@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Map;
+
 public class GetCommand {
 
     ConquestRecipes conquestRecipes = null;
@@ -46,8 +48,18 @@ public class GetCommand {
                         // add to player's inventory
                         // if player's inventory has space
                         if (player.getInventory().firstEmpty() != -1) {
-                            player.getInventory().addItem(item);
+                            Map<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
                             player.sendMessage(ChatColor.GREEN + "" + itemToGet + " created.");
+
+                            // whatever didn't fit is dropped at the player's feet rather than discarded
+                            int dropped = 0;
+                            for (ItemStack leftover : leftovers.values()) {
+                                player.getWorld().dropItemNaturally(player.getLocation(), leftover);
+                                dropped += leftover.getAmount();
+                            }
+                            if (dropped > 0) {
+                                player.sendMessage(ChatColor.YELLOW + "" + dropped + " didn't fit in your inventory and were dropped at your feet.");
+                            }
                         }
                         else { // player's inventory is full
                             player.sendMessage(ChatColor.RED + "Inventory full.");
