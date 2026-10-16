@@ -2,6 +2,8 @@ package conquestrecipesystem.commands;
 
 import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.services.ItemStackService;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -10,8 +12,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.HashMap;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -93,6 +97,60 @@ public class GetCommandTest {
         verify(inventory).addItem(bronzeBlade);
         assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("created")),
                 "a successful request should confirm the item was created");
+    }
+
+    @Test
+    public void itemsThatDoNotFitAreDroppedAtThePlayersFeet() {
+        ItemStack steelLongswords = mock(ItemStack.class);
+        when(itemStackService.getItemStack("SteelLongsword", 5)).thenReturn(steelLongswords);
+
+        ItemStack leftover = mock(ItemStack.class);
+        when(leftover.getAmount()).thenReturn(4);
+        HashMap<Integer, ItemStack> leftovers = new HashMap<>();
+        leftovers.put(0, leftover);
+        when(inventory.addItem(steelLongswords)).thenReturn(leftovers);
+
+        World world = mock(World.class);
+        Location feet = mock(Location.class);
+        when(player.getWorld()).thenReturn(world);
+        when(player.getLocation()).thenReturn(feet);
+
+        getCommand.getItem(player, new String[]{"get", "SteelLongsword", "5"});
+
+        verify(world).dropItemNaturally(feet, leftover);
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("4 didn't fit in your inventory")),
+                "the player should be told how many items were dropped");
+    }
+
+    @Test
+    public void aSingleDroppedItemIsReportedInTheSingular() {
+        ItemStack bronzeBlades = mock(ItemStack.class);
+        when(itemStackService.getItemStack("BronzeBlade", 2)).thenReturn(bronzeBlades);
+
+        ItemStack leftover = mock(ItemStack.class);
+        when(leftover.getAmount()).thenReturn(1);
+        HashMap<Integer, ItemStack> leftovers = new HashMap<>();
+        leftovers.put(0, leftover);
+        when(inventory.addItem(bronzeBlades)).thenReturn(leftovers);
+        when(player.getWorld()).thenReturn(mock(World.class));
+
+        getCommand.getItem(player, new String[]{"get", "BronzeBlade", "2"});
+
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("1 didn't fit in your inventory and was dropped")),
+                "a single dropped item should be reported in the singular");
+    }
+
+    @Test
+    public void nothingIsDroppedWhenEverythingFits() {
+        ItemStack bronzeBlade = mock(ItemStack.class);
+        when(itemStackService.getItemStack("BronzeBlade", 1)).thenReturn(bronzeBlade);
+        when(inventory.addItem(bronzeBlade)).thenReturn(new HashMap<>());
+
+        getCommand.getItem(player, new String[]{"get", "BronzeBlade", "1"});
+
+        verify(player, never()).getWorld();
+        assertFalse(messagesSentTo(player).stream().anyMatch(message -> message.contains("didn't fit")),
+                "no drop message should be sent when everything fits");
     }
 
     @Test
