@@ -123,6 +123,24 @@ public class GetCommandTest {
     }
 
     @Test
+    public void aSingleDroppedItemIsReportedInTheSingular() {
+        ItemStack bronzeBlades = mock(ItemStack.class);
+        when(itemStackService.getItemStack("BronzeBlade", 2)).thenReturn(bronzeBlades);
+
+        ItemStack leftover = mock(ItemStack.class);
+        when(leftover.getAmount()).thenReturn(1);
+        HashMap<Integer, ItemStack> leftovers = new HashMap<>();
+        leftovers.put(0, leftover);
+        when(inventory.addItem(bronzeBlades)).thenReturn(leftovers);
+        when(player.getWorld()).thenReturn(mock(World.class));
+
+        getCommand.getItem(player, new String[]{"get", "BronzeBlade", "2"});
+
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("1 didn't fit in your inventory and was dropped")),
+                "a single dropped item should be reported in the singular");
+    }
+
+    @Test
     public void nothingIsDroppedWhenEverythingFits() {
         ItemStack bronzeBlade = mock(ItemStack.class);
         when(itemStackService.getItemStack("BronzeBlade", 1)).thenReturn(bronzeBlade);

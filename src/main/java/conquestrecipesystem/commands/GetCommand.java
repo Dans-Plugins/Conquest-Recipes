@@ -58,7 +58,7 @@ public class GetCommand {
                                 dropped += leftover.getAmount();
                             }
                             if (dropped > 0) {
-                                player.sendMessage(ChatColor.YELLOW + "" + dropped + " didn't fit in your inventory and were dropped at your feet.");
+                                player.sendMessage(ChatColor.YELLOW + "" + dropped + " didn't fit in your inventory and " + (dropped == 1 ? "was" : "were") + " dropped at your feet.");
                             }
                         }
                         else { // player's inventory is full
