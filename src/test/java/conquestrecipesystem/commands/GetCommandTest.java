@@ -41,7 +41,6 @@ public class GetCommandTest {
         when(plugin.getItemStackService()).thenReturn(itemStackService);
 
         inventory = mock(PlayerInventory.class);
-        when(inventory.firstEmpty()).thenReturn(0);
 
         player = mock(Player.class);
         when(player.getInventory()).thenReturn(inventory);
@@ -151,6 +150,45 @@ public class GetCommandTest {
         verify(player, never()).getWorld();
         assertFalse(messagesSentTo(player).stream().anyMatch(message -> message.contains("didn't fit")),
                 "no drop message should be sent when everything fits");
+    }
+
+    @Test
+    public void aPartialStackWithRoomIsFilledWhenNoSlotIsEmpty() {
+        when(inventory.firstEmpty()).thenReturn(-1);
+        ItemStack steelIngots = mock(ItemStack.class);
+        when(itemStackService.getItemStack("SteelIngot", 5)).thenReturn(steelIngots);
+        when(inventory.addItem(steelIngots)).thenReturn(new HashMap<>());
+
+        getCommand.getItem(player, new String[]{"get", "SteelIngot", "5"});
+
+        verify(inventory).addItem(steelIngots);
+        List<String> messages = messagesSentTo(player);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("created")),
+                "items that fit into an existing stack should be given even with no empty slot");
+        assertFalse(messages.stream().anyMatch(message -> message.contains("Inventory full")),
+                "an inventory with room in a matching stack is not full");
+    }
+
+    @Test
+    public void aFullInventoryIsReportedAndNothingIsDropped() {
+        when(inventory.firstEmpty()).thenReturn(-1);
+        ItemStack steelLongswords = mock(ItemStack.class);
+        when(itemStackService.getItemStack("SteelLongsword", 3)).thenReturn(steelLongswords);
+
+        ItemStack leftover = mock(ItemStack.class);
+        when(leftover.getAmount()).thenReturn(3);
+        HashMap<Integer, ItemStack> leftovers = new HashMap<>();
+        leftovers.put(0, leftover);
+        when(inventory.addItem(steelLongswords)).thenReturn(leftovers);
+
+        getCommand.getItem(player, new String[]{"get", "SteelLongsword", "3"});
+
+        verify(player, never()).getWorld();
+        List<String> messages = messagesSentTo(player);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Inventory full")),
+                "a request of which nothing could be stored should be answered with 'Inventory full.'");
+        assertFalse(messages.stream().anyMatch(message -> message.contains("created")),
+                "nothing was given, so nothing should be reported as created");
     }
 
     @Test
