@@ -7,13 +7,18 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.RecipeChoice;
+import org.bukkit.inventory.ShapedRecipe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockedStatic;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -101,6 +106,38 @@ public class ItemRegistryTest {
             assertTrue(registered.size() >= ItemRegistry.getEntries().size(),
                     "every item in the registry should register at least one recipe, but only " + registered.size() + " were registered");
             assertEquals(registered.size(), keys.size(), "no two recipes should share a key");
+        }
+    }
+
+    /**
+     * Bukkit leaves a shape symbol that is never given an ingredient as an empty slot, without complaint,
+     * so a symbol whose {@code setIngredient} line is missing or names another letter makes the recipe
+     * accept an empty slot where an ingredient was meant. Every recipe marks its empty slots with
+     * {@code '0'}; any other symbol must have an ingredient.
+     */
+    @Test
+    public void everyShapeSymbolOtherThanTheBlankHasAnIngredient() {
+        try (MockedStatic<Bukkit> bukkit = mockBukkit()) {
+            for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+                bukkit.clearInvocations();
+
+                entry.registerRecipe(plugin);
+
+                for (Recipe recipe : recipesAddedTo(bukkit)) {
+                    ShapedRecipe shaped = (ShapedRecipe) recipe;
+                    Map<Character, RecipeChoice> choices = shaped.getChoiceMap();
+                    Set<Character> withoutIngredient = new TreeSet<>();
+                    for (String row : shaped.getShape()) {
+                        for (char symbol : row.toCharArray()) {
+                            if (symbol != '0' && choices.get(symbol) == null) {
+                                withoutIngredient.add(symbol);
+                            }
+                        }
+                    }
+                    assertTrue(withoutIngredient.isEmpty(), entry.getName() + "'s recipe " + shaped.getKey().getKey()
+                            + " has no ingredient for " + withoutIngredient + " in its shape " + Arrays.toString(shaped.getShape()));
+                }
+            }
         }
     }
 

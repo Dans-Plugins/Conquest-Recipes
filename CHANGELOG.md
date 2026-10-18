@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- A unit test asserting that every symbol in every recipe's shape, other than the `0` that marks an empty slot, has an ingredient. Bukkit treats a symbol with no ingredient as an empty slot without complaint, so a missing or mislettered `setIngredient` line would quietly make a recipe accept an empty slot. All recipes pass today.
+
 ### Fixed
 
 - `/cr get` discarded whatever part of the requested amount did not fit in the inventory, while still reporting success. With one empty slot, `/cr get SteelLongsword 5` gave one sword and lost the other four. The items that do not fit are now dropped at the player's feet, and the player is told how many were dropped.
