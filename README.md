@@ -1,4 +1,9 @@
 # What is this?
+
+![/cr list showing the first page of the 73 Conquest items](docs/images/recipe-list.png)
+
+*Real in-game output from Conquest Recipes 2.1.0 on a local throwaway Paper 1.21.11 test server: the commands were typed by a scripted bot client, and the chat it received is drawn as Minecraft-style chat (typed commands appear in the input bars; grey lines say what happened between commands).*
+
 A plugin to add recipes matching textures in the Conquest Resource pack.
 
 # Textures
