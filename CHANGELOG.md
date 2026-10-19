@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - `COMMANDS.md` said every invalid `/cr get` amount is answered with a usage message. That only applies to an amount that is not a number. An amount below 1 is answered with `The amount must be at least 1.`, and the page now says so. It also now states when `/cr get` is answered with `Inventory full.`, which the page did not mention.
+- The craftable-items list in `USER_GUIDE.md` is described as display names, but several entries were not the names shown in game: the Greek armour is named Bronze Greek Plate Helm and so on, Copper and Tin are Copper Chunk and Tin Chunk, the blowgun is Simple Blowgun, the African shield is African Tall Bamboo Shield, the large macuahuitl is Big Macuahuitl, and all four bone armour pieces are named Bone Plate. The list now gives the in-game names, adds the Feathered Macuahuitl, the Clean Hoplite Shield and the Rootmoss Cloth armour pieces, and notes that a `/cr list` name can differ from the display name by more than its spaces.
 
 ## [2.1.0] – 2026-10-07
 

@@ -24,16 +24,17 @@ Conquest Recipes adds recipes for dozens of items, including:
 
 - **Bronze weapons and armour** — Bronze Blade, Bronze Dagger, Bronze Greatsword, Bronze Khopesh, Bronze Corinthian Helmet, Bronze Gladiator Helmet, etc.
 - **Steel weapons** — Steel Longsword, Steel Bastardsword
-- **Bone armour** — Bone Plate Boots, Chestplate, Helm, Leggings
-- **Mesoamerican weapons** — Macuahuitl (small and large), Tepoztopilli, Cuauhololli
-- **Shields** — African Tall Shield, Bone Shield, Chimallis (decorated and spiral)
-- **Primitive weapons** — Boneclub, Stonespear, Dart, Blowgun, Primitive Flail, etc.
-- **Greek armour** — Greek Plate Helm, Chestpiece, Greaves, Sabatons
-- **Other items** — Roots, Rootmoss cloth, Strawhat, Copper, Tin, Bronze Ingot, Steel Ingot
+- **Bone armour** — a helm, chestplate, leggings and boots, all four named Bone Plate
+- **Mesoamerican weapons** — Small Macuahuitl, Big Macuahuitl, Feathered Macuahuitl, Tepoztopilli, Cuauhololli
+- **Shields** — African Tall Bamboo Shield, Bone Shield, Clean Hoplite Shield, Decorated Chimalli Shield, Spiral Chimalli Shield
+- **Primitive weapons** — Boneclub, Stonespear, Dart, Simple Blowgun, Primitive Flail, etc.
+- **Greek armour** — Bronze Greek Plate Helm, Bronze Greek Plate Chestpiece, Bronze Greek Plate Greaves, Bronze Greek Plate Sabatons
+- **Rootmoss cloth armour** — Rootmoss Cloth Hood, Rootmoss Cloth Chestpiece, Rootmoss Cloth Leggings, Rootmoss Cloth Shoes
+- **Other items** — Roots, Strawhat, Copper Chunk, Tin Chunk, Bronze Ingot, Steel Ingot
 
 Use `/cr list` in-game to see the available items. The list is paged eight items at a time so that a page fits the chat window; `/cr list 2` shows the second page. The header names the page you are on and how many there are, and the footer points at the next one.
 
-The names above are the items' display names. Commands take the name that `/cr list` prints instead, which has no spaces: `/cr get SteelLongsword 1` gives a Steel Longsword, while `/cr get Steel Longsword 1` is split at the space, reads `Longsword` as the amount, and is answered with `'Longsword' isn't a number`. Case does not matter.
+The names above are the items' display names. Commands take the name that `/cr list` prints instead, which has no spaces: `/cr get SteelLongsword 1` gives a Steel Longsword, while `/cr get Steel Longsword 1` is split at the space, reads `Longsword` as the amount, and is answered with `'Longsword' isn't a number`. Case does not matter. The `/cr list` name can differ from the display name by more than the spaces: for example, the four Bone Plate pieces are `BonePlateHelm`, `BonePlateChestplate`, `BonePlateLeggings` and `BonePlateBoots`, Copper Chunk is `Copper`, and Bronze Greek Plate Helm is `GreekPlateHelm`.
 
 `/cr help`, or `/cr` on its own, lists the plugin's commands. Every command is described in [COMMANDS.md](COMMANDS.md).
 
