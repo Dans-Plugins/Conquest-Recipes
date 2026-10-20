@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -31,12 +32,92 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ItemRegistryTest {
+
+    /** Each item's registry name, as /cr list prints it, and the display name it is given in game. */
+    private static final Map<String, String> DISPLAY_NAMES = new TreeMap<>();
+
+    static {
+        DISPLAY_NAMES.put("AfricanTallShield", "African Tall Bamboo Shield");
+        DISPLAY_NAMES.put("BigMacuahuitl", "Big Macuahuitl");
+        DISPLAY_NAMES.put("BonePlateBoots", "Bone Plate");
+        DISPLAY_NAMES.put("BonePlateChestplate", "Bone Plate");
+        DISPLAY_NAMES.put("BonePlateHelm", "Bone Plate");
+        DISPLAY_NAMES.put("BonePlateLeggings", "Bone Plate");
+        DISPLAY_NAMES.put("BoneShield", "Bone Shield");
+        DISPLAY_NAMES.put("Boneclub", "Boneclub");
+        DISPLAY_NAMES.put("BronzeAxesword", "Bronze Axesword");
+        DISPLAY_NAMES.put("BronzeBlade", "Bronze Blade");
+        DISPLAY_NAMES.put("BronzeCorinthianHelmet", "Bronze Corinthian Helmet");
+        DISPLAY_NAMES.put("BronzeDagger", "Bronze Dagger");
+        DISPLAY_NAMES.put("BronzeFancyFlail", "Bronze Fancy Flail");
+        DISPLAY_NAMES.put("BronzeGladiatorHelmet", "Bronze Gladiator Helmet");
+        DISPLAY_NAMES.put("BronzeGlaive", "Bronze Glaive");
+        DISPLAY_NAMES.put("BronzeGreatsword", "Bronze Greatsword");
+        DISPLAY_NAMES.put("BronzeHatchet", "Bronze Hatchet");
+        DISPLAY_NAMES.put("BronzeHoe", "Bronze Hoe");
+        DISPLAY_NAMES.put("BronzeIngot", "Bronze Ingot");
+        DISPLAY_NAMES.put("BronzeKatar", "Bronze Katar");
+        DISPLAY_NAMES.put("BronzeKhopesh", "Bronze Khopesh");
+        DISPLAY_NAMES.put("BronzePickaxe", "Bronze Pickaxe");
+        DISPLAY_NAMES.put("BronzeSpade", "Bronze Spade");
+        DISPLAY_NAMES.put("CleanHopliteShield", "Clean Hoplite Shield");
+        DISPLAY_NAMES.put("Copper", "Copper Chunk");
+        DISPLAY_NAMES.put("Cuauhololli", "Cuauhololli");
+        DISPLAY_NAMES.put("Dart", "Dart");
+        DISPLAY_NAMES.put("DecoratedChimalliShield", "Decorated Chimalli Shield");
+        DISPLAY_NAMES.put("EagleHelmet", "Eagle Helmet");
+        DISPLAY_NAMES.put("FancyBronzeHelmet", "Fancy Bronze Helmet");
+        DISPLAY_NAMES.put("FancyWoodenWarclub", "Fancy Wooden Warclub");
+        DISPLAY_NAMES.put("FeatherHeaddress", "Feather Headdress");
+        DISPLAY_NAMES.put("FeatheredMacuahuitl", "Feathered Macuahuitl");
+        DISPLAY_NAMES.put("GreatBronzeaxe", "Great Bronzeaxe");
+        DISPLAY_NAMES.put("GreekPlateChestpiece", "Bronze Greek Plate Chestpiece");
+        DISPLAY_NAMES.put("GreekPlateGreaves", "Bronze Greek Plate Greaves");
+        DISPLAY_NAMES.put("GreekPlateHelm", "Bronze Greek Plate Helm");
+        DISPLAY_NAMES.put("GreekPlateSabatons", "Bronze Greek Plate Sabatons");
+        DISPLAY_NAMES.put("JaguarHelmet", "Jaguar Helmet");
+        DISPLAY_NAMES.put("LargeWoodenClub", "Large Wooden Club");
+        DISPLAY_NAMES.put("PrimitiveFishingSpear", "Primitive Fishingspear");
+        DISPLAY_NAMES.put("PrimitiveFlail", "Primitive Flail");
+        DISPLAY_NAMES.put("PrimitiveHuntingSpear", "Primitive Hunting Spear");
+        DISPLAY_NAMES.put("PrimitiveStoneblade", "Primitive Stoneblade");
+        DISPLAY_NAMES.put("PrimitiveWarhammer", "Primitive Warhammer");
+        DISPLAY_NAMES.put("RootCleaver", "Stone Root Cleaver");
+        DISPLAY_NAMES.put("RootDagger", "Stone Root Dagger");
+        DISPLAY_NAMES.put("RootmossClothChestpiece", "Rootmoss Cloth Chestpiece");
+        DISPLAY_NAMES.put("RootmossClothHelmet", "Rootmoss Cloth Hood");
+        DISPLAY_NAMES.put("RootmossClothLeggings", "Rootmoss Cloth Leggings");
+        DISPLAY_NAMES.put("RootmossClothShoes", "Rootmoss Cloth Shoes");
+        DISPLAY_NAMES.put("Roots", "Roots");
+        DISPLAY_NAMES.put("SharpenedBamboo", "Sharpened Bamboo");
+        DISPLAY_NAMES.put("SharpenedPole", "Sharpened Pole");
+        DISPLAY_NAMES.put("SimpleBlowgun", "Simple Blowgun");
+        DISPLAY_NAMES.put("SkeletalChest", "Skeletal Chest");
+        DISPLAY_NAMES.put("SkeletalFeet", "Skeletal Feet");
+        DISPLAY_NAMES.put("SkeletalLegs", "Skeletal Legs");
+        DISPLAY_NAMES.put("SkeletalSkull", "Skeletal Skull");
+        DISPLAY_NAMES.put("SmallMacuahuitl", "Small Macuahuitl");
+        DISPLAY_NAMES.put("SmallWoodenClub", "Small Wooden Club");
+        DISPLAY_NAMES.put("SpikedClub", "Spiked Club");
+        DISPLAY_NAMES.put("SpikedHalberd", "Spiked Halbert");
+        DISPLAY_NAMES.put("SpikedHatchet", "Spiked Hatchet");
+        DISPLAY_NAMES.put("SpiralChimalliShield", "Spiral Chimalli Shield");
+        DISPLAY_NAMES.put("SteelBastardsword", "Steel Bastardsword");
+        DISPLAY_NAMES.put("SteelIngot", "Steel Ingot");
+        DISPLAY_NAMES.put("SteelLongsword", "Steel Longsword");
+        DISPLAY_NAMES.put("StoneHalberd", "Stone Halbert");
+        DISPLAY_NAMES.put("Stonespear", "Stonespear");
+        DISPLAY_NAMES.put("Strawhat", "Strawhat");
+        DISPLAY_NAMES.put("Tepoztopilli", "Tepoztopilli");
+        DISPLAY_NAMES.put("Tin", "Tin Chunk");
+    }
 
     private ConquestRecipes plugin;
     private ItemStackService pluginItemStackService;
@@ -79,6 +160,35 @@ public class ItemRegistryTest {
     @Test
     public void getItemStackReturnsNullForAnUnknownName() {
         assertNull(new ItemStackService(plugin).getItemStack("NotAnItem", 1));
+    }
+
+    /**
+     * Items are identified by display name only, so a texture pack that retextures them has to match on
+     * these exact strings, misspellings such as "Stone Halbert" included. Renaming one would quietly strip
+     * its texture on every server running such a pack, so a change here should be deliberate.
+     */
+    @Test
+    public void everyItemKeepsTheDisplayNameTexturePacksMatchOn() {
+        assertEquals(new TreeSet<>(DISPLAY_NAMES.keySet()),
+                ItemRegistry.getEntries().stream().map(ItemRegistry.Entry::getName).collect(Collectors.toCollection(TreeSet::new)),
+                "every registry entry should have its display name pinned here, and no other names should be");
+
+        for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+            clearInvocations(pluginItemStackService);
+
+            entry.getItemStack(plugin, 1);
+
+            verify(pluginItemStackService).createItemStack(eq(1), any(Material.class), eq(DISPLAY_NAMES.get(entry.getName())), anyString());
+        }
+    }
+
+    @Test
+    public void everyItemIsBuiltInTheRequestedAmount() {
+        for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+            ItemStack stack = entry.getItemStack(plugin, 7);
+
+            assertEquals(7, stack.getAmount(), entry.getName() + " should be built in the amount asked for");
+        }
     }
 
     @Test
