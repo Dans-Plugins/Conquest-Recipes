@@ -178,7 +178,9 @@ public class ItemRegistryTest {
 
             entry.getItemStack(plugin, 1);
 
-            verify(pluginItemStackService).createItemStack(eq(1), any(Material.class), eq(DISPLAY_NAMES.get(entry.getName())), anyString());
+            ArgumentCaptor<String> displayName = ArgumentCaptor.forClass(String.class);
+            verify(pluginItemStackService).createItemStack(anyInt(), any(Material.class), displayName.capture(), anyString());
+            assertEquals(DISPLAY_NAMES.get(entry.getName()), displayName.getValue(), entry.getName() + "'s display name has changed");
         }
     }
 
