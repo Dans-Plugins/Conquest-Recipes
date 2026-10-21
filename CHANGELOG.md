@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - A unit test asserting that every symbol in every recipe's shape, other than the `0` that marks an empty slot, has an ingredient. Bukkit treats a symbol with no ingredient as an empty slot without complaint, so a missing or mislettered `setIngredient` line would quietly make a recipe accept an empty slot. All recipes pass today.
 - A unit test pinning the in-game display name of every item. Items are identified by display name only, so a texture pack has to match on those exact strings, and renaming an item would quietly strip its texture on every server running such a pack. A second test asserts that every item is built in the amount asked for; only the Dart was checked before.
+- Unit tests for the plugin's command entry point. They assert that each command sends one usage event whose only tag is the command's name, so nothing typed after it (such as an item name or amount) reaches the trace server, as `CONFIG.md` promises. They also assert that the command is then passed on to the command handler.
 
 ### Fixed
 
