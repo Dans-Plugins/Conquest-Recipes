@@ -40,7 +40,7 @@ The names above are the items' display names. Commands take the name that `/cr l
 
 ## Crafting
 
-Every recipe fills a 3×3 grid, so every item is crafted at a crafting table. The plugin does not unlock its recipes in the recipe book, so each one has to be laid out by hand.
+Every recipe is laid out on the 3×3 grid of a crafting table, empty squares included. The plugin does not unlock its recipes in the recipe book, so each one has to be laid out by hand.
 
 Every bronze item, the Greek armour and the Clean Hoplite Shield included, is made from Bronze Ingots; the Steel Longsword and Steel Bastardsword are made from Steel Ingots; and the Rootmoss Cloth armour, Stone Root Cleaver and Stone Root Dagger take Roots. These start from vanilla materials:
 
