@@ -38,6 +38,24 @@ The names above are the items' display names. Commands take the name that `/cr l
 
 `/cr help`, or `/cr` on its own, lists the plugin's commands. Every command is described in [COMMANDS.md](COMMANDS.md).
 
+## Crafting
+
+Every recipe is laid out on the 3×3 grid of a crafting table, empty squares included. The plugin does not unlock its recipes in the recipe book, so each one has to be laid out by hand.
+
+Every bronze item, the Greek armour and the Clean Hoplite Shield included, is made from Bronze Ingots; the Steel Longsword and Steel Bastardsword are made from Steel Ingots; and the Rootmoss Cloth armour, Stone Root Cleaver and Stone Root Dagger take Roots. These start from vanilla materials:
+
+| Item | Recipe | Makes |
+|------|--------|-------|
+| Copper Chunk | 9 cobblestone, filling the grid | 4 |
+| Tin Chunk | 9 gravel, filling the grid | 4 |
+| Bronze Ingot | Top row: 3 Tin Chunks. Middle row: 3 Copper Chunks. Bottom row: Copper Chunk, coal or charcoal, Copper Chunk. | 3 |
+| Steel Ingot | Top and bottom rows: coal, or charcoal (all six the same). Middle row: 3 iron ingots. | 2 |
+| Roots | 1 oak, spruce, birch, jungle, acacia or dark oak sapling in the centre square | 2 |
+
+Ingredients are matched exactly. Where a recipe calls for a Conquest Recipes item, only that item will do: a plain gold ingot is not a Bronze Ingot, even though a Bronze Ingot looks like one. Vanilla ingredients have to be plain too, so renamed cobblestone does not make Copper Chunks. Items given with `/cr get` are the same as crafted ones and work in any recipe.
+
+The reverse does not hold. Each Conquest Recipes item is its base material underneath, and vanilla recipes accept it as that material: a Bronze Ingot crafts into a block of gold like any other gold ingot. Nothing in the plugin prevents this.
+
 ## Permissions
 
 | Permission | Default | Description |
