@@ -56,6 +56,28 @@ Ingredients are matched exactly. Where a recipe calls for a Conquest Recipes ite
 
 The reverse does not hold. Each Conquest Recipes item is its base material underneath, and vanilla recipes accept it as that material: a Bronze Ingot crafts into a block of gold like any other gold ingot. Nothing in the plugin prevents this.
 
+## What Each Item Is Underneath
+
+The plugin gives an item a name and lore and nothing else: no enchantments, attribute changes or durability changes. Damage, armour, durability and every other property are those of the base material, so a Bronze Blade hits as hard as an iron sword and the Bone Plate pieces protect as much as chainmail.
+
+The seven helmets made from a carved pumpkin are the exception worth knowing about. A carved pumpkin can be worn on the head, but it gives no armour, and the wearer sees the pumpkin overlay across the screen, just as with a plain carved pumpkin.
+
+| Base material | Items |
+|---------------|-------|
+| Carved pumpkin | Bronze Corinthian Helmet, Bronze Gladiator Helmet, Eagle Helmet, Fancy Bronze Helmet, Feather Headdress, Jaguar Helmet, Strawhat |
+| Chainmail armour | Bone Plate (all four pieces), Skeletal Skull, Skeletal Chest, Skeletal Legs, Skeletal Feet, Rootmoss Cloth Hood, Rootmoss Cloth Chestpiece, Rootmoss Cloth Leggings, Rootmoss Cloth Shoes |
+| Golden armour | Bronze Greek Plate Helm, Bronze Greek Plate Chestpiece, Bronze Greek Plate Greaves, Bronze Greek Plate Sabatons |
+| Shield | African Tall Bamboo Shield, Bone Shield, Clean Hoplite Shield, Decorated Chimalli Shield, Spiral Chimalli Shield |
+| Iron sword | Bronze Blade, Bronze Dagger, Bronze Glaive, Bronze Greatsword, Bronze Katar, Bronze Khopesh, Steel Bastardsword, Steel Longsword |
+| Iron axe | Bronze Axesword, Bronze Fancy Flail, Bronze Hatchet, Great Bronzeaxe |
+| Iron pickaxe, shovel, hoe | Bronze Pickaxe, Bronze Spade, Bronze Hoe |
+| Stone sword | Big Macuahuitl, Cuauhololli, Feathered Macuahuitl, Primitive Stoneblade, Small Macuahuitl, Stone Root Cleaver, Stone Root Dagger, Stonespear, Tepoztopilli |
+| Stone axe | Boneclub, Primitive Warhammer, Stone Halbert |
+| Wooden sword | Fancy Wooden Warclub, Large Wooden Club, Primitive Fishingspear, Primitive Hunting Spear, Sharpened Pole, Small Wooden Club |
+| Wooden axe | Primitive Flail, Spiked Club, Spiked Halbert, Spiked Hatchet |
+| Bow, arrow | Simple Blowgun (bow), Dart (arrow) |
+| Crafting materials | Bronze Ingot (gold ingot), Steel Ingot (iron ingot), Copper Chunk (nether brick), Tin Chunk (firework star), Roots (dead bush), Sharpened Bamboo (bamboo) |
+
 ## Permissions
 
 | Permission | Default | Description |
