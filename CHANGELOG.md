@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- The vendored trace client is now 0.7.0, which coalesces repeated usage events: the first use of a command is reported at once, and further uses of the same command within the next minute are counted and sent as one event carrying the count in a `coalesced` tag. The startup event is never held back. `CONFIG.md`, `README.md` and the comments in `config.yml` said an event was sent each time a command was used; they now describe the coalescing.
+
+## [2.1.1] – 2026-10-28
+
 ### Added
 
 - A unit test asserting that every symbol in every recipe's shape, other than the `0` that marks an empty slot, has an ingredient. Bukkit treats a symbol with no ingredient as an empty slot without complaint, so a missing or mislettered `setIngredient` line would quietly make a recipe accept an empty slot. All recipes pass today.
