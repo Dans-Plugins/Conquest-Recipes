@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -61,7 +62,10 @@ public final class ConquestRecipes extends JavaPlugin implements Listener {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        trace.report("command", null, Collections.singletonMap("name", cmd.getName()));
+        // console, command-block and plugin-dispatched commands are not counted
+        if (sender instanceof Player) {
+            trace.report("command", null, Collections.singletonMap("name", cmd.getName()));
+        }
         CommandService commandInterpreter = new CommandService(this);
         return commandInterpreter.interpretCommand(sender, label, args);
     }
