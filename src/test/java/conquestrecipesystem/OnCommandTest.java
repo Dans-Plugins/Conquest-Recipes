@@ -4,6 +4,7 @@ import conquestrecipesystem.services.ItemStackService;
 import conquestrecipesystem.trace.TraceClient;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 /**
- * Pins {@link ConquestRecipes#onCommand}: one usage event per command, carrying the command's name and nothing
+ * Pins {@link ConquestRecipes#onCommand}: one usage event per command a player runs, carrying the command's name and nothing
  * the sender typed after it, and the command itself handed on to {@code CommandService}. CONFIG.md and the
  * startup notice both promise that a command event holds only the command name -- nothing about players -- so
  * the arguments, which can hold a player's chosen item name, must not reach the trace client.
@@ -51,7 +52,7 @@ public class OnCommandTest {
 
     @Test
     public void reportsTheCommandNameAndNothingTheSenderTyped() {
-        CommandSender sender = mock(CommandSender.class);
+        Player sender = mock(Player.class);
 
         plugin.onCommand(sender, command("cr"), "cr", new String[]{"help", "Notch"});
 
@@ -61,7 +62,7 @@ public class OnCommandTest {
 
     @Test
     public void reportsUnderTheCommandsNameRatherThanTheLabelTyped() {
-        CommandSender sender = mock(CommandSender.class);
+        Player sender = mock(Player.class);
 
         plugin.onCommand(sender, command("conquestrecipes"), "conquestrecipes:conquestrecipes", new String[]{});
 
@@ -86,13 +87,24 @@ public class OnCommandTest {
      */
     @Test
     public void aLabelTheCommandServiceDeclinesIsStillReported() {
-        CommandSender sender = mock(CommandSender.class);
+        Player sender = mock(Player.class);
 
         boolean handled = plugin.onCommand(sender, command("cr"), "somethingelse", new String[]{});
 
         assertFalse(handled, "a label CommandService does not own should not be reported as handled");
         verify(sender, never()).sendMessage(anyString());
         verify(trace).report("command", null, Collections.singletonMap("name", "cr"));
+    }
+
+    /** Console, command-block and plugin-dispatched commands are handled but not reported. */
+    @Test
+    public void aCommandNotRunByAPlayerIsHandledButNotReported() {
+        CommandSender sender = mock(CommandSender.class);
+
+        boolean handled = plugin.onCommand(sender, command("cr"), "cr", new String[]{"help"});
+
+        assertTrue(handled, "/cr help from the console should still be handled");
+        verify(trace, never()).report(anyString(), any(), any());
     }
 
     private Command command(String name) {
