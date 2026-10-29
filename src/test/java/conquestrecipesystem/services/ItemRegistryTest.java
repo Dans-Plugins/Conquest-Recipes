@@ -119,6 +119,85 @@ public class ItemRegistryTest {
         DISPLAY_NAMES.put("Tin", "Tin Chunk");
     }
 
+    /** Each item's registry name and the vanilla material it is built on, as USER_GUIDE.md's table lists them. */
+    private static final Map<String, Material> BASE_MATERIALS = new TreeMap<>();
+
+    static {
+        BASE_MATERIALS.put("AfricanTallShield", Material.SHIELD);
+        BASE_MATERIALS.put("BigMacuahuitl", Material.STONE_SWORD);
+        BASE_MATERIALS.put("BonePlateBoots", Material.CHAINMAIL_BOOTS);
+        BASE_MATERIALS.put("BonePlateChestplate", Material.CHAINMAIL_CHESTPLATE);
+        BASE_MATERIALS.put("BonePlateHelm", Material.CHAINMAIL_HELMET);
+        BASE_MATERIALS.put("BonePlateLeggings", Material.CHAINMAIL_LEGGINGS);
+        BASE_MATERIALS.put("BoneShield", Material.SHIELD);
+        BASE_MATERIALS.put("Boneclub", Material.STONE_AXE);
+        BASE_MATERIALS.put("BronzeAxesword", Material.IRON_AXE);
+        BASE_MATERIALS.put("BronzeBlade", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzeCorinthianHelmet", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("BronzeDagger", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzeFancyFlail", Material.IRON_AXE);
+        BASE_MATERIALS.put("BronzeGladiatorHelmet", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("BronzeGlaive", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzeGreatsword", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzeHatchet", Material.IRON_AXE);
+        BASE_MATERIALS.put("BronzeHoe", Material.IRON_HOE);
+        BASE_MATERIALS.put("BronzeIngot", Material.GOLD_INGOT);
+        BASE_MATERIALS.put("BronzeKatar", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzeKhopesh", Material.IRON_SWORD);
+        BASE_MATERIALS.put("BronzePickaxe", Material.IRON_PICKAXE);
+        BASE_MATERIALS.put("BronzeSpade", Material.IRON_SHOVEL);
+        BASE_MATERIALS.put("CleanHopliteShield", Material.SHIELD);
+        BASE_MATERIALS.put("Copper", Material.NETHER_BRICK);
+        BASE_MATERIALS.put("Cuauhololli", Material.STONE_SWORD);
+        BASE_MATERIALS.put("Dart", Material.ARROW);
+        BASE_MATERIALS.put("DecoratedChimalliShield", Material.SHIELD);
+        BASE_MATERIALS.put("EagleHelmet", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("FancyBronzeHelmet", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("FancyWoodenWarclub", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("FeatherHeaddress", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("FeatheredMacuahuitl", Material.STONE_SWORD);
+        BASE_MATERIALS.put("GreatBronzeaxe", Material.IRON_AXE);
+        BASE_MATERIALS.put("GreekPlateChestpiece", Material.GOLDEN_CHESTPLATE);
+        BASE_MATERIALS.put("GreekPlateGreaves", Material.GOLDEN_LEGGINGS);
+        BASE_MATERIALS.put("GreekPlateHelm", Material.GOLDEN_HELMET);
+        BASE_MATERIALS.put("GreekPlateSabatons", Material.GOLDEN_BOOTS);
+        BASE_MATERIALS.put("JaguarHelmet", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("LargeWoodenClub", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("PrimitiveFishingSpear", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("PrimitiveFlail", Material.WOODEN_AXE);
+        BASE_MATERIALS.put("PrimitiveHuntingSpear", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("PrimitiveStoneblade", Material.STONE_SWORD);
+        BASE_MATERIALS.put("PrimitiveWarhammer", Material.STONE_AXE);
+        BASE_MATERIALS.put("RootCleaver", Material.STONE_SWORD);
+        BASE_MATERIALS.put("RootDagger", Material.STONE_SWORD);
+        BASE_MATERIALS.put("RootmossClothChestpiece", Material.CHAINMAIL_CHESTPLATE);
+        BASE_MATERIALS.put("RootmossClothHelmet", Material.CHAINMAIL_HELMET);
+        BASE_MATERIALS.put("RootmossClothLeggings", Material.CHAINMAIL_LEGGINGS);
+        BASE_MATERIALS.put("RootmossClothShoes", Material.CHAINMAIL_BOOTS);
+        BASE_MATERIALS.put("Roots", Material.DEAD_BUSH);
+        BASE_MATERIALS.put("SharpenedBamboo", Material.BAMBOO);
+        BASE_MATERIALS.put("SharpenedPole", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("SimpleBlowgun", Material.BOW);
+        BASE_MATERIALS.put("SkeletalChest", Material.CHAINMAIL_CHESTPLATE);
+        BASE_MATERIALS.put("SkeletalFeet", Material.CHAINMAIL_BOOTS);
+        BASE_MATERIALS.put("SkeletalLegs", Material.CHAINMAIL_LEGGINGS);
+        BASE_MATERIALS.put("SkeletalSkull", Material.CHAINMAIL_HELMET);
+        BASE_MATERIALS.put("SmallMacuahuitl", Material.STONE_SWORD);
+        BASE_MATERIALS.put("SmallWoodenClub", Material.WOODEN_SWORD);
+        BASE_MATERIALS.put("SpikedClub", Material.WOODEN_AXE);
+        BASE_MATERIALS.put("SpikedHalberd", Material.WOODEN_AXE);
+        BASE_MATERIALS.put("SpikedHatchet", Material.WOODEN_AXE);
+        BASE_MATERIALS.put("SpiralChimalliShield", Material.SHIELD);
+        BASE_MATERIALS.put("SteelBastardsword", Material.IRON_SWORD);
+        BASE_MATERIALS.put("SteelIngot", Material.IRON_INGOT);
+        BASE_MATERIALS.put("SteelLongsword", Material.IRON_SWORD);
+        BASE_MATERIALS.put("StoneHalberd", Material.STONE_AXE);
+        BASE_MATERIALS.put("Stonespear", Material.STONE_SWORD);
+        BASE_MATERIALS.put("Strawhat", Material.CARVED_PUMPKIN);
+        BASE_MATERIALS.put("Tepoztopilli", Material.STONE_SWORD);
+        BASE_MATERIALS.put("Tin", Material.FIREWORK_STAR);
+    }
+
     private ConquestRecipes plugin;
     private ItemStackService pluginItemStackService;
 
@@ -181,6 +260,24 @@ public class ItemRegistryTest {
             ArgumentCaptor<String> displayName = ArgumentCaptor.forClass(String.class);
             verify(pluginItemStackService).createItemStack(anyInt(), any(Material.class), displayName.capture(), anyString());
             assertEquals(DISPLAY_NAMES.get(entry.getName()), displayName.getValue(), entry.getName() + "'s display name has changed");
+        }
+    }
+
+    /**
+     * The base material decides everything about an item other than its name and lore: damage, armour,
+     * durability, and which vanilla recipes accept it. A recipe that takes a Conquest Recipes item matches the
+     * whole stack, material included, and a name-matching texture pack normally lists the material too, so
+     * items already in players' inventories stop matching either if it changes. USER_GUIDE.md lists these in a table.
+     */
+    @Test
+    public void everyItemKeepsTheBaseMaterialItIsDocumentedAs() {
+        assertEquals(new TreeSet<>(BASE_MATERIALS.keySet()),
+                ItemRegistry.getEntries().stream().map(ItemRegistry.Entry::getName).collect(Collectors.toCollection(TreeSet::new)),
+                "every registry entry should have its base material pinned here, and no other names should be");
+
+        for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+            assertEquals(BASE_MATERIALS.get(entry.getName()), entry.getItemStack(plugin, 1).getType(),
+                    entry.getName() + "'s base material has changed; update USER_GUIDE.md's table if this is deliberate");
         }
     }
 

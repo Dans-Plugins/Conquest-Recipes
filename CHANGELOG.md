@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- A unit test pinning the base material of every item, the same 73 materials `USER_GUIDE.md`'s "What Each Item Is Underneath" table lists. The base material decides an item's damage, armour and durability, and a recipe that takes a Conquest Recipes item matches the whole stack, material included, so changing one would quietly make that item stop working as an ingredient for items already in players' inventories. Only the Dart's material was checked before. `CONTRIBUTING.md`'s "Adding a New Recipe" now lists the new entry as a fourth step.
+
 ### Changed
 
 - The vendored trace client is now 0.7.0, which coalesces repeated usage events: the first use of a command is reported at once, and further uses of the same command within the next minute are counted and sent as one event carrying the count in a `coalesced` tag. The startup event is never held back. `CONFIG.md`, `README.md` and the comments in `config.yml` said an event was sent each time a command was used; they now describe the coalescing.
