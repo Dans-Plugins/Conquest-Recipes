@@ -6,7 +6,7 @@
 
     <groupId>DansPlugins</groupId>
     <artifactId>Conquest-Recipes</artifactId>
-    <version>2.1.2-SNAPSHOT</version>
+    <version>2.1.2</version>
     <packaging>jar</packaging>
 
     <name>Conquest Recipes</name>
