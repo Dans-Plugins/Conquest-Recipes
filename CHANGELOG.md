@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.1.2] – 2026-10-30
+
 ### Added
 
 - A unit test pinning the base material of every item, the same 73 materials `USER_GUIDE.md`'s "What Each Item Is Underneath" table lists. The base material decides an item's damage, armour and durability, and a recipe that takes a Conquest Recipes item matches the whole stack, material included, so changing one would quietly make that item stop working as an ingredient for items already in players' inventories. Only the Dart's material was checked before. `CONTRIBUTING.md`'s "Adding a New Recipe" now lists the new entry as a fourth step.
