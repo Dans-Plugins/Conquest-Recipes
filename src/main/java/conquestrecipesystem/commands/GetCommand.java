@@ -61,7 +61,7 @@ public class GetCommand {
 
                             // whatever didn't fit is dropped at the player's feet rather than discarded
                             for (ItemStack leftover : leftovers.values()) {
-                                player.getWorld().dropItemNaturally(player.getLocation(), leftover);
+                                dropInStacks(player, leftover);
                             }
                             if (notStored > 0) {
                                 player.sendMessage(ChatColor.YELLOW + "" + notStored + " didn't fit in your inventory and " + (notStored == 1 ? "was" : "were") + " dropped at your feet.");
@@ -87,6 +87,23 @@ public class GetCommand {
             sender.sendMessage(ChatColor.RED + "This command must be run by a player.");
         }
 
+    }
+
+    /**
+     * Drops the given items at the player's feet in stacks no larger than the item's maximum stack size.
+     * addItem hands back what it could not store as one stack holding the whole remainder, which can be
+     * more than the item stacks to (63 swords, say); a dropped item above its maximum is not valid state.
+     */
+    private void dropInStacks(Player player, ItemStack leftover) {
+        int maxStackSize = Math.max(1, leftover.getMaxStackSize());
+        int remaining = leftover.getAmount();
+        while (remaining > 0) {
+            int amount = Math.min(maxStackSize, remaining);
+            ItemStack stack = leftover.clone();
+            stack.setAmount(amount);
+            player.getWorld().dropItemNaturally(player.getLocation(), stack);
+            remaining -= amount;
+        }
     }
 
 }

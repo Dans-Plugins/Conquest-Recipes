@@ -3,6 +3,7 @@ package conquestrecipesystem.commands;
 import conquestrecipesystem.ConquestRecipes;
 import conquestrecipesystem.services.ItemStackService;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,14 +13,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -103,10 +108,9 @@ public class GetCommandTest {
         ItemStack steelLongswords = mock(ItemStack.class);
         when(itemStackService.getItemStack("SteelLongsword", 5)).thenReturn(steelLongswords);
 
-        ItemStack leftover = mock(ItemStack.class);
-        when(leftover.getAmount()).thenReturn(4);
+        // a real stack, so its maximum stack size is the material's own (1 for a sword)
         HashMap<Integer, ItemStack> leftovers = new HashMap<>();
-        leftovers.put(0, leftover);
+        leftovers.put(0, new ItemStack(Material.IRON_SWORD, 4));
         when(inventory.addItem(steelLongswords)).thenReturn(leftovers);
 
         World world = mock(World.class);
@@ -116,9 +120,32 @@ public class GetCommandTest {
 
         getCommand.getItem(player, new String[]{"get", "SteelLongsword", "5"});
 
-        verify(world).dropItemNaturally(feet, leftover);
+        // swords do not stack, so the four that did not fit are dropped one to a stack
+        assertEquals(Arrays.asList(1, 1, 1, 1), amountsDroppedAt(world, feet));
         assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("4 didn't fit in your inventory")),
                 "the player should be told how many items were dropped");
+    }
+
+    @Test
+    public void stackableItemsThatDoNotFitAreDroppedInFullStacks() {
+        ItemStack steelIngots = mock(ItemStack.class);
+        when(itemStackService.getItemStack("SteelIngot", 140)).thenReturn(steelIngots);
+
+        HashMap<Integer, ItemStack> leftovers = new HashMap<>();
+        leftovers.put(0, new ItemStack(Material.IRON_INGOT, 130));
+        when(inventory.addItem(steelIngots)).thenReturn(leftovers);
+
+        World world = mock(World.class);
+        Location feet = mock(Location.class);
+        when(player.getWorld()).thenReturn(world);
+        when(player.getLocation()).thenReturn(feet);
+
+        getCommand.getItem(player, new String[]{"get", "SteelIngot", "140"});
+
+        // 130 ingots are two full stacks of 64 and one of 2, never one stack of 130
+        assertEquals(Arrays.asList(64, 64, 2), amountsDroppedAt(world, feet));
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("130 didn't fit in your inventory")),
+                "the message should report the whole amount dropped, not the number of stacks");
     }
 
     @Test
@@ -126,10 +153,8 @@ public class GetCommandTest {
         ItemStack bronzeBlades = mock(ItemStack.class);
         when(itemStackService.getItemStack("BronzeBlade", 2)).thenReturn(bronzeBlades);
 
-        ItemStack leftover = mock(ItemStack.class);
-        when(leftover.getAmount()).thenReturn(1);
         HashMap<Integer, ItemStack> leftovers = new HashMap<>();
-        leftovers.put(0, leftover);
+        leftovers.put(0, new ItemStack(Material.IRON_SWORD, 1));
         when(inventory.addItem(bronzeBlades)).thenReturn(leftovers);
         when(player.getWorld()).thenReturn(mock(World.class));
 
@@ -228,6 +253,16 @@ public class GetCommandTest {
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(sender, atLeastOnce()).sendMessage(captor.capture());
         return captor.getAllValues();
+    }
+
+    /**
+     * The amount of every stack dropped at the given location, in the order dropped. Compares amounts rather
+     * than stacks because ItemStack.equals consults the server's ItemFactory, which no test starts.
+     */
+    private List<Integer> amountsDroppedAt(World world, Location location) {
+        ArgumentCaptor<ItemStack> captor = ArgumentCaptor.forClass(ItemStack.class);
+        verify(world, atLeastOnce()).dropItemNaturally(eq(location), captor.capture());
+        return captor.getAllValues().stream().map(ItemStack::getAmount).collect(Collectors.toList());
     }
 
 }

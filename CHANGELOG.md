@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `/cr get` dropped the part of the amount that did not fit in the inventory as a single item stack, however large: with one empty slot, `/cr get SteelLongsword 64` dropped 63 swords as one item, although swords do not stack. On Minecraft 1.20.5 and later, an item stack above its maximum size can also fail to save. The items that do not fit are now dropped in stacks no larger than the item normally stacks to, one to a stack for swords and tools and up to 64 for ingots. The message still reports the total number dropped.
+
 ## [2.1.2] – 2026-10-30
 
 ### Added
