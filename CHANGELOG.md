@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- `/cr get` now refuses an amount above 100 stacks of the item, the limit vanilla `/give` uses: 6400 for ingots and 100 for swords and tools. Any amount up to 2147483647 was accepted before, and because whatever does not fit in the inventory is dropped one entity to a stack, a mistyped `/cr get SteelLongsword 100000` could spawn close to 100,000 items at the player's feet. The refusal names the limit, and nothing is given or dropped.
+
+## [2.1.3] – 2026-11-01
+
 ### Fixed
 
 - `/cr get` dropped the part of the amount that did not fit in the inventory as a single item stack, however large: with one empty slot, `/cr get SteelLongsword 64` dropped 63 swords as one item, although swords do not stack. On Minecraft 1.20.5 and later, an item stack above its maximum size can also fail to save. The items that do not fit are now dropped in stacks no larger than the item normally stacks to, one to a stack for swords and tools and up to 64 for ingots. The message still reports the total number dropped.

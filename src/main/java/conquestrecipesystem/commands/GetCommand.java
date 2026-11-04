@@ -10,6 +10,12 @@ import java.util.Map;
 
 public class GetCommand {
 
+    /**
+     * The most stacks of an item one command can give, the limit vanilla /give uses. What does not fit in
+     * the inventory is dropped, one entity to a stack, so an unlimited amount could spawn millions of them.
+     */
+    private static final int MAX_STACKS = 100;
+
     ConquestRecipes conquestRecipes = null;
 
     public GetCommand(ConquestRecipes plugin) {
@@ -45,6 +51,12 @@ public class GetCommand {
                     ItemStack item = conquestRecipes.getItemStackService().getItemStack(itemToGet, amount);
 
                     if (item != null) {
+                        int maxAmount = MAX_STACKS * maxStackSizeOf(item);
+                        if (amount > maxAmount) {
+                            player.sendMessage(ChatColor.RED + "You can't get more than " + maxAmount + " " + itemToGet + " at once.");
+                            return;
+                        }
+
                         // addItem fills existing stacks of the same item before empty slots, and hands back
                         // whatever it could not store
                         Map<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
@@ -95,7 +107,7 @@ public class GetCommand {
      * more than the item stacks to (63 swords, say); a dropped item above its maximum is not valid state.
      */
     private void dropInStacks(Player player, ItemStack leftover) {
-        int maxStackSize = Math.max(1, leftover.getMaxStackSize());
+        int maxStackSize = maxStackSizeOf(leftover);
         int remaining = leftover.getAmount();
         while (remaining > 0) {
             int amount = Math.min(maxStackSize, remaining);
@@ -104,6 +116,13 @@ public class GetCommand {
             player.getWorld().dropItemNaturally(player.getLocation(), stack);
             remaining -= amount;
         }
+    }
+
+    /**
+     * The item's maximum stack size, never below 1.
+     */
+    private int maxStackSizeOf(ItemStack item) {
+        return Math.max(1, item.getMaxStackSize());
     }
 
 }
