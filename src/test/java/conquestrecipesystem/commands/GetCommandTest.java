@@ -82,6 +82,75 @@ public class GetCommandTest {
     }
 
     @Test
+    public void amountAboveOneHundredOfAnUnstackableItemIsRefused() {
+        ItemStack steelLongswords = new ItemStack(Material.IRON_SWORD, 101);
+        when(itemStackService.getItemStack("SteelLongsword", 101)).thenReturn(steelLongswords);
+
+        getCommand.getItem(player, new String[]{"get", "SteelLongsword", "101"});
+
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("more than 100 SteelLongsword")),
+                "the refusal should name the limit for the item");
+        verify(inventory, never()).addItem(any(ItemStack.class));
+        verify(player, never()).getWorld();
+    }
+
+    @Test
+    public void oneHundredOfAnUnstackableItemIsAccepted() {
+        ItemStack steelLongswords = mock(ItemStack.class);
+        when(steelLongswords.getMaxStackSize()).thenReturn(1);
+        when(itemStackService.getItemStack("SteelLongsword", 100)).thenReturn(steelLongswords);
+        when(inventory.addItem(steelLongswords)).thenReturn(new HashMap<>());
+
+        getCommand.getItem(player, new String[]{"get", "SteelLongsword", "100"});
+
+        verify(inventory).addItem(steelLongswords);
+    }
+
+    @Test
+    public void amountAboveOneHundredStacksOfAStackableItemIsRefused() {
+        ItemStack steelIngots = new ItemStack(Material.IRON_INGOT, 6401);
+        when(itemStackService.getItemStack("SteelIngot", 6401)).thenReturn(steelIngots);
+
+        getCommand.getItem(player, new String[]{"get", "SteelIngot", "6401"});
+
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("more than 6400 SteelIngot")),
+                "the limit should follow the item's own maximum stack size");
+        verify(inventory, never()).addItem(any(ItemStack.class));
+    }
+
+    @Test
+    public void oneHundredStacksOfAStackableItemAreAccepted() {
+        ItemStack steelIngots = mock(ItemStack.class);
+        when(steelIngots.getMaxStackSize()).thenReturn(64);
+        when(itemStackService.getItemStack("SteelIngot", 6400)).thenReturn(steelIngots);
+        when(inventory.addItem(steelIngots)).thenReturn(new HashMap<>());
+
+        getCommand.getItem(player, new String[]{"get", "SteelIngot", "6400"});
+
+        verify(inventory).addItem(steelIngots);
+    }
+
+    @Test
+    public void largestPossibleAmountIsRefused() {
+        ItemStack steelIngots = new ItemStack(Material.IRON_INGOT, 1);
+        when(itemStackService.getItemStack("SteelIngot", Integer.MAX_VALUE)).thenReturn(steelIngots);
+
+        getCommand.getItem(player, new String[]{"get", "SteelIngot", String.valueOf(Integer.MAX_VALUE)});
+
+        verify(inventory, never()).addItem(any(ItemStack.class));
+    }
+
+    @Test
+    public void unrecognisedItemNameTakesPrecedenceOverTheAmountLimit() {
+        when(itemStackService.getItemStack("NotAnItem", 1000000)).thenReturn(null);
+
+        getCommand.getItem(player, new String[]{"get", "NotAnItem", "1000000"});
+
+        assertTrue(messagesSentTo(player).stream().anyMatch(message -> message.contains("isn't an item in Conquest Recipes")),
+                "the limit depends on the item, so a name that matches no item should be reported as such");
+    }
+
+    @Test
     public void consoleSenderIsToldAPlayerIsRequired() {
         CommandSender console = mock(CommandSender.class);
 
@@ -129,6 +198,7 @@ public class GetCommandTest {
     @Test
     public void stackableItemsThatDoNotFitAreDroppedInFullStacks() {
         ItemStack steelIngots = mock(ItemStack.class);
+        when(steelIngots.getMaxStackSize()).thenReturn(64);
         when(itemStackService.getItemStack("SteelIngot", 140)).thenReturn(steelIngots);
 
         HashMap<Integer, ItemStack> leftovers = new HashMap<>();
