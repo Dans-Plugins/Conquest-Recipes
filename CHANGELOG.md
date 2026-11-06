@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- `README.md`, `CONFIG.md` and the comments in `config.yml` said a usage event was sent each time one of the plugin's commands was used. Since 2.1.2 a `command` event is sent only when a player runs the command, so they now say that, and that console, command-block and plugin-dispatched commands are not counted.
+- `README.md`, `CONFIG.md` and the comments in `config.yml` said a usage event was sent each time one of the plugin's commands was used. Since 2.1.2 a `command` event is sent only when the sender is a player, so they now say that, and that console and command-block commands are not counted.
 
 ## [2.1.4] – 2026-11-05
 
