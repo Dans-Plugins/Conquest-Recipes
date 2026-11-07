@@ -53,6 +53,17 @@ public class ListItemsCommandTest {
     }
 
     @Test
+    public void theAdminPermissionAlsoGrantsAccess() {
+        CommandSender console = mock(CommandSender.class);
+        when(console.hasPermission("conquestrecipes.admin")).thenReturn(true);
+
+        listItemsCommand.showList(console, new String[]{"list"});
+
+        assertTrue(messagesSentTo(console).stream().anyMatch(message -> message.contains("Conquest Recipes - Items")),
+                "conquestrecipes.admin should be enough to list items");
+    }
+
+    @Test
     public void senderWithoutPermissionIsRefused() {
         CommandSender console = mock(CommandSender.class);
 
@@ -63,6 +74,8 @@ public class ListItemsCommandTest {
                 "a sender without permission should be told which permission is needed");
         assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.default")),
                 "the refusal should also name conquestrecipes.default, which grants the command too");
+        assertTrue(messages.stream().anyMatch(message -> message.contains("conquestrecipes.admin")),
+                "the refusal should also name conquestrecipes.admin, which grants the command too");
         assertTrue(messages.stream().noneMatch(message -> message.contains("Conquest Recipes - Items")),
                 "a sender without permission should not receive the list");
     }

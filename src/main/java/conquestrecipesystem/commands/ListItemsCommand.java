@@ -30,8 +30,8 @@ public class ListItemsCommand {
 
     public void showList(CommandSender sender, String[] args) {
 
-        if (!sender.hasPermission("conquestrecipes.listitems") && !sender.hasPermission("conquestrecipes.default")) {
-            sender.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need one of the following permissions: 'conquestrecipes.listitems' or 'conquestrecipes.default'");
+        if (!sender.hasPermission("conquestrecipes.listitems") && !sender.hasPermission("conquestrecipes.default") && !sender.hasPermission("conquestrecipes.admin")) {
+            sender.sendMessage(ChatColor.RED + "Sorry! In order to use this command, you need one of the following permissions: 'conquestrecipes.listitems', 'conquestrecipes.default' or 'conquestrecipes.admin'");
             return;
         }
 
