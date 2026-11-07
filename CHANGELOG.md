@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `/cr list` and `/cr listitems` refused a sender holding only `conquestrecipes.admin`, although that node is documented as granting every command. A server that denied `conquestrecipes.listitems` and `conquestrecipes.default` and gave its staff the admin node left them able to give themselves any item but not to list the names. The admin node now grants the listing, and the refusal names it alongside the other two.
+
+## [2.1.5] – 2026-11-07
+
 ### Changed
 
 - `README.md`, `CONFIG.md` and the comments in `config.yml` said a usage event was sent each time one of the plugin's commands was used. Since 2.1.2 a `command` event is sent only when the sender is a player, so they now say that, and that console and command-block commands are not counted.

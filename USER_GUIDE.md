@@ -85,7 +85,7 @@ The seven helmets made from a carved pumpkin are the exception worth knowing abo
 | `conquestrecipes.listitems` | `true` | List craftable items. |
 | `conquestrecipes.get` | `op` | Use `/cr get` to receive items directly. |
 | `conquestrecipes.default` | `true` | Grants access to default Conquest Recipes commands, including `/cr list`. |
-| `conquestrecipes.admin` | `op` | Grants access to all Conquest Recipes commands, including `/cr get`. |
+| `conquestrecipes.admin` | `op` | Grants access to all Conquest Recipes commands, including `/cr list` and `/cr get`. |
 
 ## Support
 

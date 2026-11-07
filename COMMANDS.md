@@ -6,11 +6,11 @@ All commands use `/cr` or `/conquestrecipes` as the base.
 |---------|-------------|------------|
 | `/cr` | Show the plugin version, the author, and the list of subcommands. | None |
 | `/cr help` | Same as `/cr`. | None |
-| `/cr list [page]` | List the items that can be crafted with Conquest Recipes, one page at a time. | `conquestrecipes.listitems` or `conquestrecipes.default` |
-| `/cr listitems [page]` | Alias for `/cr list`. | `conquestrecipes.listitems` or `conquestrecipes.default` |
+| `/cr list [page]` | List the items that can be crafted with Conquest Recipes, one page at a time. | `conquestrecipes.listitems`, `conquestrecipes.default` or `conquestrecipes.admin` |
+| `/cr listitems [page]` | Alias for `/cr list`. | `conquestrecipes.listitems`, `conquestrecipes.default` or `conquestrecipes.admin` |
 | `/cr get <itemName> <amount>` | Give yourself a specified amount of a Conquest Recipes item. | `conquestrecipes.get` or `conquestrecipes.admin` |
 
-Either of the two nodes listed against a command grants it; holding both is not required. `conquestrecipes.default` and `conquestrecipes.listitems` both default to `true`, so revoking only one of them still leaves the listing available. The full set of nodes and their defaults is in [USER_GUIDE.md](USER_GUIDE.md#permissions).
+Any one of the nodes listed against a command grants it; holding more than one is not required. `conquestrecipes.default` and `conquestrecipes.listitems` both default to `true`, so revoking only one of them still leaves the listing available. The full set of nodes and their defaults is in [USER_GUIDE.md](USER_GUIDE.md#permissions).
 
 `<itemName>` is an item's name exactly as `/cr list` prints it — a single word with no spaces, such as `BronzeBlade` or `SteelLongsword` — and is matched without regard to case, so `bronzeblade` is accepted too. The in-game display name, `Bronze Blade`, is not: the space splits it into two arguments, and `Blade` is then read as the amount. A name that matches no item is answered with `That isn't an item in Conquest Recipes!`.
 
