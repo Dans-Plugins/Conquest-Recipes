@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.2.0] – 2026-11-08
+
 ### Fixed
 
 - `/cr list` and `/cr listitems` refused a sender holding only `conquestrecipes.admin`, although that node is documented as granting every command. A server that denied `conquestrecipes.listitems` and `conquestrecipes.default` and gave its staff the admin node left them able to give themselves any item but not to list the names. The admin node now grants the listing, and the refusal names it alongside the other two.
