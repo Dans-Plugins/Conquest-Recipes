@@ -105,6 +105,22 @@ public class CommandServiceTest {
                 "a recognised subcommand should not also be reported as unrecognised, but received: " + messages);
     }
 
+    /** COMMANDS.md documents {@code /cr listitems} as an alias of {@code /cr list}. */
+    @Test
+    public void listitemsIsDispatchedAsAnAliasOfList() {
+        CommandSender sender = mock(CommandSender.class);
+        when(sender.hasPermission("conquestrecipes.listitems")).thenReturn(true);
+
+        boolean handled = commandService.interpretCommand(sender, "cr", new String[]{"listitems"});
+
+        assertTrue(handled, "/cr listitems should be handled");
+        List<String> messages = messagesSentTo(sender);
+        assertTrue(messages.stream().anyMatch(message -> message.contains("Conquest Recipes - Items")),
+                "/cr listitems should reach ListItemsCommand, but received: " + messages);
+        assertTrue(messages.stream().noneMatch(message -> message.contains("isn't a Conquest Recipes subcommand")),
+                "an alias should not be reported as unrecognised, but received: " + messages);
+    }
+
     @Test
     public void getIsStillDispatchedPastTheUnrecognisedSubcommandBranch() {
         CommandSender console = mock(CommandSender.class);

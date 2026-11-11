@@ -319,6 +319,26 @@ public class GetCommandTest {
         verify(itemStackService, never()).getItemStack(anyString(), anyInt());
     }
 
+    /**
+     * conquestrecipes.admin is documented as granting every command. /cr list once refused a sender holding
+     * only that node (fixed in 2.2.0); this pins the same grant for /cr get.
+     */
+    @Test
+    public void theAdminPermissionAlsoGrantsAccess() {
+        Player admin = mock(Player.class);
+        when(admin.getInventory()).thenReturn(inventory);
+        when(admin.hasPermission("conquestrecipes.admin")).thenReturn(true);
+        ItemStack bronzeBlade = mock(ItemStack.class);
+        when(itemStackService.getItemStack("BronzeBlade", 1)).thenReturn(bronzeBlade);
+
+        getCommand.getItem(admin, new String[]{"get", "BronzeBlade", "1"});
+
+        verify(inventory).addItem(bronzeBlade);
+        List<String> messages = messagesSentTo(admin);
+        assertTrue(messages.stream().noneMatch(message -> message.contains("Sorry!")),
+                "a player holding only conquestrecipes.admin should not be refused, but received: " + messages);
+    }
+
     private List<String> messagesSentTo(CommandSender sender) {
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(sender, atLeastOnce()).sendMessage(captor.capture());
