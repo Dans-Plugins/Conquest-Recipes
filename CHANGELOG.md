@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Unit tests pinning two documented command behaviours that no test exercised: `conquestrecipes.admin` on its own grants `/cr get` (the same grant `/cr list` was missing until 2.2.0), and `/cr listitems` is dispatched as an alias of `/cr list`.
+- Unit tests pinning the five recipes that start from vanilla materials (Copper Chunk, Tin Chunk, Bronze Ingot, Steel Ingot and Roots) to the grids, ingredients and yields in the table under "Crafting" in `USER_GUIDE.md`. Every other item is made from one of these, and no test checked their layout or yield before.
 
 ## [2.2.0] – 2026-11-08
 
