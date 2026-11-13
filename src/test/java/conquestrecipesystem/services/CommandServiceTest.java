@@ -80,6 +80,35 @@ public class CommandServiceTest {
         assertNamesEverySubcommand(messages);
     }
 
+    /**
+     * Bukkit also registers every plugin command under the plugin's name as a prefix, and passes the label as
+     * typed, so {@code /conquest-recipes:cr} arrives with the label {@code conquest-recipes:cr}. It is the
+     * form to use when another plugin has also claimed {@code /cr}.
+     */
+    @Test
+    public void theNamespacedFormOfEachCommandIsAccepted() {
+        for (String label : new String[]{"conquest-recipes:cr", "conquest-recipes:conquestrecipes"}) {
+            CommandSender sender = mock(CommandSender.class);
+
+            boolean handled = commandService.interpretCommand(sender, label, new String[]{"help"});
+
+            assertTrue(handled, "/" + label + " help should be handled");
+            List<String> messages = messagesSentTo(sender);
+            assertTrue(messages.stream().anyMatch(message -> message.contains("Conquest Recipes v2.0.0")),
+                    "/" + label + " help should print the header, but received: " + messages);
+        }
+    }
+
+    @Test
+    public void aNamespacedLabelForAnotherCommandIsLeftAlone() {
+        CommandSender sender = mock(CommandSender.class);
+
+        boolean handled = commandService.interpretCommand(sender, "conquest-recipes:somethingelse", new String[]{"help"});
+
+        assertFalse(handled, "a label naming a command this plugin does not own should not be reported as handled");
+        verify(sender, never()).sendMessage(anyString());
+    }
+
     @Test
     public void aLabelBelongingToAnotherPluginIsLeftAlone() {
         CommandSender sender = mock(CommandSender.class);

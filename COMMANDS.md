@@ -1,6 +1,6 @@
 # Conquest Recipes Commands
 
-All commands use `/cr` or `/conquestrecipes` as the base.
+All commands use `/cr` or `/conquestrecipes` as the base. Either can also be typed with the plugin's name as a prefix, as `/conquest-recipes:cr` or `/conquest-recipes:conquestrecipes`, which reaches this plugin even when another plugin has also claimed `/cr`.
 
 | Command | Description | Permission |
 |---------|-------------|------------|

@@ -15,7 +15,10 @@ public class CommandService {
     }
 
     public boolean interpretCommand(CommandSender sender, String label, String[] args) {
-        if (label.equalsIgnoreCase("conquestrecipes") || label.equalsIgnoreCase("cr")) {
+        // Bukkit also registers each command as /conquest-recipes:<name> and passes that label through as typed,
+        // so the prefix is dropped before matching.
+        String commandName = label.substring(label.lastIndexOf(':') + 1);
+        if (commandName.equalsIgnoreCase("conquestrecipes") || commandName.equalsIgnoreCase("cr")) {
 
             if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
                 sender.sendMessage(ChatColor.AQUA + " == Conquest Recipes " + conquestRecipes.getVersion() + " == ");
