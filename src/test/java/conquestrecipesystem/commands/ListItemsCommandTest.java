@@ -110,6 +110,31 @@ public class ListItemsCommandTest {
         assertTrue(namesSeen.contains(ChatColor.AQUA + "Tin"), "the last item should appear on some page");
     }
 
+    /**
+     * ItemRegistry keeps its entries in the order they were added, and CONTRIBUTING.md tells contributors to
+     * add a new item at the end of that list because /cr list sorts the names itself. This pins that sort.
+     */
+    @Test
+    public void theListIsPrintedInAlphabeticalOrderAcrossPages() {
+        List<String> namesSeen = allNamesInPrintedOrder();
+
+        List<String> sorted = new ArrayList<>(namesSeen);
+        sorted.sort(String.CASE_INSENSITIVE_ORDER);
+        assertEquals(sorted, namesSeen, "the item names should be printed in alphabetical order across every page");
+    }
+
+    /**
+     * The sort ignores case. A case-sensitive sort would put every capital letter before every lowercase one,
+     * so BonePlateBoots ('P') would be printed ahead of Boneclub ('c').
+     */
+    @Test
+    public void theAlphabeticalOrderIgnoresCase() {
+        List<String> namesSeen = allNamesInPrintedOrder();
+
+        assertTrue(namesSeen.indexOf("Boneclub") >= 0 && namesSeen.indexOf("Boneclub") < namesSeen.indexOf("BonePlateBoots"),
+                "Boneclub should be printed before BonePlateBoots, but the order was: " + namesSeen);
+    }
+
     @Test
     public void theHeaderAndFooterReportThePosition() {
         CommandSender console = permittedSender();
@@ -170,6 +195,21 @@ public class ListItemsCommandTest {
 
     private int lastPageNumber() {
         return (73 + 7) / 8;
+    }
+
+    /**
+     * Every item name /cr list prints, paging from the first page to the last, with the colour code removed.
+     */
+    private List<String> allNamesInPrintedOrder() {
+        List<String> names = new ArrayList<>();
+        for (int page = 1; page <= lastPageNumber(); page++) {
+            CommandSender console = permittedSender();
+            listItemsCommand.showList(console, new String[]{"list", String.valueOf(page)});
+            for (String line : itemLinesIn(messagesSentTo(console))) {
+                names.add(ChatColor.stripColor(line));
+            }
+        }
+        return names;
     }
 
     private CommandSender permittedSender() {
