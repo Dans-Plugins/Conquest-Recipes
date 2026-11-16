@@ -350,6 +350,67 @@ public class ItemRegistryTest {
         }
     }
 
+    /**
+     * Pins the sentence that opens "Crafting" in USER_GUIDE.md: every recipe is laid out on the 3x3 grid of
+     * a crafting table, empty squares included. Every recipe is shaped, and its shape is three rows of three
+     * symbols, with {@code '0'} marking the empty squares.
+     */
+    @Test
+    public void everyRecipeIsLaidOutOnTheFullThreeByThreeGrid() {
+        try (MockedStatic<Bukkit> bukkit = mockBukkit()) {
+            for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+                bukkit.clearInvocations();
+
+                entry.registerRecipe(plugin);
+
+                for (Recipe recipe : recipesAddedTo(bukkit)) {
+                    assertTrue(recipe instanceof ShapedRecipe, entry.getName() + " should register shaped recipes only");
+                    ShapedRecipe shaped = (ShapedRecipe) recipe;
+                    String[] shape = shaped.getShape();
+                    assertEquals(3, shape.length, entry.getName() + "'s recipe " + shaped.getKey().getKey()
+                            + " should have three rows, but its shape is " + Arrays.toString(shape));
+                    for (String row : shape) {
+                        assertEquals(3, row.length(), entry.getName() + "'s recipe " + shaped.getKey().getKey()
+                                + " should have three squares in every row, but its shape is " + Arrays.toString(shape));
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Pins "Ingredients are matched exactly" under "Crafting" in USER_GUIDE.md. An {@code ExactChoice}
+     * matches the whole stack, name and lore included, so a plain gold ingot is not a Bronze Ingot and
+     * renamed cobblestone does not make Copper Chunks. A {@code MaterialChoice}, or the material-only
+     * {@code setIngredient(char, Material)}, would accept either.
+     */
+    @Test
+    public void everyIngredientIsMatchedExactly() {
+        int ingredientsChecked = 0;
+        try (MockedStatic<Bukkit> bukkit = mockBukkit()) {
+            for (ItemRegistry.Entry entry : ItemRegistry.getEntries()) {
+                bukkit.clearInvocations();
+
+                entry.registerRecipe(plugin);
+
+                for (Recipe recipe : recipesAddedTo(bukkit)) {
+                    ShapedRecipe shaped = (ShapedRecipe) recipe;
+                    for (Map.Entry<Character, RecipeChoice> ingredient : shaped.getChoiceMap().entrySet()) {
+                        if (ingredient.getValue() == null) {
+                            continue; // a symbol with no ingredient is an empty square
+                        }
+                        assertTrue(ingredient.getValue() instanceof RecipeChoice.ExactChoice,
+                                entry.getName() + "'s recipe " + shaped.getKey().getKey() + " matches '" + ingredient.getKey()
+                                        + "' by " + ingredient.getValue().getClass().getSimpleName() + " rather than exactly");
+                        ingredientsChecked++;
+                    }
+                }
+            }
+        }
+        assertTrue(ingredientsChecked >= ItemRegistry.getEntries().size(),
+                "every item's recipe should take at least one ingredient, but only " + ingredientsChecked + " were checked");
+    }
+
     private MockedStatic<Bukkit> mockBukkit() {
         MockedStatic<Bukkit> bukkit = mockStatic(Bukkit.class);
         // RecipeChoice.ExactChoice compares the stacks it is given, which reaches the server's item factory
