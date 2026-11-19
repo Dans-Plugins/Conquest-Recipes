@@ -5,10 +5,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -33,12 +37,18 @@ public class UsageReportingConfigTest {
 
     private ConquestRecipes plugin;
     private FileConfiguration config;
+    private File configFile;
+
+    @TempDir
+    Path dataFolder;
 
     @BeforeEach
     public void setUp() {
         plugin = mock(ConquestRecipes.class);
         config = mock(FileConfiguration.class);
+        configFile = dataFolder.resolve("config.yml").toFile();
         when(plugin.getConfig()).thenReturn(config);
+        when(plugin.getConfigFile()).thenReturn(configFile);
         doCallRealMethod().when(plugin).isUsageReportingEnabled();
         doCallRealMethod().when(plugin).getUsageReportingEndpoint();
         doCallRealMethod().when(plugin).getUsageReportingKey();
@@ -46,10 +56,47 @@ public class UsageReportingConfigTest {
 
     @Test
     public void enabledIsReadWithTheOneArgumentGetter() {
-        when(config.getBoolean("usage-reporting.enabled")).thenReturn(true);
+        when(config.get("usage-reporting.enabled")).thenReturn(true);
 
         assertTrue(plugin.isUsageReportingEnabled());
-        verify(config, never()).getBoolean(eq("usage-reporting.enabled"), anyBoolean());
+        verify(config, never()).get(eq("usage-reporting.enabled"), anyBoolean());
+    }
+
+    @Test
+    public void aQuotedFalseTurnsReportingOff() throws Exception {
+        // getBoolean() reads the string "false" as the bundled default, true.
+        YamlConfiguration loaded = new YamlConfiguration();
+        loaded.loadFromString("usage-reporting:\n  enabled: \"false\"\n");
+        loaded.setDefaults(bundledConfig());
+        assertTrue(loaded.getBoolean("usage-reporting.enabled"));
+        when(plugin.getConfig()).thenReturn(loaded);
+
+        assertFalse(plugin.isUsageReportingEnabled());
+    }
+
+    @Test
+    public void anOptOutInTheFileOnDiskWinsOverTheLoadedConfig() throws Exception {
+        when(config.get("usage-reporting.enabled")).thenReturn(true);
+        Files.write(configFile.toPath(), "usage-reporting:\n  enabled: false\n".getBytes(StandardCharsets.UTF_8));
+
+        assertFalse(plugin.isUsageReportingEnabled());
+    }
+
+    @Test
+    public void aConfigFileThatCannotBeParsedIsNotOverwrittenWithTheBundledBlock() throws Exception {
+        // Bukkit loads a config.yml with a YAML error as empty, so the block looks missing and
+        // copyBundledUsageReportingBlock() fills in enabled: true; onEnable then saves through
+        // saveConfig(), which must refuse, and reporting must be off.
+        String broken = "usage-reporting:\n  enabled: false\n\tother: [\n";
+        Files.write(configFile.toPath(), broken.getBytes(StandardCharsets.UTF_8));
+        YamlConfiguration loaded = new YamlConfiguration();
+        loaded.setDefaults(bundledConfig());
+        when(plugin.getConfig()).thenReturn(loaded);
+
+        assertTrue(ConquestRecipes.copyBundledUsageReportingBlock(loaded));
+        assertFalse(conquestrecipesystem.trace.UsageReportingSetting.prepareSave(loaded, configFile, false));
+        assertEquals(broken, new String(Files.readAllBytes(configFile.toPath()), StandardCharsets.UTF_8));
+        assertFalse(plugin.isUsageReportingEnabled());
     }
 
     @Test

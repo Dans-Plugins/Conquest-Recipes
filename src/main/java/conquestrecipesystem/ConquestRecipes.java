@@ -4,6 +4,7 @@ import conquestrecipesystem.services.CommandService;
 import conquestrecipesystem.services.ItemStackService;
 import conquestrecipesystem.services.RecipeService;
 import conquestrecipesystem.trace.TraceClient;
+import conquestrecipesystem.trace.UsageReportingSetting;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -56,6 +58,26 @@ public final class ConquestRecipes extends JavaPlugin implements Listener {
         trace.report("startup");
     }
 
+    /**
+     * Every save of config.yml goes through here, so none of them can lose the operator's
+     * settings, usage-reporting opt-out included. A file that cannot be parsed -- which Bukkit
+     * loads as empty, so the copied usage-reporting block (enabled: true) would otherwise be
+     * written over it -- is never overwritten, and an opt-out written to the file while the
+     * server was running is kept rather than replaced by a stale copy.
+     */
+    @Override
+    public void saveConfig() {
+        if (!UsageReportingSetting.prepareSave(getConfig(), getConfigFile(), false)) {
+            getLogger().severe(UsageReportingSetting.UNPARSEABLE_MESSAGE);
+            return;
+        }
+        super.saveConfig();
+    }
+
+    File getConfigFile() {
+        return new File(getDataFolder(), "config.yml");
+    }
+
     @Override
     public void onDisable() {
         trace.close();
@@ -91,8 +113,13 @@ public final class ConquestRecipes extends JavaPlugin implements Listener {
     // reporting off on every such installation. Verified against
     // YamlConfiguration, not assumed.
 
+    /**
+     * Fails closed: only a value that clearly means on (not a quoted "false", which
+     * getBoolean() would read as the bundled true) turns reporting on, and an opt-out in
+     * config.yml on disk wins over the loaded copy.
+     */
     boolean isUsageReportingEnabled() {
-        return getConfig().getBoolean(USAGE_REPORTING_ENABLED_KEY);
+        return UsageReportingSetting.isEnabled(getConfig(), getConfigFile());
     }
 
     String getUsageReportingEndpoint() {
